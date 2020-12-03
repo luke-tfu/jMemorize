@@ -370,8 +370,9 @@ public class Main extends Observable implements LearnSessionProvider, LessonProv
      *         This can be used for new and expiremental features.
      */
     public static boolean isDevel() {
-        String property = PROPERTIES.getProperty("project.release"); //$NON-NLS-1$
-        return !Boolean.valueOf(property).booleanValue();
+        // String property = PROPERTIES.getProperty("project.release"); //$NON-NLS-1$
+        // return !Boolean.valueOf(property).booleanValue();
+        return false;
     }
 
     /*
@@ -394,7 +395,7 @@ public class Main extends Observable implements LearnSessionProvider, LessonProv
             String java = System.getProperty("java.version");
             String os = System.getProperty("os.name");
             String version = Main.PROPERTIES.getProperty("project.version");
-            String buildId = Main.PROPERTIES.getProperty("buildId");
+            String buildId = ""; /* Main.PROPERTIES.getProperty("buildId"); */
             String txt = "Ver " + version + " (" + buildId + ") - Java " + java + " , OS " + os;
             logger.severe(txt);
 

@@ -20,6 +20,7 @@ package jmemorize.core.test;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 
 import jmemorize.core.Card;
@@ -86,7 +87,10 @@ public class LessonProviderTest extends TestCase implements LessonObserver {
         m_lessonProvider.loadLesson(new File("test/fixtures/simple_de.jml"));
 
         Lesson lesson = m_lessonProvider.getLesson();
-        m_lessonProvider.saveLesson(lesson, new File("./test.jml"));
+
+        File newFile = Files.createTempDirectory("learn-history-test").resolve("test.jml").toFile();
+        m_lessonProvider.saveLesson(lesson, newFile);
+        // m_lessonProvider.saveLesson(lesson, new File("./test.jml"));
 
         assertEquals("loaded saved ", m_log.toString());
     }

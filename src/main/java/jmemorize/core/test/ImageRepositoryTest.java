@@ -21,6 +21,7 @@ package jmemorize.core.test;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -30,7 +31,15 @@ import jmemorize.core.io.XmlBuilder;
 import junit.framework.TestCase;
 
 public class ImageRepositoryTest extends TestCase {
-    private final static File TEST_DIR = new File("./images-test");
+    private final static File TEST_DIR;
+
+    static {
+        try {
+            TEST_DIR = Files.createTempDirectory("image-repo-test").resolve("images-test").toFile();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     private ImageRepository m_ir = ImageRepository.getInstance();
 

@@ -57,14 +57,15 @@ import javax.swing.plaf.basic.BasicSplitPaneUI;
 import jmemorize.core.Card;
 import jmemorize.core.Category;
 import jmemorize.core.CategoryObserver;
+import jmemorize.core.JGWHacks;
 import jmemorize.core.Lesson;
 import jmemorize.core.Main;
-import jmemorize.core.Settings;
 import jmemorize.core.Main.ProgramEndObserver;
+import jmemorize.core.Settings;
 import jmemorize.core.learn.LearnHistory;
+import jmemorize.core.learn.LearnHistory.SessionSummary;
 import jmemorize.core.learn.LearnSession;
 import jmemorize.core.learn.LearnSessionObserver;
-import jmemorize.core.learn.LearnHistory.SessionSummary;
 import jmemorize.gui.LC;
 import jmemorize.gui.Localization;
 import jmemorize.gui.swing.GeneralTransferHandler;
@@ -587,8 +588,11 @@ public class MainFrame extends JFrame
      * Update the frame title. This should be called when a new lesson was loaded or changed.
      */
     private void updateFrameTitle() {
-        String name = Main.PROPERTIES.getProperty("project.name"); //$NON-NLS-1$
-        String version = Main.PROPERTIES.getProperty("project.version"); //$NON-NLS-1$
+        String name = "jMemorize";
+        String version = JGWHacks.projectVersion;
+
+        // String name = Main.PROPERTIES.getProperty("project.name"); //$NON-NLS-1$
+        // String version = Main.PROPERTIES.getProperty("project.version"); //$NON-NLS-1$
         String suffix = " - " + name + " " + version; //$NON-NLS-1$ //$NON-NLS-2$
 
         File file = m_main.getLesson().getFile();

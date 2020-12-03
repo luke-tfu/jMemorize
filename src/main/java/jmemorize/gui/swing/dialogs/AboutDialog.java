@@ -45,11 +45,12 @@ import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
+import com.jgoodies.forms.factories.ButtonBarFactory;
+
+import jmemorize.core.JGWHacks;
 import jmemorize.core.Main;
 import jmemorize.gui.LC;
 import jmemorize.gui.Localization;
-
-import com.jgoodies.forms.factories.ButtonBarFactory;
 
 /**
  * A about dialog that shows some basic info, the license, the Java properties and the program preferences.
@@ -92,10 +93,10 @@ public class AboutDialog extends JDialog {
 
     private JPanel buildInfoPanel() {
         String text = "<html><p><b>Version: " + //$NON-NLS-1$
-                Main.PROPERTIES.getProperty("project.version") + //$NON-NLS-1$
+        /* Main.PROPERTIES.getProperty("project.version") */JGWHacks.projectVersion + // $NON-NLS-1$
                 "</b></p>" + //$NON-NLS-1$
-                "<p>Build: " + Main.PROPERTIES.getProperty("buildId") + //$NON-NLS-2$
-                "</p>" + //$NON-NLS-1$
+                // "<p>Build: " + Main.PROPERTIES.getProperty("buildId") + //$NON-NLS-2$
+                // "</p>" + //$NON-NLS-1$
                 "<p><br>Homepage: http://jmemorize.org</p>" + //$NON-NLS-1$
                 "<p>2004-2008 Riad Djemili and contributors</p></html>"; //$NON-NLS-1$
 

@@ -35,7 +35,6 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import jmemorize.core.JGWHacks;
 import jmemorize.core.Main;
 import jmemorize.core.Settings;
 
@@ -138,8 +137,8 @@ public class Localization {
 
         try {
             // load available locales from file
-            // in = new BufferedReader(new InputStreamReader(Localization.class.getResourceAsStream(LANGS_FILE)));
-            in = new BufferedReader(new InputStreamReader(JGWHacks.getLangsFile()));
+            in = new BufferedReader(new InputStreamReader(Localization.class.getResourceAsStream(LANGS_FILE)));
+            // in = new BufferedReader(new InputStreamReader(JGWHacks.getLangsFile()));
             Pattern p = Pattern.compile("([a-z]{2})(?:_([A-Z]{2,3}))?"); //$NON-NLS-1$
 
             String line;
@@ -234,8 +233,7 @@ public class Localization {
             String path = MessageFormat.format(RESOURCE_FORMAT, args);
 
             Properties properties = new Properties();
-            properties.load(JGWHacks.getLocalizationFile());
-            // properties.load(Localization.class.getResourceAsStream(path));
+            properties.load(Localization.class.getResourceAsStream(path));
 
             return properties;
         } catch (IOException e) {

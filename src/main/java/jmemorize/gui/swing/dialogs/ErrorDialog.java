@@ -41,14 +41,15 @@ import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 
-import jmemorize.core.Main;
-import jmemorize.gui.LC;
-import jmemorize.gui.Localization;
-
 import com.jgoodies.forms.builder.ButtonBarBuilder;
 import com.jgoodies.forms.builder.DefaultFormBuilder;
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
+
+import jmemorize.core.JGWHacks;
+import jmemorize.core.Main;
+import jmemorize.gui.LC;
+import jmemorize.gui.Localization;
 
 /**
  * A dialog that can be displayed when an exception occurs.
@@ -102,10 +103,10 @@ public class ErrorDialog extends JDialog {
         String java = System.getProperty("java.version"); //$NON-NLS-1$
         String os = System.getProperty("os.name"); //$NON-NLS-1$
 
-        String version = Main.PROPERTIES.getProperty("project.version"); //$NON-NLS-1$
+        String version = JGWHacks.projectVersion /* Main.PROPERTIES.getProperty("project.version") */; // $NON-NLS-1$
         // String revision = Main.PROPERTIES.getProperty("project.revision"); //$NON-NLS-1$
         String revision = ""; // HACK
-        String buildId = Main.PROPERTIES.getProperty("buildId");//$NON-NLS-1$
+        String buildId = ""; // Main.PROPERTIES.getProperty("buildId");//$NON-NLS-1$
 
         String txt = String.format("Ver %s %s (%s) - Java %s , OS %s%n", version, revision, buildId, java, os);
 

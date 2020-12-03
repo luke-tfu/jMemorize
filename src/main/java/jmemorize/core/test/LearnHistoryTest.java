@@ -19,6 +19,7 @@
 package jmemorize.core.test;
 
 import java.io.File;
+import java.nio.file.Files;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -179,7 +180,7 @@ public class LearnHistoryTest extends TestCase {
         m_history.addSummary(m_date0, m_date1, 2, 0, 1, 1);
         m_history.addSummary(m_date1, m_date2, 4, 3, 0, 1);
 
-        File file = new File("test_stats.xml");
+        File file = Files.createTempDirectory("learn-history-test").resolve("test_stats.xml").toFile();
         m_history.save(file);
 
         LearnHistory stats = new LearnHistory(file);
