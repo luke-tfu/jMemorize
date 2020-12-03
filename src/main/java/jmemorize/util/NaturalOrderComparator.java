@@ -23,10 +23,12 @@ package jmemorize.util;
  misrepresented as being the original software.
  3. This notice may not be removed or altered from any source distribution.
  */
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
-import java.util.*;
-
-public class NaturalOrderComparator implements Comparator {
+public class NaturalOrderComparator implements Comparator<String> {
     int compareRight(String a, String b) {
         int bias = 0;
         int ia = 0;
@@ -59,9 +61,7 @@ public class NaturalOrderComparator implements Comparator {
         }
     }
 
-    public int compare(Object o1, Object o2) {
-        String a = o1.toString();
-        String b = o2.toString();
+    public int compare(String a, String b) {
 
         int ia = 0, ib = 0;
         int nza = 0, nzb = 0;

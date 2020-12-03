@@ -40,13 +40,10 @@ import jmemorize.gui.swing.actions.edit.PasteAction;
 import jmemorize.gui.swing.actions.edit.RemoveAction;
 import jmemorize.gui.swing.actions.edit.ResetCardAction;
 import jmemorize.gui.swing.actions.file.ExitAction;
-import jmemorize.gui.swing.actions.file.ExportToCSVAction;
 import jmemorize.gui.swing.actions.file.ExportToCleanLessonAction;
 import jmemorize.gui.swing.actions.file.ExportToPDFAction;
 import jmemorize.gui.swing.actions.file.ExportToRTFAction;
-import jmemorize.gui.swing.actions.file.ImportCSVAction;
 import jmemorize.gui.swing.actions.file.ImportJMLAction;
-import jmemorize.gui.swing.actions.file.ImportTSVAction;
 import jmemorize.gui.swing.actions.file.NewLessonAction;
 import jmemorize.gui.swing.actions.file.OpenLessonAction;
 import jmemorize.gui.swing.actions.file.OpenRecentLessonAction;
@@ -151,8 +148,6 @@ public class MainMenu extends JMenuBar implements RecentItemsObserver {
         // sub menu for import menu items
         JMenu importMenu = new JMenu(Localization.get("MainFrame.IMPORT")); //$NON-NLS-1$
         importMenu.setIcon(new ImageIcon(getClass().getResource("/resource/icons/blank.gif"))); //$NON-NLS-1$
-        importMenu.add(new ImportCSVAction());
-        importMenu.add(new ImportTSVAction());
         importMenu.add(new ImportJMLAction());
 
         // Sub menu for export menu items
@@ -160,7 +155,6 @@ public class MainMenu extends JMenuBar implements RecentItemsObserver {
         exportMenu.setIcon(new ImageIcon(getClass().getResource("/resource/icons/blank.gif"))); //$NON-NLS-1$
         exportMenu.add(new ExportToPDFAction());
         exportMenu.add(new ExportToRTFAction());
-        exportMenu.add(new ExportToCSVAction());
         exportMenu.add(new ExportToCleanLessonAction());
 
         m_fileMenu.addSeparator();

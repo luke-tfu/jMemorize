@@ -373,7 +373,7 @@ public class Category implements Events {
         category.m_parent = this;
         category.m_depth = m_depth + 1;
 
-        Comparator comp = new NaturalOrderComparator();
+        Comparator<String> comp = new NaturalOrderComparator();
 
         int position = 0;
         for (Category childCategory : m_childCategories) {

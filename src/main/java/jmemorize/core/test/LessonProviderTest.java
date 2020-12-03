@@ -80,6 +80,9 @@ public class LessonProviderTest extends TestCase implements LessonObserver {
     }
 
     public void testLessonSavedEvent() throws Exception {
+        File f = new File("test/fixtures/simple_de.jml");
+        System.out.println(f.getAbsolutePath());
+
         m_lessonProvider.loadLesson(new File("test/fixtures/simple_de.jml"));
 
         Lesson lesson = m_lessonProvider.getLesson();

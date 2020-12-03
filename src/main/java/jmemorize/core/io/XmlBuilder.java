@@ -27,6 +27,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -48,24 +49,24 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import jmemorize.core.Card;
-import jmemorize.core.CardSide;
-import jmemorize.core.Category;
-import jmemorize.core.ImageRepository;
-import jmemorize.core.Lesson;
-import jmemorize.core.LessonProvider;
-import jmemorize.core.Main;
-import jmemorize.core.Settings;
-import jmemorize.core.ImageRepository.ImageItem;
-import jmemorize.core.learn.LearnHistory;
-import jmemorize.core.learn.LearnHistory.SessionSummary;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
+import jmemorize.core.Card;
+import jmemorize.core.CardSide;
+import jmemorize.core.Category;
+import jmemorize.core.ImageRepository;
+import jmemorize.core.ImageRepository.ImageItem;
+import jmemorize.core.Lesson;
+import jmemorize.core.LessonProvider;
+import jmemorize.core.Main;
+import jmemorize.core.Settings;
+import jmemorize.core.learn.LearnHistory;
+import jmemorize.core.learn.LearnHistory.SessionSummary;
 
 /**
  * @author djemili
@@ -103,7 +104,7 @@ public class XmlBuilder {
     private static final String LESSON_ZIP_ENTRY_NAME = "lesson.xml"; //$NON-NLS-1$
     private static final String IMAGE_FOLDER = "images"; //$NON-NLS-1$
 
-    // we need a fixed formatter in file (not locale depent)
+    // we need a fixed formatter in file (not locale dependent)
     private final static DateFormat DATE_FORMAT = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM,
             Locale.UK);
 
@@ -592,9 +593,29 @@ public class XmlBuilder {
 
         if (date != null) {
             try {
-                return DATE_FORMAT.parse(date.getNodeValue());
+
+                List<SimpleDateFormat> dateFormats = Arrays.asList(new SimpleDateFormat("dd-MMM-yyyy hh:mm:ss"),
+                        new SimpleDateFormat("dd MMM yyyy, hh:mm:ss"));
+
+                Date parsedDate = dateFormats.stream().map(e -> {
+
+                    try {
+                        return e.parse(date.getNodeValue());
+                    } catch (ParseException pe) {
+                        return null;
+                    }
+
+                }).filter(e -> e != null).findFirst().orElse(null);
+
+                if (parsedDate == null) {
+                    throw new java.text.ParseException("Unable to parse: " + date.getNodeValue(), 0);
+                }
+
+                return parsedDate;
+
             } catch (ParseException e) {
                 Main.logThrowable("Could not parse date.", e);
+                throw new RuntimeException(e);
             }
         }
 

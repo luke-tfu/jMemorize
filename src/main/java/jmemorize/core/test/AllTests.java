@@ -41,7 +41,6 @@ public class AllTests {
 
         suite.addTestSuite(LocalizationTest.class);
         suite.addTestSuite(ImageRepositoryTest.class);
-        suite.addTestSuite(CSVToolkitTest.class);
         // $JUnit-END$
         return suite;
     }
