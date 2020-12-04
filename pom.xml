@@ -25,8 +25,12 @@
 				<excludes>
 				</excludes>
 			</resource>
-			<!-- <resource> <directory>${project.basedir}</directory> <filtering>true</filtering> 
-				<includes><include>LICENSE</include></includes> </resource> -->
+			<resource>
+				<directory>${project.basedir}</directory>
+				<includes>
+					<include>LICENSE</include>
+				</includes>
+			</resource>
 		</resources>
 		<plugins>
 			<plugin>

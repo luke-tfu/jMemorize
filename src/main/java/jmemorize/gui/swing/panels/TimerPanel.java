@@ -56,7 +56,7 @@ public class TimerPanel extends JPanel implements ActionListener {
         removeAll();
         setLayout(new BorderLayout());
 
-        // if there is a time limit we show a progess bar
+        // if there is a time limit we show a progress bar
         // otherwise only a label
         if (m_secondsTarget > -1) {
             m_bar.setValue(0);
@@ -106,7 +106,7 @@ public class TimerPanel extends JPanel implements ActionListener {
     }
 
     /**
-     * @return The string that is used to show time in progressbar.
+     * @return The string that is used to show time in progress bar.
      */
     protected String getTimeString() {
         // if progress bar
