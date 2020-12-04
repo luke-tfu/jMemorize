@@ -48,11 +48,12 @@ import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 import javax.swing.TransferHandler;
-import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.plaf.basic.BasicSplitPaneUI;
+
+import com.github.weisj.darklaf.LafManager;
 
 import jmemorize.core.Card;
 import jmemorize.core.Category;
@@ -148,8 +149,14 @@ public class MainFrame extends JFrame
     // set look and feel before we load any frames
     static {
         try {
+            // For default theme (IntelliJ)
+
+            // LafManager.install(new DarculaTheme());
+            // LafManager.themeForPreferredStyle(LafManager.getPreferredThemeStyle());
+            LafManager.install();
+
             // UIManager.setLookAndFeel(new MetalLookAndFeel());
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            // UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
             Main.logThrowable("could not set look and feel", e);
         }
@@ -592,7 +599,8 @@ public class MainFrame extends JFrame
         String version = JGWHacks.projectVersion;
 
         // String name = Main.PROPERTIES.getProperty("project.name"); //$NON-NLS-1$
-        // String version = Main.PROPERTIES.getProperty("project.version"); //$NON-NLS-1$
+        // String version = Main.PROPERTIES.getProperty("project.version");
+        // //$NON-NLS-1$
         String suffix = " - " + name + " " + version; //$NON-NLS-1$ //$NON-NLS-2$
 
         File file = m_main.getLesson().getFile();
