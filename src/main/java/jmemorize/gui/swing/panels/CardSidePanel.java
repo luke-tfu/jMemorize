@@ -75,7 +75,6 @@ import javax.swing.text.View;
 import javax.swing.text.ViewFactory;
 
 import jmemorize.core.FormattedText;
-import jmemorize.core.Main;
 import jmemorize.gui.LC;
 import jmemorize.gui.Localization;
 import jmemorize.gui.swing.CardFont;
@@ -516,7 +515,7 @@ public class CardSidePanel extends JPanel {
 
         if (color == null) {
             color = new Color(167, 166, 170);
-            Main.getLogger().warning("UI key for card side border not found!"); //$NON-NLS-1$
+//            Main.getLogger().warning("UI key for card side border not found!"); //$NON-NLS-1$
         }
 
         Border border = new LineBorder(color);
