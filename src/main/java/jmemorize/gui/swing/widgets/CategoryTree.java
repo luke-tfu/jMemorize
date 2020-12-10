@@ -126,6 +126,7 @@ public class CategoryTree extends JTree implements CategoryObserver, SelectionPr
             super(tree, renderer);
         }
 
+        @SuppressWarnings("unused")
         public DefaultMutableTreeNode getEditedNode() {
             return m_editedNode;
         }
@@ -133,6 +134,7 @@ public class CategoryTree extends JTree implements CategoryObserver, SelectionPr
         /**
          * @return Returns the nodeCategory.
          */
+        @SuppressWarnings("unused")
         public Category getNodeCategory() {
             return m_editedCategory;
         }
@@ -216,6 +218,8 @@ public class CategoryTree extends JTree implements CategoryObserver, SelectionPr
 
     private List<SelectionObserver> m_selectionObservers = new ArrayList<SelectionObserver>();
     private JPopupMenu m_categoryMenu;
+
+    @SuppressWarnings("unused")
     private boolean m_reopeningCategoryMenu = false;
 
     public CategoryTree() {
@@ -262,7 +266,7 @@ public class CategoryTree extends JTree implements CategoryObserver, SelectionPr
         }
 
         DefaultMutableTreeNode root = (DefaultMutableTreeNode) getModel().getRoot();
-        Enumeration enumer = root.depthFirstEnumeration();
+        Enumeration<TreeNode> enumer = root.depthFirstEnumeration();
 
         while (enumer.hasMoreElements()) {
             DefaultMutableTreeNode node = (DefaultMutableTreeNode) enumer.nextElement();
@@ -494,7 +498,7 @@ public class CategoryTree extends JTree implements CategoryObserver, SelectionPr
         DefaultTreeModel model = (DefaultTreeModel) getModel();
         DefaultMutableTreeNode root = (DefaultMutableTreeNode) model.getRoot();
 
-        for (Enumeration enumer = root.depthFirstEnumeration(); enumer.hasMoreElements();) {
+        for (Enumeration<TreeNode> enumer = root.depthFirstEnumeration(); enumer.hasMoreElements();) {
             DefaultMutableTreeNode node = (DefaultMutableTreeNode) enumer.nextElement();
 
             if (node.getUserObject() == userValue) {

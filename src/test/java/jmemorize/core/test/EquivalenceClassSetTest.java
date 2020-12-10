@@ -34,7 +34,9 @@ import junit.framework.TestCase;
  * @author bret5
  * 
  */
+@SuppressWarnings({ "rawtypes", "unchecked" })
 public class EquivalenceClassSetTest extends TestCase {
+
     private EquivalenceClassSet mod3EqvSet;
 
     protected void setUp() {
@@ -59,10 +61,10 @@ public class EquivalenceClassSetTest extends TestCase {
         // now populate the set
         int expectedSize = 0;
         for (int i = 3; i <= 9; i++) {
-            assertTrue(mod3EqvSet.add(new Integer(i)));
+            assertTrue(mod3EqvSet.add(i));
             expectedSize += 1;
             if (i > 3) {
-                assertFalse(mod3EqvSet.add(new Integer(i - 1)));
+                assertFalse(mod3EqvSet.add(i - 1));
             }
             assertEquals(expectedSize, mod3EqvSet.size());
         }
@@ -157,9 +159,9 @@ public class EquivalenceClassSetTest extends TestCase {
             if (modVal == 1 && !isAdded) {
                 isAdded = true;
                 if (!expired) {
-                    assertTrue(mod3EqvSet.add(new Integer(addVal)));
+                    assertTrue(mod3EqvSet.add(addVal));
                 } else {
-                    assertTrue(mod3EqvSet.addExpired(new Integer(addVal)));
+                    assertTrue(mod3EqvSet.addExpired(addVal));
                 }
             }
         }
@@ -170,7 +172,7 @@ public class EquivalenceClassSetTest extends TestCase {
             assertFalse(isFound);
         }
 
-        assertTrue(mod3EqvSet.contains(new Integer(addVal)));
+        assertTrue(mod3EqvSet.contains(addVal));
         assertTrue(new ArrayList(mod3EqvSet).size() == expectedSize);
         mod3EqvSet.resetLoopIterator();
         internalSanityTestLoopIterator(1, true);
@@ -236,16 +238,16 @@ public class EquivalenceClassSetTest extends TestCase {
                             // set are 11 and 4
                             remVal = 11 - value;
                         }
-                        assertTrue(mod3EqvSet.remove(new Integer(remVal)));
+                        assertTrue(mod3EqvSet.remove(remVal));
                     }
                 } else {
                     isRemoved = true;
-                    assertTrue(mod3EqvSet.remove(new Integer(remVal)));
+                    assertTrue(mod3EqvSet.remove(remVal));
                 }
             }
         }
 
-        assertFalse(mod3EqvSet.contains(new Integer(remVal)));
+        assertFalse(mod3EqvSet.contains(remVal));
         assertTrue(new ArrayList(mod3EqvSet).size() == expectedSize);
         mod3EqvSet.resetLoopIterator();
         internalSanityTestLoopIterator(1, true);
@@ -316,17 +318,17 @@ public class EquivalenceClassSetTest extends TestCase {
     }
 
     public void testLoopIteratorRemoveEntireFollowingClass() {
-        Integer[] vals = { new Integer(8), new Integer(5) };
+        Integer[] vals = { 8, 5 };
         internalTestLoopIteratorRemoveList(Arrays.asList(vals), vals.length, 0);
     }
 
     public void testLoopIteratorRemoveEntirePrevClass() {
-        Integer[] vals = { new Integer(6), new Integer(3), new Integer(9) };
+        Integer[] vals = { 6, 3, 9 };
         internalTestLoopIteratorRemoveList(Arrays.asList(vals), 0, 1);
     }
 
     public void testLoopIteratorRemoveEntireCurrentClass() {
-        Integer[] vals = { new Integer(7), new Integer(4) };
+        Integer[] vals = { 7, 4 };
         internalTestLoopIteratorRemoveList(Arrays.asList(vals), vals.length - 1, 0);
     }
 

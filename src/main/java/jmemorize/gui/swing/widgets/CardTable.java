@@ -56,15 +56,15 @@ import javax.swing.table.TableColumnModel;
 import jmemorize.core.Card;
 import jmemorize.core.Category;
 import jmemorize.core.Main;
-import jmemorize.core.Settings;
 import jmemorize.core.Main.ProgramEndObserver;
+import jmemorize.core.Settings;
 import jmemorize.gui.LC;
 import jmemorize.gui.Localization;
 import jmemorize.gui.swing.CardFont;
-import jmemorize.gui.swing.CardStatusIcons;
-import jmemorize.gui.swing.SelectionProvider;
 import jmemorize.gui.swing.CardFont.FontAlignment;
 import jmemorize.gui.swing.CardFont.FontType;
+import jmemorize.gui.swing.CardStatusIcons;
+import jmemorize.gui.swing.SelectionProvider;
 import jmemorize.gui.swing.actions.LearnAction;
 import jmemorize.gui.swing.actions.edit.AddCardAction;
 import jmemorize.gui.swing.actions.edit.CopyAction;
@@ -772,7 +772,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
             return card.getBackSide().getText().getUnformatted().replace('\n', ' ');
 
         case COLUMN_DECK:
-            return new Integer(card.getLevel());
+            return card.getLevel();
 
         case COLUMN_CATEGORY:
             return card.getCategory().getName();

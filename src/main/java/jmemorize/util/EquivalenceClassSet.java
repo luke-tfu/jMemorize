@@ -54,6 +54,7 @@ import java.util.NoSuchElementException;
  * @author bret5
  *
  */
+@SuppressWarnings({ "rawtypes", "unchecked" })
 public class EquivalenceClassSet<T> extends AbstractSet<T> {
 
     // the list backing the class. This is a list of the

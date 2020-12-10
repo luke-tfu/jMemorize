@@ -29,11 +29,11 @@ import junit.framework.TestCase;
  */
 public class LocalizationTest extends TestCase {
     protected void setUp() throws Exception {
-        Map defaultBundle = new HashMap();
+        Map<String, String> defaultBundle = new HashMap<String, String>();
         defaultBundle.put("abc", "ABC");
         defaultBundle.put("def", "DEF");
 
-        Map childBundle = new HashMap();
+        Map<String, String> childBundle = new HashMap<String, String>();
         childBundle.put("abc", "XYZ");
 
         Localization.setBundles(childBundle, defaultBundle);
@@ -66,7 +66,7 @@ public class LocalizationTest extends TestCase {
     }
 
     public void testNullDefaultBundle() {
-        Map defaultBundle = new HashMap();
+        Map<String, String> defaultBundle = new HashMap<String, String>();
         defaultBundle.put("abc", "ABC");
         Localization.setBundles(defaultBundle, null);
 
