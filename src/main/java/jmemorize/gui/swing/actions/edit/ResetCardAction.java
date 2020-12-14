@@ -52,7 +52,7 @@ public class ResetCardAction extends AbstractAction2 implements SelectionObserve
      * @see java.awt.event.ActionListener
      */
     public void actionPerformed(java.awt.event.ActionEvent e) {
-        Object[] args = { new Integer(m_selectionProvider.getSelectedCards().size()) };
+        Object[] args = { (Integer) (m_selectionProvider.getSelectedCards().size()) };
         MessageFormat form = new MessageFormat(Localization.get(LC.RESET_WARN));
 
         int n = JOptionPane.showConfirmDialog(m_selectionProvider.getFrame(), form.format(args),

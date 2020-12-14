@@ -41,6 +41,11 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import com.jgoodies.forms.builder.DefaultFormBuilder;
+import com.jgoodies.forms.builder.PanelBuilder;
+import com.jgoodies.forms.layout.CellConstraints;
+import com.jgoodies.forms.layout.FormLayout;
+
 import jmemorize.core.Card;
 import jmemorize.core.Category;
 import jmemorize.core.Main;
@@ -50,11 +55,6 @@ import jmemorize.gui.LC;
 import jmemorize.gui.Localization;
 import jmemorize.gui.swing.SelectionProvider;
 import jmemorize.gui.swing.widgets.CategoryComboBox;
-
-import com.jgoodies.forms.builder.DefaultFormBuilder;
-import com.jgoodies.forms.builder.PanelBuilder;
-import com.jgoodies.forms.layout.CellConstraints;
-import com.jgoodies.forms.layout.FormLayout;
 
 /**
  * @author djemili
@@ -175,8 +175,8 @@ public class LearnSettingPanels {
         m_timeLimitCheckBox.setSelected(m_settings.isTimeLimitEnabled());
         updateLimiterCheckboxes();
 
-        m_cardLimitSpinner.setValue(new Integer(m_settings.getCardLimit()));
-        m_timeLimitSpinner.setValue(new Integer(m_settings.getTimeLimit()));
+        m_cardLimitSpinner.setValue(m_settings.getCardLimit());
+        m_timeLimitSpinner.setValue(m_settings.getTimeLimit());
         m_dontRetestCheckBox.setSelected(!m_settings.isRetestFailedCards());
 
         switch (m_settings.getSidesMode()) {
@@ -198,8 +198,8 @@ public class LearnSettingPanels {
         }
 
         // get side amounts
-        m_frontChecksAmountSpinner.setValue(new Integer(m_settings.getAmountToTest(true)));
-        m_backChecksAmountSpinner.setValue(new Integer(m_settings.getAmountToTest(false)));
+        m_frontChecksAmountSpinner.setValue(m_settings.getAmountToTest(true));
+        m_backChecksAmountSpinner.setValue(m_settings.getAmountToTest(false));
 
         // get schedule
         SchedulePreset preset = m_settings.getSchedulePreset();
@@ -589,9 +589,9 @@ public class LearnSettingPanels {
         m_updatingSpinners = true;
 
         for (int i = 0; i < LearnSettings.SCHEDULE_LEVELS; i++) {
-            m_scheduleDays[i].setValue(new Integer(schedule[i] / (60 * 24)));
-            m_scheduleHours[i].setValue(new Integer((schedule[i] % (60 * 24)) / 60));
-            m_scheduleMinutes[i].setValue(new Integer(schedule[i] % 60));
+            m_scheduleDays[i].setValue((Integer) (schedule[i] / (60 * 24)));
+            m_scheduleHours[i].setValue((Integer) ((schedule[i] % (60 * 24)) / 60));
+            m_scheduleMinutes[i].setValue((Integer) (schedule[i] % 60));
         }
 
         m_updatingSpinners = false;

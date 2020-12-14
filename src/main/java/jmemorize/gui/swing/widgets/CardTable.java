@@ -181,6 +181,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
         /**
          * @see java.util.Comparator
          */
+        @SuppressWarnings({ "rawtypes", "unchecked" })
         public int compare(Card arg0, Card arg1) {
             Comparable col0 = (Comparable) getValue(arg0, m_modelIndex);
             Comparable col1 = (Comparable) getValue(arg1, m_modelIndex);
@@ -793,7 +794,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
             return card.getDateExpired();
 
         case COLUMN_RATIO:
-            return new Integer(card.getPassRatio());
+            return (Integer)card.getPassRatio();
 
         default:
             return "-"; // this should never be reached //$NON-NLS-1$
@@ -810,7 +811,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
             if (m_checkBoxItems[i].isSelected() && !columns.contains(i)) {
                 columns.add(Math.min(i, columns.size()), i);
             } else if (!m_checkBoxItems[i].isSelected() && columns.contains(i)) {
-                columns.remove(new Integer(i));
+                columns.remove((Integer) i);
             }
         }
 

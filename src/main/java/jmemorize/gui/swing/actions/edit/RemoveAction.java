@@ -58,7 +58,7 @@ public class RemoveAction extends AbstractAction2 implements SelectionObserver {
         List<Category> selectedCategories = m_selectionProvider.getSelectedCategories();
 
         if (selectedCards != null && selectedCards.size() > 0) {
-            Object[] args = { new Integer(selectedCards.size()) };
+            Object[] args = { (Integer) (selectedCards.size()) };
             MessageFormat form = new MessageFormat(Localization.get("MainFrame.DELETE_CARDS_WARN")); //$NON-NLS-1$
 
             int n = JOptionPane.showConfirmDialog(m_selectionProvider.getFrame(), form.format(args),
@@ -78,7 +78,7 @@ public class RemoveAction extends AbstractAction2 implements SelectionObserver {
                 int cardCount = category.getCards().size();
 
                 if (cardCount > 0) {
-                    Object[] args = { category.getName(), new Integer(cardCount) };
+                    Object[] args = { category.getName(), (Integer) (cardCount) };
                     MessageFormat form = new MessageFormat(Localization.get("MainFrame.DELETE_CATEGORY_WARN")); //$NON-NLS-1$
 
                     int n = JOptionPane.showConfirmDialog(m_selectionProvider.getFrame(), form.format(args),
