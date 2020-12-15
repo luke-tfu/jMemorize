@@ -36,22 +36,22 @@ import javax.swing.JProgressBar;
 import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 
+import com.jgoodies.forms.builder.DefaultFormBuilder;
+import com.jgoodies.forms.layout.CellConstraints;
+import com.jgoodies.forms.layout.FormLayout;
+
 import jmemorize.core.Card;
 import jmemorize.core.Category;
 import jmemorize.core.Main;
 import jmemorize.core.learn.LearnSession;
+import jmemorize.core.learn.LearnSession.LearnCardObserver;
 import jmemorize.core.learn.LearnSessionObserver;
 import jmemorize.core.learn.LearnSettings;
-import jmemorize.core.learn.LearnSession.LearnCardObserver;
 import jmemorize.gui.LC;
 import jmemorize.gui.Localization;
 import jmemorize.gui.swing.ColorConstants;
 import jmemorize.gui.swing.SelectionProvider;
 import jmemorize.gui.swing.actions.AbstractAction2;
-
-import com.jgoodies.forms.builder.DefaultFormBuilder;
-import com.jgoodies.forms.layout.CellConstraints;
-import com.jgoodies.forms.layout.FormLayout;
 
 /**
  * The panel that shows learning sessions (learning preferences are handled by the LearnSettings classes.
@@ -313,7 +313,7 @@ public class LearnPanel extends JPanel implements SelectionProvider, LearnSessio
     private void updateStatusBar() {
         if (m_statusBar != null) {
             Object[] args = { Localization.get(LC.STATUS_LEARNING_CATEGORY), m_session.getCategory().getName(),
-                    Localization.get(LC.STATUS_CARDS_LEFT), new Integer(m_session.getCardsLeft().size()) };
+                    Localization.get(LC.STATUS_CARDS_LEFT), (Integer) (m_session.getCardsLeft().size()) };
 
             MessageFormat form = new MessageFormat("{0}: {1}  {2}: {3}"); //$NON-NLS-1$
             m_statusBar.setLeftText(form.format(args));

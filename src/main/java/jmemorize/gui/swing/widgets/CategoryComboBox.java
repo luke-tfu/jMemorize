@@ -39,7 +39,7 @@ import jmemorize.core.CategoryObserver;
  * @author djemili
  */
 public class CategoryComboBox extends JComboBox implements CategoryObserver {
-    private class CatergoryRenderer extends BasicComboBoxRenderer {
+    private class CategoryRenderer extends BasicComboBoxRenderer {
         /*
          * (non-Javadoc)
          * 
@@ -47,6 +47,7 @@ public class CategoryComboBox extends JComboBox implements CategoryObserver {
          */
         public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
                 boolean cellHasFocus) {
+
             Category cat = (Category) value;
             JLabel label = (JLabel) super.getListCellRendererComponent(list, cat.getName(), index, isSelected,
                     cellHasFocus);
@@ -68,7 +69,7 @@ public class CategoryComboBox extends JComboBox implements CategoryObserver {
     private Category m_rootCategory;
 
     public CategoryComboBox() {
-        setRenderer(new CatergoryRenderer());
+        setRenderer(new CategoryRenderer());
         setMaximumRowCount(12);
     }
 

@@ -269,7 +269,7 @@ public class CategoryTest extends TestCase implements CategoryObserver {
 
     public void testMoveCard() {
         m_childCategory.addCard(m_rootCard, 3);
-        m_childCategory.moveCard(m_rootCard, m_rootCategory);
+        Category.moveCard(m_rootCard, m_rootCategory);
 
         assertTrue(m_rootCategory.getCards().contains(m_rootCard));
         assertFalse(m_childCategory.getCards().contains(m_rootCard));
@@ -280,7 +280,7 @@ public class CategoryTest extends TestCase implements CategoryObserver {
     public void testMoveCardEvents() {
         m_rootCategory.addCard(m_rootCard, 3);
         m_events.clear();
-        m_rootCategory.moveCard(m_rootCard, m_childCategory);
+        Category.moveCard(m_rootCard, m_childCategory);
 
         CardEvent event = (CardEvent) m_events.get(0);
         event.assertEvent(MOVED_EVENT, m_rootCard, 3, m_childCategory);

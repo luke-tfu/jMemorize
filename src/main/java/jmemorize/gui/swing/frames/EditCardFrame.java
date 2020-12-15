@@ -35,6 +35,9 @@ import javax.swing.JToolBar;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 
+import com.jgoodies.forms.factories.Borders;
+import com.jgoodies.forms.factories.ButtonBarFactory;
+
 import jmemorize.core.Card;
 import jmemorize.core.CardSide;
 import jmemorize.core.Category;
@@ -55,9 +58,6 @@ import jmemorize.gui.swing.panels.CardPanel;
 import jmemorize.gui.swing.panels.TwoSidesCardPanel;
 import jmemorize.gui.swing.widgets.CategoryComboBox;
 import jmemorize.util.EscapableFrame;
-
-import com.jgoodies.forms.factories.Borders;
-import com.jgoodies.forms.factories.ButtonBarFactory;
 
 /**
  * The window that is used to edit cards. Note this is a singleton class. The same window will be reused for all
@@ -507,7 +507,7 @@ public class EditCardFrame extends EscapableFrame implements CategoryObserver, S
             CategoryComboBox categoryComboBox = m_cardPanel.getCategoryComboBox();
             Category newCategory = categoryComboBox.getSelectedCategory();
             if (newCategory != m_currentCard.getCategory()) {
-                m_currentCard.getCategory().moveCard(m_currentCard, newCategory);
+                Category.moveCard(m_currentCard, newCategory);
             }
 
             updateTitle();
