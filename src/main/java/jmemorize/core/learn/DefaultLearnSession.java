@@ -792,10 +792,10 @@ public class DefaultLearnSession implements CategoryObserver, LearnSession {
         HashMap<Category, Integer> map = new HashMap<Category, Integer>();
         int i = 0;
         for (Category category : categories) {
-            map.put(category, (Integer)(i++));
+            map.put(category, (Integer) (i++));
         }
         // cards that have no category will be last in order
-        map.put(null, (Integer)i);
+        map.put(null, (Integer) i);
 
         return map;
     }

@@ -26,13 +26,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import jmemorize.core.Card;
-import jmemorize.gui.LC;
-import jmemorize.gui.Localization;
-
 import com.jgoodies.forms.builder.DefaultFormBuilder;
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
+
+import jmemorize.core.Card;
+import jmemorize.gui.LC;
+import jmemorize.gui.Localization;
 
 /**
  * A status bar that can be linked to card tables and other objects to display additional data about them.
@@ -83,9 +83,9 @@ public class StatusBar extends JPanel {
             }
         }
 
-        Object[] args = { Localization.get(LC.STATUS_CARDS), new Integer(cards.size()),
-                Localization.get(LC.STATUS_LEARNED), new Integer(learned), Localization.get(LC.STATUS_EXPIRED),
-                new Integer(expired), Localization.get(LC.STATUS_UNLEARNED), new Integer(unlearned) };
+        Object[] args = { Localization.get(LC.STATUS_CARDS), (Integer) (cards.size()),
+                Localization.get(LC.STATUS_LEARNED), (Integer) (learned), Localization.get(LC.STATUS_EXPIRED),
+                (Integer) (expired), Localization.get(LC.STATUS_UNLEARNED), (Integer) (unlearned) };
 
         MessageFormat form = new MessageFormat("{0}: {1} ({2}: {3}  {4}: {5}  {6}: {7})"); //$NON-NLS-1$
 

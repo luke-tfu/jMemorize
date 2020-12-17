@@ -38,7 +38,7 @@ public abstract class AbstractAction2 extends AbstractAction {
     }
 
     protected void setMnemonic(int i) {
-        putValue(MNEMONIC_KEY, (Integer)i);
+        putValue(MNEMONIC_KEY, (Integer) i);
     }
 
     protected void setIcon(String path) {

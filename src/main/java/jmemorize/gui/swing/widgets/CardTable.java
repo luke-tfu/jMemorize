@@ -794,7 +794,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
             return card.getDateExpired();
 
         case COLUMN_RATIO:
-            return (Integer)card.getPassRatio();
+            return (Integer) card.getPassRatio();
 
         default:
             return "-"; // this should never be reached //$NON-NLS-1$
