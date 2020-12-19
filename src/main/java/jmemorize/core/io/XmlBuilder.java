@@ -175,6 +175,7 @@ public class XmlBuilder {
      * @param File
      *            xmlFile the file that containt the XML document which represents the lesson.
      */
+    @SuppressWarnings("resource")
     public static void loadFromXMLFile(File xmlFile, Lesson lesson)
             throws SAXException, IOException, ParserConfigurationException {
         InputStream in;
@@ -212,10 +213,10 @@ public class XmlBuilder {
         }
 
         try {
-            if (zipIn == null)
+            if (zipIn == null) {
                 loadImageRepositoryFromDisk(xmlFile);
 
-            else {
+            } else {
                 zipIn = new ZipInputStream(new FileInputStream(xmlFile));
 
                 ZipEntry entry;

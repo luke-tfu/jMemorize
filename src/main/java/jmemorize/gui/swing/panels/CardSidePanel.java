@@ -515,7 +515,7 @@ public class CardSidePanel extends JPanel {
 
         if (color == null) {
             color = new Color(167, 166, 170);
-//            Main.getLogger().warning("UI key for card side border not found!"); //$NON-NLS-1$
+            // Main.getLogger().warning("UI key for card side border not found!"); //$NON-NLS-1$
         }
 
         Border border = new LineBorder(color);

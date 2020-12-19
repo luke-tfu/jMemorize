@@ -66,6 +66,7 @@ public class TestHelper {
         }
     }
 
+    @SafeVarargs
     public static <T> void assertSet(Collection<T> actual, T... expected) {
         boolean equals = expected.length == actual.size();
 

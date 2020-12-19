@@ -39,6 +39,8 @@ public class LearnSessionLargeTest extends TestCase {
     private int m_unlearnedCount;
     private int m_learnedCount;
     private int m_expiredCount;
+
+    @SuppressWarnings("unused")
     private int m_selectedCount;
 
     private final static Date LAST_TEST = createDate(-1);
