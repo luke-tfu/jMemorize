@@ -52,6 +52,11 @@ import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import com.jgoodies.forms.builder.DefaultFormBuilder;
+import com.jgoodies.forms.factories.ButtonBarFactory;
+import com.jgoodies.forms.layout.CellConstraints;
+import com.jgoodies.forms.layout.FormLayout;
+
 import jmemorize.core.Settings;
 import jmemorize.gui.LC;
 import jmemorize.gui.Localization;
@@ -59,11 +64,6 @@ import jmemorize.gui.swing.CardFont;
 import jmemorize.gui.swing.CardFont.FontAlignment;
 import jmemorize.gui.swing.CardFont.FontType;
 import jmemorize.gui.swing.frames.MainFrame;
-
-import com.jgoodies.forms.builder.DefaultFormBuilder;
-import com.jgoodies.forms.factories.ButtonBarFactory;
-import com.jgoodies.forms.layout.CellConstraints;
-import com.jgoodies.forms.layout.FormLayout;
 
 /**
  * A modal dialog that is used to set different user preferences like font and translation.
@@ -75,13 +75,13 @@ public class PreferencesDialog extends JDialog {
             "28", "32", "36", "72", "92", "128" };
 
     // font selection
-    private JComboBox m_fontSideBox;
+    private JComboBox<String> m_fontSideBox;
 
     private JCheckBox m_verticalAlignBox = new JCheckBox(Localization.get(LC.PREFERENCES_VERT_ALIGN));
 
-    private JList m_sizeList = new JList(FONT_SIZES);
-    private JList m_fontList = new JList();
-    private JList m_alignList = new JList(); // TODO translate
+    private JList<String> m_sizeList = new JList<String>(FONT_SIZES);
+    private JList<String> m_fontList = new JList<String>();
+    private JList<String> m_alignList = new JList<String>(); // TODO translate
 
     private JLabel m_previewLabel = new JLabel("jMemorize", JLabel.CENTER); //$NON-NLS-1$
 
@@ -89,7 +89,7 @@ public class PreferencesDialog extends JDialog {
     private boolean m_changingFont = false;
 
     // other preferences
-    private JComboBox m_langComboBox = new JComboBox();
+    private JComboBox<String> m_langComboBox = new JComboBox<String>();
     private JCheckBox m_zippedLessonBox = new JCheckBox(Localization.get(LC.PREFERENCES_USE_GZIP));
 
     private JButton m_applyButton = new JButton(Localization.get(LC.APPLY));
@@ -109,7 +109,7 @@ public class PreferencesDialog extends JDialog {
 
         // language combo box
         List<Locale> locales = Localization.getAvailableLocales();
-        m_langComboBox.setModel(new DefaultComboBoxModel(formatLocaleStrings(locales)));
+        m_langComboBox.setModel(new DefaultComboBoxModel<String>(formatLocaleStrings(locales)));
         m_langComboBox.setSelectedIndex(locales.indexOf(Settings.loadLocale()));
 
         // font combo box
@@ -165,9 +165,9 @@ public class PreferencesDialog extends JDialog {
         String table = Localization.get(LC.CHART_CARDS);
         String learn = Localization.get(LC.LEARN);
 
-        m_fontSideBox = new JComboBox(new String[] { frontSide, flipSide, String.format("%s (%s)", frontSide, learn),
-                String.format("%s (%s)", flipSide, learn), String.format("%s (%s)", frontSide, table),
-                String.format("%s (%s)", flipSide, table) });
+        m_fontSideBox = new JComboBox<String>(new String[] { frontSide, flipSide,
+                String.format("%s (%s)", frontSide, learn), String.format("%s (%s)", flipSide, learn),
+                String.format("%s (%s)", frontSide, table), String.format("%s (%s)", flipSide, table) });
     }
 
     /**
@@ -321,8 +321,8 @@ public class PreferencesDialog extends JDialog {
     }
 
     private void updateFontFromList() {
-        Font font = new Font((String) m_fontList.getSelectedValue(), Font.PLAIN,
-                Integer.parseInt((String) m_sizeList.getSelectedValue()));
+        Font font = new Font(m_fontList.getSelectedValue(), Font.PLAIN,
+                Integer.parseInt(m_sizeList.getSelectedValue()));
 
         FontAlignment hAlign = FontAlignment.values()[m_alignList.getSelectedIndex()];
         boolean vAlign = m_verticalAlignBox.isSelected();
@@ -346,6 +346,8 @@ public class PreferencesDialog extends JDialog {
             break;
         case RIGHT:
             hAlign = SwingConstants.TRAILING;
+            break;
+        default:
             break;
         }
 
