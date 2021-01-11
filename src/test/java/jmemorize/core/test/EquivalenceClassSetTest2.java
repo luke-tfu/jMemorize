@@ -38,17 +38,15 @@ public class EquivalenceClassSetTest2 extends TestCase {
         }
     }
 
-    private EquivalenceClassSet intWrapEqvSet;
+    private EquivalenceClassSet<IntWrapper> intWrapEqvSet;
     private IntWrapper[] iwHandles;
 
     protected void setUp() {
-        Comparator intWCmp = new Comparator() {
-            public int compare(Object arg0, Object arg1) {
-                if (!(arg0 instanceof IntWrapper) && (arg1 instanceof IntWrapper)) {
-                    throw new ClassCastException();
-                }
-                int arg0val = ((IntWrapper) arg0).val;
-                int arg1val = ((IntWrapper) arg1).val;
+        Comparator<IntWrapper> intWCmp = new Comparator<IntWrapper>() {
+            public int compare(IntWrapper arg0, IntWrapper arg1) {
+
+                int arg0val = arg0.val;
+                int arg1val = arg1.val;
                 if (arg0val < arg1val)
                     return -1;
                 if (arg0val == arg1val)
@@ -56,9 +54,10 @@ public class EquivalenceClassSetTest2 extends TestCase {
                 return 1;
             }
         };
-        intWrapEqvSet = new EquivalenceClassSet(intWCmp);
+        intWrapEqvSet = new EquivalenceClassSet<IntWrapper>(intWCmp);
         iwHandles = new IntWrapper[3];
         assert intWrapEqvSet.getComparator().equals(intWCmp);
+
         // now populate the set
         int expectedSize = 0;
         int j = 0;
@@ -77,11 +76,11 @@ public class EquivalenceClassSetTest2 extends TestCase {
     }
 
     public void sanityTestIterator(int expectedSize) {
-        Iterator iter = intWrapEqvSet.iterator();
+        Iterator<IntWrapper> iter = intWrapEqvSet.iterator();
         int lastVal = 0;
         int nValues = 0;
         while (iter.hasNext()) {
-            int value = ((IntWrapper) (iter.next())).val;
+            int value = (iter.next()).val;
             nValues += 1;
             assertTrue(value >= lastVal);
             lastVal = value;
