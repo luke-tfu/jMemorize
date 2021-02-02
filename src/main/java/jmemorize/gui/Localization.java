@@ -120,7 +120,7 @@ public class Localization {
         return '#' + key + '#';
     }
 
-    public static void setBundles(Map defaultBundle, Map fallbackBundle) {
+    public static void setBundles(Map<String, String> defaultBundle, Map<String, String> fallbackBundle) {
         m_fallbackBundle = fallbackBundle;
         m_defaultBundle = defaultBundle;
     }
@@ -191,6 +191,7 @@ public class Localization {
         return Locale.ENGLISH;
     }
 
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public static void main(String[] args) {
         Map<?, ?> defaultBundle = getBundleOrNull(Locale.ENGLISH);
 

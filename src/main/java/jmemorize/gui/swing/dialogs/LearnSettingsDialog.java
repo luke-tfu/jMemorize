@@ -38,6 +38,11 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import com.jgoodies.forms.builder.DefaultFormBuilder;
+import com.jgoodies.forms.factories.ButtonBarFactory;
+import com.jgoodies.forms.layout.CellConstraints;
+import com.jgoodies.forms.layout.FormLayout;
+
 import jmemorize.core.Card;
 import jmemorize.core.Category;
 import jmemorize.core.Settings;
@@ -48,11 +53,6 @@ import jmemorize.gui.swing.SelectionProvider;
 import jmemorize.gui.swing.frames.MainFrame;
 import jmemorize.gui.swing.panels.LearnSettingPanels;
 
-import com.jgoodies.forms.builder.DefaultFormBuilder;
-import com.jgoodies.forms.factories.ButtonBarFactory;
-import com.jgoodies.forms.layout.CellConstraints;
-import com.jgoodies.forms.layout.FormLayout;
-
 /**
  * A modal dialog that allows to change the learn session settings for the next learn session.
  * 
@@ -62,7 +62,7 @@ public class LearnSettingsDialog extends JDialog {
     private static final String[] PANEL_NAMES = new String[] { Localization.get(LC.GENERAL),
             Localization.get(LC.LEARN_SETTINGS_ADVANCED), Localization.get(LC.LEARN_SETTINGS_SCHEDULING) };
 
-    private JList m_sideList = new JList(PANEL_NAMES);
+    private JList<String> m_sideList = new JList<String>(PANEL_NAMES);
 
     private LearnSettings m_settings;
     private MainFrame m_frame;
