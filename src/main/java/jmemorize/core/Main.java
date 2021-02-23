@@ -30,7 +30,6 @@ import java.nio.channels.FileChannel;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Observable;
 import java.util.Properties;
 import java.util.logging.FileHandler;
 import java.util.logging.Handler;
@@ -54,7 +53,7 @@ import jmemorize.util.RecentItems;
  * 
  * @author djemili
  */
-public class Main extends Observable implements LearnSessionProvider, LessonProvider, CategoryObserver {
+public class Main /* extends Observable */ implements LearnSessionProvider, LessonProvider, CategoryObserver {
     public interface ProgramEndObserver {
         /**
          * This method is notified when the program ends.
@@ -411,19 +410,26 @@ public class Main extends Observable implements LearnSessionProvider, LessonProv
     }
 
     private static void copyFile(File in, File out) throws IOException {
+
+        FileInputStream fin = null;
+        FileOutputStream fout = null;
+
         FileChannel sourceChannel = null;
         FileChannel destinationChannel = null;
         try {
-            sourceChannel = new FileInputStream(in).getChannel();
-            destinationChannel = new FileOutputStream(out).getChannel();
+            fin = new FileInputStream(in);
+            sourceChannel = fin.getChannel();
+
+            fout = new FileOutputStream(out);
+            destinationChannel = fout.getChannel();
 
             sourceChannel.transferTo(0, sourceChannel.size(), destinationChannel);
         } finally {
-            if (sourceChannel != null)
-                sourceChannel.close();
+            if (fin != null)
+                fin.close();
 
-            if (destinationChannel != null)
-                destinationChannel.close();
+            if (fout != null)
+                fout.close();
         }
     }
 

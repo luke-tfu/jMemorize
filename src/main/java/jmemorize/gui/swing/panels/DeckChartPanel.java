@@ -32,14 +32,6 @@ import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import jmemorize.core.Card;
-import jmemorize.core.Category;
-import jmemorize.core.CategoryObserver;
-import jmemorize.gui.LC;
-import jmemorize.gui.Localization;
-import jmemorize.gui.swing.ColorConstants;
-import jmemorize.gui.swing.frames.MainFrame;
-
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartMouseEvent;
 import org.jfree.chart.ChartMouseListener;
@@ -63,6 +55,14 @@ import org.jfree.chart.title.LegendTitle;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.TextAnchor;
+
+import jmemorize.core.Card;
+import jmemorize.core.Category;
+import jmemorize.core.CategoryObserver;
+import jmemorize.gui.LC;
+import jmemorize.gui.Localization;
+import jmemorize.gui.swing.ColorConstants;
+import jmemorize.gui.swing.frames.MainFrame;
 
 /**
  * This is the panel that is being displayed up the upper part of jMemorize all of the time. It shows a visual
@@ -136,15 +136,17 @@ public class DeckChartPanel extends JPanel implements CategoryObserver {
          * prevent the top of the stacked bar chart from being the wrong color, we need to skip bars that are zero
          * width. Here, we intercept the draw call to remove any zero width blocks in the stack before drawing
          */
+        @SuppressWarnings("rawtypes")
         protected void drawStackVertical(List values, Comparable category, Graphics2D g2,
                 CategoryItemRendererState state, Rectangle2D dataArea, CategoryPlot plot, CategoryAxis domainAxis,
                 ValueAxis rangeAxis, CategoryDataset dataset) {
-            List prunedValues = new ArrayList(values);
+
+            List<Object[]> prunedValues = new ArrayList(values);
             double lastValue = 0.0;
 
-            Iterator it = prunedValues.iterator();
+            Iterator<Object[]> it = prunedValues.iterator();
             while (it.hasNext()) {
-                Object[] pair = (Object[]) it.next();
+                Object[] pair = it.next();
                 double thisValue = ((Double) pair[1]).doubleValue();
                 double delta = thisValue - lastValue;
 

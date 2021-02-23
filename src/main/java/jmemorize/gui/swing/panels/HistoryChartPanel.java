@@ -33,16 +33,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import jmemorize.core.Main;
-import jmemorize.core.learn.LearnHistory;
-import jmemorize.core.learn.LearnSession;
-import jmemorize.core.learn.LearnSessionObserver;
-import jmemorize.core.learn.LearnHistory.CalendarComparator;
-import jmemorize.core.learn.LearnHistory.SessionSummary;
-import jmemorize.gui.LC;
-import jmemorize.gui.Localization;
-import jmemorize.gui.swing.ColorConstants;
-
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -61,6 +51,16 @@ import org.jfree.chart.renderer.category.StackedBarRenderer;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.TextAnchor;
+
+import jmemorize.core.Main;
+import jmemorize.core.learn.LearnHistory;
+import jmemorize.core.learn.LearnHistory.CalendarComparator;
+import jmemorize.core.learn.LearnHistory.SessionSummary;
+import jmemorize.core.learn.LearnSession;
+import jmemorize.core.learn.LearnSessionObserver;
+import jmemorize.gui.LC;
+import jmemorize.gui.Localization;
+import jmemorize.gui.swing.ColorConstants;
 
 /**
  * A panel that displays a statistical stacked bar chart which represent learn session.
@@ -114,13 +114,14 @@ public class HistoryChartPanel extends JPanel {
     }
 
     private JPanel buildChartChooser() {
-        JComboBox comboBox = new JComboBox(new String[] { Localization.get(LC.HISTORY_RECENT),
+        JComboBox<String> comboBox = new JComboBox<String>(new String[] { Localization.get(LC.HISTORY_RECENT),
                 Localization.get(LC.HISTORY_BY_DATE), Localization.get(LC.HISTORY_BY_WEEK),
                 Localization.get(LC.HISTORY_BY_MONTH), Localization.get(LC.HISTORY_BY_YEAR), });
 
         comboBox.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JComboBox box = (JComboBox) e.getSource();
+                @SuppressWarnings("unchecked")
+                JComboBox<String> box = (JComboBox<String>) e.getSource();
                 m_mode = box.getSelectedIndex();
                 updateDataSet();
             }
