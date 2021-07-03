@@ -1,6 +1,6 @@
 /*
  * jMemorize - Learning made easy (and fun) - A Leitner flashcards tool
- * Copyright(C) 2004-2008 Riad Djemili and contributors
+ * Copyright(C) 2004-2021 Riad Djemili and contributors
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -58,6 +58,7 @@ import jmemorize.gui.swing.panels.CardPanel;
 import jmemorize.gui.swing.panels.TwoSidesCardPanel;
 import jmemorize.gui.swing.widgets.CategoryComboBox;
 import jmemorize.util.EscapableFrame;
+import jmemorize.util.SingletonLock;
 
 /**
  * The window that is used to edit cards. Note this is a singleton class. The same window will be reused for all
@@ -113,17 +114,15 @@ public class EditCardFrame extends EscapableFrame implements CategoryObserver, S
     private CardHeaderPanel m_headerPanel = new CardHeaderPanel();
     private TwoSidesCardPanel m_cardPanel = new TwoSidesCardPanel(true);
 
-    private static EditCardFrame m_instance;
+    private static final SingletonLock<EditCardFrame> m_instance = new SingletonLock<>(() -> {
+        return new EditCardFrame();
+    });
 
     /**
      * @return The singleton instance.
      */
     public static EditCardFrame getInstance() {
-        if (m_instance == null) {
-            m_instance = new EditCardFrame();
-        }
-
-        return m_instance;
+        return m_instance.get();
     }
 
     /**

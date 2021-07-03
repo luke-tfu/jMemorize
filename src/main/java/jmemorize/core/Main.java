@@ -47,6 +47,7 @@ import jmemorize.core.learn.LearnSessionProvider;
 import jmemorize.core.learn.LearnSettings;
 import jmemorize.gui.swing.frames.MainFrame;
 import jmemorize.util.RecentItems;
+import jmemorize.util.SingletonLock;
 
 /**
  * The main class of the application.
@@ -54,6 +55,7 @@ import jmemorize.util.RecentItems;
  * @author djemili
  */
 public class Main /* extends Observable */ implements LearnSessionProvider, LessonProvider, CategoryObserver {
+
     public interface ProgramEndObserver {
         /**
          * This method is notified when the program ends.
@@ -70,7 +72,9 @@ public class Main /* extends Observable */ implements LearnSessionProvider, Less
 
     private RecentItems m_recentFiles = new RecentItems(5, USER_PREFS.node("recent.files")); //$NON-NLS-1$
 
-    private static Main m_instance;
+    private static final SingletonLock<Main> m_instance = new SingletonLock<>(() -> {
+        return new Main();
+    });
 
     private MainFrame m_frame;
     private Lesson m_lesson;
@@ -91,11 +95,7 @@ public class Main /* extends Observable */ implements LearnSessionProvider, Less
      * @return the singleton instance of Main.
      */
     public static Main getInstance() {
-        if (m_instance == null) {
-            m_instance = new Main();
-        }
-
-        return m_instance;
+        return m_instance.get();
     }
 
     public static Date getNow() {
