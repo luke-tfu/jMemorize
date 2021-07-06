@@ -26,6 +26,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -379,6 +380,8 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
     private JFrame m_frame;
     private List<SelectionObserver> m_selectionListeners = new LinkedList<SelectionObserver>();
 
+    private static final boolean DEBUG = false;
+
     /**
      * Creates a new CardTable which can be used to show a list of cards.
      * 
@@ -390,6 +393,9 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
      *            if columns can't be loaded from preferences, display these columns.
      */
     public CardTable(JFrame frame, Preferences prefs, int[] defaultColumns) {
+
+        setShowGrid(false);
+
         m_frame = frame;
         m_cardMenu = buildCardContextMenu();
 
@@ -413,7 +419,13 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
 
         setTransferHandler(MainFrame.TRANSFER_HANDLER);
         setDragEnabled(true);
-        setShowGrid(false);
+
+        // setShowGrid used to be here, rather than at the top of the method, but this
+        // caused the column widths of the window now to be correctly restored, due to
+        // an interaction with the new 'Look and Feel'.
+        //
+        // setShowGrid(false);
+
         setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         // we add the listener here. removal is done from outside if suitable
@@ -424,9 +436,15 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
     }
 
     public void setColumns(int[] columns) {
+
+        if (DEBUG) {
+            System.out.println("* Setting preferred width in setColumns for " + m_prefs.name() + " "
+                    + Arrays.toString(m_columnWidths));
+        }
+
         m_columns = columns;
 
-        // create and set tablecolumn model
+        // create and set TableColumn model
         TableColumnModel columnModel = new DefaultTableColumnModel();
         for (int i = 0; i < columns.length; i++) {
             if (columns[i] < 0 || columns[i] > COLUMN_NAMES.length) {
@@ -640,6 +658,11 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
      * @see javax.swing.JTable
      */
     public void columnMarginChanged(ChangeEvent e) {
+
+        if (this.m_prefs == null) {
+            return;
+        }
+
         // CHECK replace by application exit behaviour
         super.columnMarginChanged(e);
 
@@ -650,16 +673,30 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
             return;
         }
 
-        for (int i = 0; i < m_columns.length; i++) {
-            TableColumn column = getColumnModel().getColumn(i);
-            m_columnWidths[column.getModelIndex()] = column.getWidth();
+        if (DEBUG) {
+            Thread.dumpStack();
+
+            System.out.println("columnMarginChanged for " + this.m_prefs.name());
+
+            System.out.println("(W) Set column widths in columnMarginChanged " + m_prefs.name());
+            System.out.println("- were: " + Arrays.toString(m_columnWidths));
+            for (int i = 0; i < m_columns.length; i++) {
+                TableColumn column = getColumnModel().getColumn(i);
+                m_columnWidths[column.getModelIndex()] = column.getWidth();
+            }
+            System.out.println("- are now: " + Arrays.toString(m_columnWidths));
         }
+
     }
 
     /*
      * @see javax.swing.JTable
      */
     public void columnMoved(TableColumnModelEvent evt) {
+        if (DEBUG) {
+            System.out.println("columnMoved " + this.m_prefs.name());
+        }
+
         super.columnMoved(evt);
 
         /*
@@ -714,6 +751,11 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
     public void onProgramEnd() {
         m_prefs.putInt(PREF_SORT, m_tableModel.getSortingColumn());
         m_prefs.putInt(PREF_SORT_DIR, m_tableModel.getSortingDir());
+
+        if (DEBUG) {
+            System.out.println("onProgramEnd() writing with: " + Arrays.toString(m_columnWidths) + " to " + m_prefs);
+        }
+
         PreferencesTool.putIntArray(m_prefs, PREF_WIDTHS, m_columnWidths);
         PreferencesTool.putIntArray(m_prefs, PREF_COLUMNS, m_columns);
     }
@@ -869,6 +911,11 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
         m_columnWidths = PreferencesTool.getIntArray(m_prefs, PREF_WIDTHS);
         if (m_columnWidths == null || m_columnWidths.length != COLUMN_NAMES.length) {
             m_columnWidths = new int[COLUMN_NAMES.length];
+        }
+
+        if (DEBUG) {
+            System.out.println("(W) loaded from preferences in " + m_prefs);
+            System.out.println("loading with: " + Arrays.toString(m_columnWidths) + " " + m_prefs);
         }
 
         // set columns
