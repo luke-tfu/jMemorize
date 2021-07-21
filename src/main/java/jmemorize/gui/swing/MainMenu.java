@@ -43,6 +43,7 @@ import jmemorize.gui.swing.actions.file.ExitAction;
 import jmemorize.gui.swing.actions.file.ExportToCleanLessonAction;
 import jmemorize.gui.swing.actions.file.ExportToPDFAction;
 import jmemorize.gui.swing.actions.file.ExportToRTFAction;
+import jmemorize.gui.swing.actions.file.ExportToTabSeparatedHTML;
 import jmemorize.gui.swing.actions.file.ImportJMLAction;
 import jmemorize.gui.swing.actions.file.NewLessonAction;
 import jmemorize.gui.swing.actions.file.OpenLessonAction;
@@ -153,6 +154,8 @@ public class MainMenu extends JMenuBar implements RecentItemsObserver {
         // Sub menu for export menu items
         JMenu exportMenu = new JMenu(Localization.get("MainFrame.EXPORT")); //$NON-NLS-1$
         exportMenu.setIcon(new ImageIcon(getClass().getResource("/resource/icons/blank.gif"))); //$NON-NLS-1$
+
+        exportMenu.add(new ExportToTabSeparatedHTML());
         exportMenu.add(new ExportToPDFAction());
         exportMenu.add(new ExportToRTFAction());
         exportMenu.add(new ExportToCleanLessonAction());

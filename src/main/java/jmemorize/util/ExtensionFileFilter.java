@@ -23,7 +23,7 @@ import java.io.File;
 import javax.swing.filechooser.FileFilter;
 
 /**
- * A sime file filter for file choosers.
+ * A simple file filter for file choosers.
  * 
  * @author djemili
  */
