@@ -46,11 +46,7 @@ public class ResetCardAction extends AbstractAction2 implements SelectionObserve
         updateEnablement();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.awt.event.ActionListener
-     */
+    @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
         Object[] args = { (Integer) (m_selectionProvider.getSelectedCards().size()) };
         MessageFormat form = new MessageFormat(Localization.get(LC.RESET_WARN));
@@ -65,11 +61,7 @@ public class ResetCardAction extends AbstractAction2 implements SelectionObserve
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider.SelectionObserver
-     */
+    @Override
     public void selectionChanged(SelectionProvider source) {
         updateEnablement();
     }

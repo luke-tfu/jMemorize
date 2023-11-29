@@ -34,20 +34,12 @@ public class ExportToRTFAction extends AbstractExportAction {
         setValues();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.actions.AbstractExportAction
-     */
+    @Override
     protected void doExport(Lesson lesson, File file) throws IOException {
         PdfRtfBuilder.exportLessonToRTF(lesson, file);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.actions.AbstractExportAction
-     */
+    @Override
     protected ExtensionFileFilter getFileFilter() {
         return new ExtensionFileFilter("rtf", "RTF - Rich Text Format");
     }

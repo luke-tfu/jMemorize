@@ -38,21 +38,13 @@ public class ExportToCleanLessonAction extends AbstractExportAction {
         setValues();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.actions.AbstractExportAction
-     */
+    @Override
     protected void doExport(Lesson lesson, File file) throws IOException {
         Lesson cleanLesson = lesson.cloneWithoutProgress();
         Main.getInstance().getFrame().saveLesson(cleanLesson, file);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.actions.AbstractExportAction
-     */
+    @Override
     protected ExtensionFileFilter getFileFilter() {
         return MainFrame.FILE_FILTER;
     }

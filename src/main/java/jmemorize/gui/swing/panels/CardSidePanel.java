@@ -142,17 +142,14 @@ public class CardSidePanel extends JPanel {
     }
 
     private class MyEditorKit extends StyledEditorKit {
+        @Override
         public ViewFactory getViewFactory() {
             return new StyledViewFactory();
         }
 
         // TODO make static
         class StyledViewFactory implements ViewFactory {
-            /*
-             * (non-Javadoc)
-             * 
-             * @see javax.swing.text.ViewFactory
-             */
+            @Override
             public View create(Element elem) {
                 String kind = elem.getName();
 
@@ -180,11 +177,7 @@ public class CardSidePanel extends JPanel {
             super(elem, axis);
         }
 
-        /*
-         * (non-Javadoc)
-         * 
-         * @see javax.swing.text.BoxView
-         */
+        @Override
         protected void layoutMajorAxis(int targetSpan, int axis, int[] offsets, int[] spans) {
             super.layoutMajorAxis(targetSpan, axis, offsets, spans);
 
@@ -210,6 +203,7 @@ public class CardSidePanel extends JPanel {
             m_mode = mode;
         }
 
+        @Override
         public void actionPerformed(ActionEvent e) {
             setImageMode(m_mode);
         }
@@ -260,6 +254,7 @@ public class CardSidePanel extends JPanel {
         m_textPane.setEditable(editable);
     }
 
+    @Override
     public void requestFocus() {
         m_textPane.requestFocus();
     }
@@ -535,30 +530,26 @@ public class CardSidePanel extends JPanel {
         m_imageBar.add(m_imageLabel);
 
         m_prevImageButton = new JButton(loadIcon("arrow_left.png")); //$NON-NLS-1$
-        m_prevImageButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if (m_currentImage > 0)
-                    m_currentImage--;
-                else
-                    m_currentImage = m_images.size() - 1;
+        m_prevImageButton.addActionListener(e -> {
+            if (m_currentImage > 0)
+                m_currentImage--;
+            else
+                m_currentImage = m_images.size() - 1;
 
-                updateImage();
-                m_textPane.requestFocus();
-            }
+            updateImage();
+            m_textPane.requestFocus();
         });
         m_imageBar.add(m_prevImageButton);
 
         m_nextImageButton = new JButton(loadIcon("arrow_right.png")); //$NON-NLS-1$
-        m_nextImageButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if (m_currentImage < m_images.size() - 1)
-                    m_currentImage++;
-                else
-                    m_currentImage = 0;
+        m_nextImageButton.addActionListener(e -> {
+            if (m_currentImage < m_images.size() - 1)
+                m_currentImage++;
+            else
+                m_currentImage = 0;
 
-                updateImage();
-                m_textPane.requestFocus();
-            }
+            updateImage();
+            m_textPane.requestFocus();
         });
         m_imageBar.add(m_nextImageButton);
 

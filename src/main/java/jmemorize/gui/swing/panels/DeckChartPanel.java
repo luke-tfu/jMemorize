@@ -75,11 +75,7 @@ public class DeckChartPanel extends JPanel implements CategoryObserver {
      * A mouse listener for clicks on the chart. If a bar is clicked the view changes to the selected deck.
      */
     private class MouseClicked implements ChartMouseListener {
-        /*
-         * (non-Javadoc)
-         * 
-         * @see org.jfree.chart.ChartMouseListener
-         */
+        @Override
         public void chartMouseClicked(ChartMouseEvent evt) {
             ChartEntity entity = evt.getEntity();
             if (entity instanceof CategoryItemEntity) {
@@ -88,11 +84,7 @@ public class DeckChartPanel extends JPanel implements CategoryObserver {
             }
         }
 
-        /*
-         * (non-Javadoc)
-         * 
-         * @see org.jfree.chart.ChartMouseListener
-         */
+        @Override
         public void chartMouseMoved(ChartMouseEvent arg0) {
             // do nothing
         }
@@ -108,6 +100,7 @@ public class DeckChartPanel extends JPanel implements CategoryObserver {
             m_boldFont = getBaseItemLabelFont().deriveFont(Font.BOLD);
         }
 
+        @Override
         public void drawItem(Graphics2D g, CategoryItemRendererState state, Rectangle2D dataArea, CategoryPlot plot,
                 CategoryAxis domainAxis, ValueAxis rangeAxis, CategoryDataset data, int row, int column, int pass) {
             if (column - 1 == m_deck && m_category.getCards(m_deck).size() > 0) {
@@ -136,6 +129,7 @@ public class DeckChartPanel extends JPanel implements CategoryObserver {
          * prevent the top of the stacked bar chart from being the wrong color, we need to skip bars that are zero
          * width. Here, we intercept the draw call to remove any zero width blocks in the stack before drawing
          */
+        @Override
         @SuppressWarnings("rawtypes")
         protected void drawStackVertical(List values, Comparable category, Graphics2D g2,
                 CategoryItemRendererState state, Rectangle2D dataArea, CategoryPlot plot, CategoryAxis domainAxis,
@@ -200,20 +194,12 @@ public class DeckChartPanel extends JPanel implements CategoryObserver {
         m_barRenderer.setSelectedDeck(level);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.CategoryObserver
-     */
+    @Override
     public void onCategoryEvent(int type, Category category) {
         // ignore. mainframe already looks for important category changes
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.CategoryObserver
-     */
+    @Override
     public void onCardEvent(int type, Card card, Category category, int level) {
         updateBars();
     }
@@ -278,6 +264,7 @@ public class DeckChartPanel extends JPanel implements CategoryObserver {
         add(m_chartPanel);
 
         addComponentListener(new ComponentAdapter() {
+            @Override
             public void componentResized(ComponentEvent e) {
                 if (m_category != null)
                     updateBars();

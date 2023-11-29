@@ -110,20 +110,12 @@ public class LearnHistory {
             return m_relearned;
         }
 
-        /*
-         * (non-Javadoc)
-         * 
-         * @see java.lang.Object#clone()
-         */
+        @Override
         public Object clone() throws CloneNotSupportedException {
             return super.clone();
         }
 
-        /*
-         * (non-Javadoc)
-         * 
-         * @see java.lang.Object#equals(java.lang.Object)
-         */
+        @Override
         public boolean equals(Object obj) {
             if (!(obj instanceof SessionSummary)) {
                 return false;
@@ -135,31 +127,19 @@ public class LearnHistory {
                     && m_relearned == other.m_relearned;
         }
 
-        /*
-         * (non-Javadoc)
-         * 
-         * @see java.lang.Object#hashCode()
-         */
+        @Override
         public int hashCode() {
             return m_start.hashCode();
         }
 
-        /*
-         * (non-Javadoc)
-         * 
-         * @see java.lang.Object#toString()
-         */
+        @Override
         public String toString() {
             return "summary(" + m_start + ", " + m_passed + "/" + m_failed + ")";
         }
     }
 
     public abstract static class CalendarComparator implements Comparator<SessionSummary> {
-        /*
-         * (non-Javadoc)
-         * 
-         * @see java.util.Comparator
-         */
+        @Override
         public int compare(SessionSummary s1, SessionSummary s2) {
             Calendar c1 = Calendar.getInstance();
             c1.setTime(s1.getStart());
@@ -184,14 +164,17 @@ public class LearnHistory {
     }
 
     private static class SimpleComparator extends CalendarComparator {
+        @Override
         public long toValue(Calendar c) {
             return c.getTimeInMillis();
         }
 
+        @Override
         public DateFormat getFormat() {
             return Localization.SHORT_DATE_FORMATER;
         }
 
+        @Override
         public boolean showRotated() {
             return true;
         }
@@ -203,14 +186,17 @@ public class LearnHistory {
     }
 
     private static class DateComparator extends CalendarComparator {
+        @Override
         public long toValue(Calendar c) {
             return c.get(Calendar.DAY_OF_YEAR) + 1000 * c.get(Calendar.YEAR);
         }
 
+        @Override
         public DateFormat getFormat() {
             return DateFormat.getDateInstance(DateFormat.SHORT);
         }
 
+        @Override
         public boolean showRotated() {
             return true;
         }
@@ -222,14 +208,17 @@ public class LearnHistory {
     }
 
     private static class WeekComparator extends CalendarComparator {
+        @Override
         public long toValue(Calendar c) {
             return c.get(Calendar.WEEK_OF_YEAR) + 1000 * c.get(Calendar.YEAR);
         }
 
+        @Override
         public DateFormat getFormat() {
             return new SimpleDateFormat("w/yyyy");
         }
 
+        @Override
         public boolean showRotated() {
             return true;
         }
@@ -241,14 +230,17 @@ public class LearnHistory {
     }
 
     private static class MonthComparator extends CalendarComparator {
+        @Override
         public long toValue(Calendar c) {
             return c.get(Calendar.MONTH) + 1000 * c.get(Calendar.YEAR);
         }
 
+        @Override
         public DateFormat getFormat() {
             return new SimpleDateFormat("M/yyyy");
         }
 
+        @Override
         public boolean showRotated() {
             return true;
         }
@@ -260,14 +252,17 @@ public class LearnHistory {
     }
 
     private static class YearComparator extends CalendarComparator {
+        @Override
         public long toValue(Calendar c) {
             return c.get(Calendar.YEAR);
         }
 
+        @Override
         public DateFormat getFormat() {
             return new SimpleDateFormat("yyyy");
         }
 
+        @Override
         public boolean showRotated() {
             return false;
         }
@@ -507,11 +502,7 @@ public class LearnHistory {
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
+    @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof LearnHistory)) {
             return false;
@@ -522,11 +513,7 @@ public class LearnHistory {
         return m_summaries.equals(other.m_summaries);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#hashCode()
-     */
+    @Override
     public int hashCode() {
         return m_summaries.hashCode();
     }

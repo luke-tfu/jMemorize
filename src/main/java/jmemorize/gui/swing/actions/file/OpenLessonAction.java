@@ -37,11 +37,7 @@ public class OpenLessonAction extends AbstractSessionDisabledAction {
         setValues();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.awt.event.ActionListener
-     */
+    @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
         Main.getInstance().getFrame().loadLesson(null);
     }

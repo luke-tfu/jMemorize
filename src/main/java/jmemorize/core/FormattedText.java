@@ -154,20 +154,12 @@ public class FormattedText implements Cloneable {
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
+    @Override
     public String toString() {
         return m_unformattedText;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#clone()
-     */
+    @Override
     public Object clone() {
         try {
             return super.clone();
@@ -178,11 +170,7 @@ public class FormattedText implements Cloneable {
         return null;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
+    @Override
     public boolean equals(Object obj) {
         if (obj instanceof FormattedText) {
             FormattedText other = (FormattedText) obj;
@@ -192,11 +180,7 @@ public class FormattedText implements Cloneable {
         return false;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#hashCode()
-     */
+    @Override
     public int hashCode() {
         return m_formattedText.hashCode();
     }

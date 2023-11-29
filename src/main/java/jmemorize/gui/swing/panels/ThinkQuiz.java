@@ -39,11 +39,7 @@ public class ThinkQuiz implements Quiz {
         m_answerPanel.setEditable(false);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.Quiz
-     */
+    @Override
     public void showQuestion(CardSide answerCardSide) {
         m_answerCardSide = answerCardSide;
 
@@ -54,46 +50,26 @@ public class ThinkQuiz implements Quiz {
         m_answerPanel.setImages(images);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.Quiz
-     */
+    @Override
     public float showAnswer() {
         return -1f;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.Quiz
-     */
+    @Override
     public JPanel getVisual() {
         return m_answerPanel;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.Quiz
-     */
+    @Override
     public void setQuestionFont(CardFont questionFont) {
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.Quiz
-     */
+    @Override
     public void setAnswerFont(CardFont answerFont) {
         m_answerPanel.setCardFont(answerFont);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.Quiz
-     */
+    @Override
     public String getHelpText() {
         return Localization.get(LC.LEARN_REMEMBER);
     }

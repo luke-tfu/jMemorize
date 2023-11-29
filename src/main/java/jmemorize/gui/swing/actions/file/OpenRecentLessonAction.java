@@ -45,11 +45,7 @@ public class OpenRecentLessonAction extends AbstractSessionDisabledAction {
         setIcon("/resource/icons/blank.gif"); //$NON-NLS-1$
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.awt.event.ActionListener
-     */
+    @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
         Main main = Main.getInstance();
 

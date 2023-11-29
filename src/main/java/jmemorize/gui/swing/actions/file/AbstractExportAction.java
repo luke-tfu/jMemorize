@@ -90,11 +90,7 @@ public abstract class AbstractExportAction extends AbstractSessionDisabledAction
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.awt.event.ActionListener
-     */
+    @Override
     public void actionPerformed(ActionEvent event) {
         Main main = Main.getInstance();
 

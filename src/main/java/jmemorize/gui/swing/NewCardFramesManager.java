@@ -103,59 +103,35 @@ public class NewCardFramesManager implements LessonObserver, CategoryObserver {
         Settings.storeFrameState(frame, FRAME_ID);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LessonObserver
-     */
+    @Override
     public void lessonLoaded(Lesson lesson) {
         lesson.getRootCategory().addObserver(this);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LessonObserver
-     */
+    @Override
     public void lessonClosed(Lesson lesson) {
         lesson.getRootCategory().removeObserver(this);
         m_createdCards.clear();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LessonObserver
-     */
+    @Override
     public void lessonModified(Lesson lesson) {
         // ignore
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LessonObserver
-     */
+    @Override
     public void lessonSaved(Lesson lesson) {
         // ignore
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.CategoryObserver
-     */
+    @Override
     public void onCardEvent(int type, Card card, Category category, int deck) {
         if (type == Events.REMOVED_EVENT) {
             m_createdCards.remove(card);
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.CategoryObserver
-     */
+    @Override
     public void onCategoryEvent(int type, Category category) {
         // ignore
     }

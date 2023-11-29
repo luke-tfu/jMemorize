@@ -38,11 +38,7 @@ public class LearnHistoryTest extends TestCase {
     private Date m_date2 = createDate(14, 55);
     private Date m_date3 = createDate(15, 00);
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see junit.framework.TestCase#setUp()
-     */
+    @Override
     protected void setUp() throws Exception {
         m_history = new LearnHistory(null);
     }

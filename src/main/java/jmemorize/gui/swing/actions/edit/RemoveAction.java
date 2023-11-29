@@ -48,11 +48,7 @@ public class RemoveAction extends AbstractAction2 implements SelectionObserver {
         setValues();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.awt.event.ActionListener#actionPerformed
-     */
+    @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
         List<Card> selectedCards = m_selectionProvider.getSelectedCards();
         List<Category> selectedCategories = m_selectionProvider.getSelectedCategories();
@@ -95,11 +91,7 @@ public class RemoveAction extends AbstractAction2 implements SelectionObserver {
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider.SelectionObserver#selectionChanged
-     */
+    @Override
     public void selectionChanged(SelectionProvider source) {
         Category rootCategory = Main.getInstance().getLesson().getRootCategory();
 

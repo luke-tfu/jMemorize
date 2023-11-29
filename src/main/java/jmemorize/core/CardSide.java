@@ -95,15 +95,12 @@ public class CardSide implements Cloneable {
      * 
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
         return m_text.getUnformatted();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#clone()
-     */
+    @Override
     public Object clone() throws CloneNotSupportedException {
         CardSide cardSide = new CardSide();
         cardSide.m_text = (FormattedText) m_text.clone();

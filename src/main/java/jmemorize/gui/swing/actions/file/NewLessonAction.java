@@ -38,11 +38,7 @@ public class NewLessonAction extends AbstractSessionDisabledAction {
         setValues();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.awt.event.ActionListener
-     */
+    @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
         Main main = Main.getInstance();
 

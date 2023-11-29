@@ -34,20 +34,12 @@ public class ExportToPDFAction extends AbstractExportAction {
         setValues();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.actions.AbstractExportAction
-     */
+    @Override
     protected void doExport(Lesson lesson, File file) throws IOException {
         PdfRtfBuilder.exportLessonToPDF(lesson, file);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.actions.AbstractExportAction
-     */
+    @Override
     protected ExtensionFileFilter getFileFilter() {
         return new ExtensionFileFilter("pdf", "PDF - Portable Document Format"); //$NON-NLS-1$
     }

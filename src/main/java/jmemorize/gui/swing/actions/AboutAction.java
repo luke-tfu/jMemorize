@@ -32,11 +32,7 @@ public class AboutAction extends AbstractAction2 {
         setValues();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.actions.AbstractAction2
-     */
+    @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
         new AboutDialog(Main.getInstance().getFrame());
     }

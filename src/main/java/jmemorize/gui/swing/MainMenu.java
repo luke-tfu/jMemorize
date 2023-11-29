@@ -67,11 +67,7 @@ public class MainMenu extends JMenuBar implements RecentItemsObserver {
         recentFiles.addObserver(this);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.util.RecentItems.RecentItemsObserver
-     */
+    @Override
     public void onRecentItemChange(RecentItems src) {
         buildFileMenu();
     }

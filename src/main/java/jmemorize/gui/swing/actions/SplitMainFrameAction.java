@@ -38,11 +38,7 @@ public class SplitMainFrameAction extends AbstractAction2 {
         setIcon(SPLIT_ICON);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.awt.event.ActionListener
-     */
+    @Override
     public void actionPerformed(ActionEvent e) {
         JSplitPane splitPane = getSplitPane();
         if (splitPane.getDividerLocation() > 0) {

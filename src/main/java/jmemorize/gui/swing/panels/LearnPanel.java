@@ -64,6 +64,7 @@ public class LearnPanel extends JPanel implements SelectionProvider, LearnSessio
             setName(Localization.get(LC.LEARN_STOP));
         }
 
+        @Override
         public void actionPerformed(ActionEvent e) {
             m_session.endLearning();
         }
@@ -92,11 +93,7 @@ public class LearnPanel extends JPanel implements SelectionProvider, LearnSessio
         Main.getInstance().addLearnSessionObserver(this);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LearnSessionObserver
-     */
+    @Override
     public void sessionStarted(LearnSession session) {
         m_session = session;
         m_session.addObserver(this);
@@ -125,11 +122,7 @@ public class LearnPanel extends JPanel implements SelectionProvider, LearnSessio
         m_currentCardProgressBar.setMaximum(sidesToTest);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LearnSessionObserver
-     */
+    @Override
     public void sessionEnded(LearnSession session) {
         m_timerPanel.stop();
 
@@ -145,6 +138,7 @@ public class LearnPanel extends JPanel implements SelectionProvider, LearnSessio
      *            <code>true</code> if card should be shown with reversed sides (that is the frontside will be shown as
      *            flipside and vice versa) <code>false</code> otherwise.
      */
+    @Override
     public void nextCardFetched(Card card, boolean flipped) {
         m_currentCard = card;
         m_flippedLabel.setVisible(flipped);
@@ -157,78 +151,46 @@ public class LearnPanel extends JPanel implements SelectionProvider, LearnSessio
         updateProgressBars();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public List<Card> getRelatedCards() {
         List<Card> l = new ArrayList<Card>();
         l.addAll(m_session.getCheckedCards());
         return l;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public Category getCategory() {
         return m_session.getCategory();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public List<Category> getSelectedCategories() {
         return null;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public List<Card> getSelectedCards() {
         List<Card> list = new ArrayList<Card>(1);
         list.add(m_currentCard);
         return list.size() > 0 ? list : null;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public void addSelectionObserver(SelectionObserver observer) {
         m_selectionListeners.add(observer);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public void removeSelectionObserver(SelectionObserver observer) {
         m_selectionListeners.remove(observer);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public JComponent getDefaultFocusOwner() {
         return this;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public JFrame getFrame() {
         return Main.getInstance().getFrame();
     }

@@ -46,21 +46,13 @@ public class PasteAction extends AbstractAction2 implements SelectionObserver {
         updateEnablement();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.awt.event.ActionListener
-     */
+    @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
         GeneralTransferHandler.getPasteAction().actionPerformed(
                 new ActionEvent(m_selectionProvider.getDefaultFocusOwner(), ActionEvent.ACTION_PERFORMED, "paste")); //$NON-NLS-1$
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider.SelectionObserver
-     */
+    @Override
     public void selectionChanged(SelectionProvider source) {
         updateEnablement();
     }

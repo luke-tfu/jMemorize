@@ -45,30 +45,18 @@ public class CutAction extends AbstractSessionDisabledAction implements Selectio
         setValues();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.awt.event.ActionListener
-     */
+    @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
         GeneralTransferHandler.getCutAction().actionPerformed(
                 new ActionEvent(m_selectionProvider.getDefaultFocusOwner(), ActionEvent.ACTION_PERFORMED, "cut")); //$NON-NLS-1$
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider.SelectionObserver
-     */
+    @Override
     public void selectionChanged(SelectionProvider source) {
         updateEnablement();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.actions.AbstractSessionDisabledAction
-     */
+    @Override
     protected void updateEnablement() {
         // HACK
         SelectionProvider src = m_selectionProvider;

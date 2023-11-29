@@ -34,6 +34,7 @@ public class LessonProviderTest extends TestCase implements LessonObserver {
     private LessonProvider m_lessonProvider;
     private StringBuffer m_log;
 
+    @Override
     protected void setUp() throws Exception {
         m_lessonProvider = new Main();
         m_lessonProvider.addLessonObserver(this);
@@ -104,38 +105,22 @@ public class LessonProviderTest extends TestCase implements LessonObserver {
         assertEquals("loaded modified ", m_log.toString());
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LessonObserver
-     */
+    @Override
     public void lessonLoaded(Lesson lesson) {
         m_log.append("loaded ");
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LessonObserver
-     */
+    @Override
     public void lessonModified(Lesson lesson) {
         m_log.append("modified ");
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LessonObserver
-     */
+    @Override
     public void lessonSaved(Lesson lesson) {
         m_log.append("saved ");
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LessonObserver
-     */
+    @Override
     public void lessonClosed(Lesson lesson) {
         m_log.append("closed ");
     }

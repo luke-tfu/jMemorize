@@ -16,20 +16,12 @@ public abstract class AbstractSessionDisabledAction extends AbstractAction2 impl
         updateEnablement();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LearnSessionObserver#sessionStarted(jmemorize.core.LearnSession)
-     */
+    @Override
     public void sessionStarted(LearnSession session) {
         updateEnablement();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LearnSessionObserver#sessionEnded(jmemorize.core.LearnSession)
-     */
+    @Override
     public void sessionEnded(LearnSession session) {
         updateEnablement();
     }

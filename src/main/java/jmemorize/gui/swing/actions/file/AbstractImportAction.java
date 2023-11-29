@@ -68,11 +68,7 @@ public abstract class AbstractImportAction extends AbstractSessionDisabledAction
         return file;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.awt.event.ActionListener
-     */
+    @Override
     public void actionPerformed(ActionEvent event) {
         Main main = Main.getInstance();
 

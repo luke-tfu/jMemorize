@@ -39,11 +39,7 @@ public class AddCardAction extends AbstractAction2 {
         setValues();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.awt.event.ActionListener
-     */
+    @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
         MainFrame frame = Main.getInstance().getFrame();
         frame.getNewCardManager().addNewCardWindow(m_selectionProvider.getCategory());

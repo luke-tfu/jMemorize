@@ -35,11 +35,7 @@ public class ShowCategoryTreeAction extends AbstractSessionDisabledAction {
         setValues();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.awt.event.ActionListener
-     */
+    @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
         MainFrame frame = Main.getInstance().getFrame();
         frame.showCategoryTree(!frame.isShowCategoryTree());

@@ -106,19 +106,13 @@ public class Main /* extends Observable */ implements LearnSessionProvider, Less
         return new Date(new Date().getTime() + Card.ONE_DAY);
     }
 
-    /*
-     * (non-Javadoc) Declared in jmemorize.core.LessonProvider
-     */
+    @Override
     public void createNewLesson() {
         ImageRepository.getInstance().clear();
         setLesson(new Lesson(false));
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LessonProvider
-     */
+    @Override
     public void setLesson(Lesson lesson) {
         Lesson oldLesson = m_lesson;
         m_lesson = lesson;
@@ -135,9 +129,7 @@ public class Main /* extends Observable */ implements LearnSessionProvider, Less
         fireLessonLoaded(m_lesson);
     }
 
-    /*
-     * (non-Javadoc) Declared in jmemorize.core.LessonProvider
-     */
+    @Override
     public void loadLesson(File file) throws IOException {
         try {
             ImageRepository.getInstance().clear();
@@ -157,9 +149,7 @@ public class Main /* extends Observable */ implements LearnSessionProvider, Less
         }
     }
 
-    /*
-     * (non-Javadoc) Declared in jmemorize.core.LessonProvider
-     */
+    @Override
     public void saveLesson(Lesson lesson, File file) throws IOException {
         try {
             File tempFile = new File(file.getAbsolutePath() + "~"); //$NON-NLS-1$
@@ -180,34 +170,22 @@ public class Main /* extends Observable */ implements LearnSessionProvider, Less
         }
     }
 
-    /*
-     * (non-Javadoc) Declared in jmemorize.core.LessonProvider
-     */
+    @Override
     public Lesson getLesson() {
         return m_lesson;
     }
 
-    /*
-     * (non-Javadoc) Declared in jmemorize.core.LessonProvider
-     */
+    @Override
     public RecentItems getRecentLessonFiles() {
         return m_recentFiles;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LessonProvider
-     */
+    @Override
     public void addLessonObserver(LessonObserver observer) {
         m_lessonObservers.add(observer);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LessonProvider
-     */
+    @Override
     public void removeLessonObserver(LessonObserver observer) {
         m_lessonObservers.remove(observer);
     }
@@ -239,9 +217,7 @@ public class Main /* extends Observable */ implements LearnSessionProvider, Less
         System.exit(0);
     }
 
-    /*
-     * (non-Javadoc) Declared in jmemorize.core.LearnSessionProvider
-     */
+    @Override
     public void startLearnSession(LearnSettings settings, List<Card> selectedCards, Category category,
             boolean learnUnlearned, boolean learnExpired) {
         LearnSession session = new DefaultLearnSession(category, settings, selectedCards, learnUnlearned, learnExpired,
@@ -258,9 +234,7 @@ public class Main /* extends Observable */ implements LearnSessionProvider, Less
         session.startLearning();
     }
 
-    /*
-     * (non-Javadoc) Declared in jmemorize.core.LearnSessionProvider
-     */
+    @Override
     public void sessionEnded(LearnSession session) {
         m_runningSessions--;
 
@@ -276,23 +250,17 @@ public class Main /* extends Observable */ implements LearnSessionProvider, Less
         }
     }
 
-    /*
-     * (non-Javadoc) Declared in jmemorize.core.LearnSessionProvider
-     */
+    @Override
     public boolean isSessionRunning() {
         return m_runningSessions > 0;
     }
 
-    /*
-     * (non-Javadoc) Declared in jmemorize.core.LearnSessionProvider
-     */
+    @Override
     public void addLearnSessionObserver(LearnSessionObserver observer) {
         m_learnSessionObservers.add(observer);
     }
 
-    /*
-     * (non-Javadoc) Declared in jmemorize.core.LearnSessionProvider
-     */
+    @Override
     public void removeLearnSessionObserver(LearnSessionObserver observer) {
         m_learnSessionObservers.remove(observer);
     }
@@ -318,16 +286,12 @@ public class Main /* extends Observable */ implements LearnSessionProvider, Less
         return m_globalLearnHistory;
     }
 
-    /*
-     * (non-Javadoc) Declared in jmemorize.core.CategoryObserver
-     */
+    @Override
     public void onCardEvent(int type, Card card, Category category, int deck) {
         fireLessonModified(m_lesson);
     }
 
-    /*
-     * (non-Javadoc) Declared in jmemorize.core.CategoryObserver
-     */
+    @Override
     public void onCategoryEvent(int type, Category category) {
         fireLessonModified(m_lesson);
     }

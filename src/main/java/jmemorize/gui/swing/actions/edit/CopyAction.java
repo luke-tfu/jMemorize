@@ -45,11 +45,7 @@ public class CopyAction extends AbstractSessionDisabledAction implements Selecti
         setValues();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.awt.event.ActionListener
-     */
+    @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
         ActionEvent actionEvent = new ActionEvent(m_selectionProvider.getDefaultFocusOwner(),
                 ActionEvent.ACTION_PERFORMED, "copy"); //$NON-NLS-1$
@@ -57,20 +53,12 @@ public class CopyAction extends AbstractSessionDisabledAction implements Selecti
         GeneralTransferHandler.getCopyAction().actionPerformed(actionEvent);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider.SelectionObserver
-     */
+    @Override
     public void selectionChanged(SelectionProvider source) {
         updateEnablement();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.actions.AbstractSessionDisabledAction
-     */
+    @Override
     protected void updateEnablement() {
         // HACK
         SelectionProvider src = m_selectionProvider;

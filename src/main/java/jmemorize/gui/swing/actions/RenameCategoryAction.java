@@ -50,11 +50,7 @@ public class RenameCategoryAction extends AbstractAction2 implements SelectionOb
         updateEnablement();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.awt.event.ActionListener
-     */
+    @Override
     public void actionPerformed(ActionEvent e) {
         String name = JOptionPane.showInputDialog(Main.getInstance().getFrame(), Localization.get(LC.RENAME_INPUT));
 
@@ -63,29 +59,17 @@ public class RenameCategoryAction extends AbstractAction2 implements SelectionOb
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider.SelectionObserver
-     */
+    @Override
     public void selectionChanged(SelectionProvider source) {
         updateEnablement();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.learn.LearnSessionObserver
-     */
+    @Override
     public void sessionEnded(LearnSession session) {
         updateEnablement();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.learn.LearnSessionObserver
-     */
+    @Override
     public void sessionStarted(LearnSession session) {
         updateEnablement();
     }

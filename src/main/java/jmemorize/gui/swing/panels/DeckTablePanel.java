@@ -59,11 +59,7 @@ public class DeckTablePanel extends JPanel implements CategoryObserver {
             setIcon("/resource/icons/card_next.gif"); //$NON-NLS-1$
         }
 
-        /*
-         * (non-Javadoc)
-         * 
-         * @see java.awt.event.ActionListener
-         */
+        @Override
         public void actionPerformed(ActionEvent e) {
             int nextLevel = m_currentDeckLevel + 1;
             while (m_category.getCards(nextLevel).isEmpty()) {
@@ -81,11 +77,7 @@ public class DeckTablePanel extends JPanel implements CategoryObserver {
             setIcon("/resource/icons/card_prev.gif"); //$NON-NLS-1$
         }
 
-        /*
-         * (non-Javadoc)
-         * 
-         * @see java.awt.event.ActionListener
-         */
+        @Override
         public void actionPerformed(ActionEvent e) {
             int prevLevel = m_currentDeckLevel - 1;
             while (prevLevel >= 0 && m_category.getCards(prevLevel).isEmpty()) {
@@ -153,21 +145,13 @@ public class DeckTablePanel extends JPanel implements CategoryObserver {
         return m_cardTable;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.CategoryObserver
-     */
+    @Override
     public void onCategoryEvent(int type, Category category) {
         if (m_category.getSubtreeList().contains(category))
             setDeck(m_currentDeckLevel);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.CategoryObserver
-     */
+    @Override
     public void onCardEvent(int type, Card card, Category category, int deck) {
         // TODO make this finer
         setDeck(m_currentDeckLevel);
@@ -197,6 +181,7 @@ public class DeckTablePanel extends JPanel implements CategoryObserver {
 
         m_cardTable.hookCardContextMenu(scrollPane);
         m_cardTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableMouseClicked(evt);
             }

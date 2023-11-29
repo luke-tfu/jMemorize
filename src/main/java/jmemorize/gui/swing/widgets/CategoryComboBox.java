@@ -40,11 +40,7 @@ import jmemorize.core.CategoryObserver;
  */
 public class CategoryComboBox extends JComboBox implements CategoryObserver {
     private class CategoryRenderer extends BasicComboBoxRenderer {
-        /*
-         * (non-Javadoc)
-         * 
-         * @see javax.swing.plaf.basic.BasicComboBoxRenderer
-         */
+        @Override
         public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected,
                 boolean cellHasFocus) {
 
@@ -95,20 +91,12 @@ public class CategoryComboBox extends JComboBox implements CategoryObserver {
         return (Category) getModel().getSelectedItem();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.CategoryObserver
-     */
+    @Override
     public void onCategoryEvent(int type, Category category) {
         updateModel();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.CategoryObserver
-     */
+    @Override
     public void onCardEvent(int type, Card card, Category category, int deck) {
         // ignore
     }

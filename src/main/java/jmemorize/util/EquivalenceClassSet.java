@@ -110,6 +110,7 @@ public class EquivalenceClassSet<T> extends AbstractSet<T> {
             localItemIter = null; // null means before the next class
         }
 
+        @Override
         public boolean hasNext() {
             if (m_changeID != localChangeID) {
                 throw new ConcurrentModificationException();
@@ -122,6 +123,7 @@ public class EquivalenceClassSet<T> extends AbstractSet<T> {
             return false;
         }
 
+        @Override
         public T next() {
             if (m_changeID != localChangeID) {
                 throw new ConcurrentModificationException();
@@ -134,11 +136,13 @@ public class EquivalenceClassSet<T> extends AbstractSet<T> {
             return localItemIter.next();
         }
 
+        @Override
         public void remove() {
             throw new UnsupportedOperationException();
         }
     }
 
+    @Override
     public Iterator<T> iterator() {
         return new OnePassIterator();
     }
@@ -151,10 +155,12 @@ public class EquivalenceClassSet<T> extends AbstractSet<T> {
     // if size not null, then both currentEqvClassIter and currentItemIter
     // are not null.
     protected class LoopIterator implements Iterator<T> {
+        @Override
         public boolean hasNext() {
             return (m_size > 0);
         }
 
+        @Override
         public T next() {
             assert m_loopEqvClassIter != null;
             assert m_loopItemIter != null;
@@ -183,6 +189,7 @@ public class EquivalenceClassSet<T> extends AbstractSet<T> {
             return m_loopItemIter.next();
         }
 
+        @Override
         public void remove() {
             throw new UnsupportedOperationException();
         }
@@ -227,11 +234,7 @@ public class EquivalenceClassSet<T> extends AbstractSet<T> {
         this.m_shuffleEquivalenceClasses = shuffleEquivalenceClasses;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.util.AbstractCollection#size()
-     */
+    @Override
     public int size() {
         return m_size;
     }
@@ -241,6 +244,7 @@ public class EquivalenceClassSet<T> extends AbstractSet<T> {
      * current equivalence class, it is added so that it will be returned before any element from another class is
      * returned.
      */
+    @Override
     public boolean add(T arg0) {
         return addPositional(arg0, true);
     }
@@ -358,11 +362,7 @@ public class EquivalenceClassSet<T> extends AbstractSet<T> {
         return eqvPosition;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.util.AbstractCollection#clear()
-     */
+    @Override
     public void clear() {
         m_equivalenceClasses.clear();
         m_itemToClassMap.clear();
@@ -371,11 +371,7 @@ public class EquivalenceClassSet<T> extends AbstractSet<T> {
         resetLoopIterator();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.util.AbstractCollection#contains(java.lang.Object)
-     */
+    @Override
     public boolean contains(Object arg0) {
         EqvPosition eqvPosition = findEqvClass(arg0);
         if (eqvPosition.matchingEqvClass != null && eqvPosition.matchingEqvClass.contains(arg0)) {
@@ -384,22 +380,13 @@ public class EquivalenceClassSet<T> extends AbstractSet<T> {
         return false;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.util.AbstractCollection#remove(java.lang.Object)
-     */
+    @Override
     public boolean remove(Object arg0) {
         assert m_size == m_itemToClassMap.size();
         EqvPosition eqvPosition = findEqvClass(arg0);
         return removeAtPosition(eqvPosition, arg0);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.util.AbstractCollection#remove(java.lang.Object)
-     */
     private boolean removeAtPosition(EqvPosition eqvPosition, Object arg0) {
         // when removing an object, we may have to replace the item loop iterator
         // if we removed an item from the current loop class

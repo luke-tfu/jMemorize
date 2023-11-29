@@ -345,11 +345,7 @@ public class Card implements Events, Cloneable {
         m_level = level;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#clone()
-     */
+    @Override
     public Object clone() {
         Card card = null;
         try {
@@ -389,12 +385,14 @@ public class Card implements Events, Cloneable {
     /**
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
         return "(" + m_frontSide + "/" + m_backSide + ")";
     }
 
     private void attachCardSideObservers() {
         CardSideObserver observer = new CardSideObserver() {
+            @Override
             public void onImagesChanged(CardSide cardSide, List<String> imageIDs) {
                 if (m_category != null) {
                     m_dateModified = new Date();
@@ -402,6 +400,7 @@ public class Card implements Events, Cloneable {
                 }
             }
 
+            @Override
             public void onTextChanged(CardSide cardSide, FormattedText text) {
                 // already handled by set sides
                 // TODO handle event notfying here

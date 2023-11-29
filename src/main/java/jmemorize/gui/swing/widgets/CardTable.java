@@ -21,8 +21,6 @@ package jmemorize.gui.swing.widgets;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.FontMetrics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -95,6 +93,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
             m_font = font;
         }
 
+        @Override
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
                 int row, int column) {
             Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
@@ -130,6 +129,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
             m_suffix = suffix;
         }
 
+        @Override
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
                 int row, int column) {
             return super.getTableCellRendererComponent(table, value + m_suffix, isSelected, hasFocus, row, column);
@@ -146,6 +146,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
             m_nullString = nullString;
         }
 
+        @Override
         protected void setValue(Object value) {
             setText(value == null ? m_nullString : Localization.SHORT_DATE_FORMATER.format(value));
         }
@@ -156,6 +157,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
      * every date. The icon is chosen according to the expiration state (e.g. expired, unlearned, etc.).
      */
     private class DateExpiredRenderer extends DefaultTableCellRenderer {
+        @Override
         public void setValue(Object value) {
             // if not learned
             if (value == null) {
@@ -182,6 +184,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
         /**
          * @see java.util.Comparator
          */
+        @Override
         @SuppressWarnings({ "rawtypes", "unchecked" })
         public int compare(Card arg0, Card arg1) {
             Comparable col0 = (Comparable) getValue(arg0, m_modelIndex);
@@ -205,6 +208,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
             this.tableCellRenderer = tableCellRenderer;
         }
 
+        @Override
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
                 int row, int column) {
             Component c = tableCellRenderer.getTableCellRendererComponent(table, value, isSelected, hasFocus, row,
@@ -272,6 +276,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
         /**
          * @see javax.swing.table.TableModel#getRowCount()
          */
+        @Override
         public int getRowCount() {
             return m_cards != null ? m_cards.size() : 0;
         }
@@ -279,6 +284,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
         /**
          * @see javax.swing.table.TableModel#getColumnCount()
          */
+        @Override
         public int getColumnCount() {
             return COLUMN_NAMES.length;
         }
@@ -286,6 +292,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
         /**
          * @see javax.swing.table.AbstractTableModel#getColumnName(int)
          */
+        @Override
         public String getColumnName(int column) {
             return COLUMN_NAMES[column];
         }
@@ -293,6 +300,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
         /**
          * @see javax.swing.table.AbstractTableModel#isCellEditable(int, int)
          */
+        @Override
         public boolean isCellEditable(int rowIndex, int columnIndex) {
             return false;
         }
@@ -300,6 +308,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
         /**
          * @see javax.swing.table.TableModel#getValueAt(int, int)
          */
+        @Override
         public Object getValueAt(int rowIndex, int columnIndex) {
             Card card = (Card) m_cards.get(rowIndex);
             return getValue(card, columnIndex);
@@ -408,6 +417,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
 
         buildHeaderMenu();
         getTableHeader().addMouseListener(new MouseAdapter() {
+            @Override
             public void mouseClicked(MouseEvent e) {
                 headerClicked(e);
             }
@@ -508,60 +518,37 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public List<Card> getRelatedCards() {
         return m_tableModel.getCards();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public Category getCategory() {
         return m_tableModel.getCategory();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public List<Category> getSelectedCategories() {
         return null;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public JComponent getDefaultFocusOwner() {
         return this;
     }
 
+    @Override
     public JFrame getFrame() {
         return m_frame;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public void addSelectionObserver(SelectionObserver observer) {
         m_selectionListeners.add(observer);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public void removeSelectionObserver(SelectionObserver observer) {
         m_selectionListeners.remove(observer);
     }
@@ -579,6 +566,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
      * 
      * @see jmemorize.gui.swing.SelectionProvider
      */
+    @Override
     public List<Card> getSelectedCards() {
         if (m_tableModel == null) {
             return null;
@@ -601,6 +589,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
      *
      * @see javax.swing.JTable
      */
+    @Override
     public void valueChanged(ListSelectionEvent e) {
         super.valueChanged(e);
 
@@ -618,6 +607,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
     /*
      * @see javax.swing.JTable
      */
+    @Override
     public String getToolTipText(MouseEvent event) {
         /*
          * this can be called while constructing super class. in that case our variables wouldn't yet be set.
@@ -657,6 +647,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
     /*
      * @see javax.swing.JTable
      */
+    @Override
     public void columnMarginChanged(ChangeEvent e) {
 
         if (this.m_prefs == null) {
@@ -692,6 +683,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
     /*
      * @see javax.swing.JTable
      */
+    @Override
     public void columnMoved(TableColumnModelEvent evt) {
         if (DEBUG) {
             System.out.println("columnMoved " + this.m_prefs.name());
@@ -718,6 +710,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
     /*
      * @see jmemorize.core.Settings.CardFontObserver
      */
+    @Override
     public void fontChanged(FontType type, CardFont font) {
         if (type == FontType.TABLE_FRONT)
             m_frontSideFont = font;
@@ -743,11 +736,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
         setColumns(m_columns); // HACK
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.Main.ProgramEndObserver
-     */
+    @Override
     public void onProgramEnd() {
         m_prefs.putInt(PREF_SORT, m_tableModel.getSortingColumn());
         m_prefs.putInt(PREF_SORT_DIR, m_tableModel.getSortingDir());
@@ -766,6 +755,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
      */
     public void hookCardContextMenu(JComponent comp) {
         comp.addMouseListener(new MouseAdapter() {
+            @Override
             public void mouseClicked(MouseEvent e) {
                 if (SwingUtilities.isRightMouseButton(e)) {
                     int row = rowAtPoint(e.getPoint());
@@ -779,11 +769,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
         });
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see javax.swing.JTable#prepareRenderer
-     */
+    @Override
     public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
         Component cell = super.prepareRenderer(renderer, row, column);
 
@@ -956,11 +942,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
     private void buildHeaderMenu() {
         for (int i = 0; i < COLUMN_NAMES.length; i++) {
             m_checkBoxItems[i] = new JCheckBoxMenuItem(COLUMN_NAMES[i]);
-            m_checkBoxItems[i].addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    columnSelectionChanged();
-                }
-            });
+            m_checkBoxItems[i].addActionListener(e -> columnSelectionChanged());
             m_headerMenu.add(m_checkBoxItems[i]);
         }
     }

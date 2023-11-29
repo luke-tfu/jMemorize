@@ -45,11 +45,7 @@ public class EditCardAction extends AbstractAction2 implements SelectionObserver
         updateEnablement();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.awt.event.ActionListener
-     */
+    @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
         // TODO move editCards in SelectionProvider!?
         Card card = (Card) m_selectionProvider.getSelectedCards().get(0);
@@ -59,11 +55,7 @@ public class EditCardAction extends AbstractAction2 implements SelectionObserver
         EditCardFrame.getInstance().showCard(card, cards, category);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider.SelectionObserver
-     */
+    @Override
     public void selectionChanged(SelectionProvider source) {
         updateEnablement();
     }

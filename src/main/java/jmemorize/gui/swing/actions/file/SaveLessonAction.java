@@ -40,11 +40,7 @@ public class SaveLessonAction extends AbstractSessionDisabledAction implements L
         updateEnablement();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.awt.event.ActionListener
-     */
+    @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
         Main main = Main.getInstance();
 
@@ -52,47 +48,27 @@ public class SaveLessonAction extends AbstractSessionDisabledAction implements L
         main.getFrame().saveLesson(main.getLesson(), file);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LessonObserver
-     */
+    @Override
     public void lessonLoaded(Lesson newLesson) {
         updateEnablement();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LessonObserver
-     */
+    @Override
     public void lessonModified(Lesson lesson) {
         updateEnablement();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LessonObserver
-     */
+    @Override
     public void lessonSaved(Lesson lesson) {
         updateEnablement();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LessonObserver
-     */
+    @Override
     public void lessonClosed(Lesson lesson) {
         updateEnablement();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.actions.AbstractSessionDisabledAction
-     */
+    @Override
     protected void updateEnablement() {
         Main main = Main.getInstance();
         Lesson lesson = main.getLesson();

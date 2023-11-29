@@ -38,11 +38,7 @@ public class ShowHistoryAction extends AbstractAction2 {
         setValues();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.awt.event.ActionListener
-     */
+    @Override
     public void actionPerformed(ActionEvent e) {
         MainFrame parent = Main.getInstance().getFrame();
 

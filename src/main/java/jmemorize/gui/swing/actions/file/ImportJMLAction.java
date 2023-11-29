@@ -34,11 +34,7 @@ public class ImportJMLAction extends AbstractImportAction {
         setValues();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.actions.file.AbstractImportAction
-     */
+    @Override
     protected void doImport(File file, Lesson lesson) throws IOException {
         try {
             XmlBuilder.loadFromXMLFile(file, lesson);
@@ -47,6 +43,7 @@ public class ImportJMLAction extends AbstractImportAction {
         }
     }
 
+    @Override
     protected FileFilter getFileFilter() {
         return MainFrame.FILE_FILTER;
     }

@@ -48,11 +48,7 @@ public class LearnAction extends AbstractSessionDisabledAction implements Select
         selectionProvider.addSelectionObserver(this);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.awt.event.ActionListener
-     */
+    @Override
     public void actionPerformed(ActionEvent e) {
         Main main = Main.getInstance();
         MainFrame frame = main.getFrame();
@@ -60,11 +56,7 @@ public class LearnAction extends AbstractSessionDisabledAction implements Select
         new LearnSettingsDialog(frame, main.getLearnSettings(), m_selectionProvider);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider.SelectionObserver
-     */
+    @Override
     public void selectionChanged(SelectionProvider source) {
         if (m_category != null)
             m_category.removeObserver(this);
@@ -77,29 +69,17 @@ public class LearnAction extends AbstractSessionDisabledAction implements Select
         updateEnablement();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.CategoryObserver
-     */
+    @Override
     public void onCardEvent(int type, Card card, Category category, int deck) {
         updateEnablement();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.CategoryObserver
-     */
+    @Override
     public void onCategoryEvent(int type, Category category) {
         updateEnablement();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.actions.AbstractSessionDisabledAction
-     */
+    @Override
     protected void updateEnablement() {
         boolean runningSession = Main.getInstance().isSessionRunning();
 

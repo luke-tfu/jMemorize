@@ -39,11 +39,7 @@ public class AddCategoryAction extends AbstractSessionDisabledAction {
         setValues();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.awt.event.ActionListener
-     */
+    @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
         String name = JOptionPane.showInputDialog(m_selectionProvider.getFrame(),
                 Localization.get(LC.ACTION_ADD_CATEGORY_INPUT), Localization.get(LC.ACTION_ADD_CATEGORY),

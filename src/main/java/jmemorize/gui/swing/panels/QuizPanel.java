@@ -21,7 +21,6 @@ package jmemorize.gui.swing.panels;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -79,6 +78,7 @@ public class QuizPanel extends JPanel implements Events, LearnCardObserver, Cate
             setFocusedWindowShortcut("showButton", 'a'); //$NON-NLS-1$
         }
 
+        @Override
         public void actionPerformed(ActionEvent e) {
             if (m_isShowQuestion)
                 showAnswer();
@@ -91,6 +91,7 @@ public class QuizPanel extends JPanel implements Events, LearnCardObserver, Cate
             setFocusedWindowShortcut("skipButton", 's'); //$NON-NLS-1$
         }
 
+        @Override
         public void actionPerformed(ActionEvent e) {
             if (m_isShowQuestion)
                 m_session.cardSkipped();
@@ -103,6 +104,7 @@ public class QuizPanel extends JPanel implements Events, LearnCardObserver, Cate
             setFocusedWindowShortcut("yesButton", 'q'); //$NON-NLS-1$
         }
 
+        @Override
         public void actionPerformed(ActionEvent e) {
             if (m_isShowAnswer)
                 m_session.cardChecked(true, m_showFlipped);
@@ -115,6 +117,7 @@ public class QuizPanel extends JPanel implements Events, LearnCardObserver, Cate
             setFocusedWindowShortcut("noButton", 'w'); //$NON-NLS-1$
         }
 
+        @Override
         public void actionPerformed(ActionEvent e) {
             if (m_isShowAnswer)
                 m_session.cardChecked(false, m_showFlipped);
@@ -152,11 +155,7 @@ public class QuizPanel extends JPanel implements Events, LearnCardObserver, Cate
         Main.getInstance().addLearnSessionObserver(this);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.learn.LearnSessionObserver
-     */
+    @Override
     public void sessionStarted(LearnSession session) {
         m_session = session;
         session.addObserver(this);
@@ -164,11 +163,7 @@ public class QuizPanel extends JPanel implements Events, LearnCardObserver, Cate
         m_session.getCategory().addObserver(this);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.learn.LearnSessionObserver
-     */
+    @Override
     public void sessionEnded(LearnSession session) {
         m_isShowQuestion = false;
         m_isShowAnswer = false;
@@ -183,6 +178,7 @@ public class QuizPanel extends JPanel implements Events, LearnCardObserver, Cate
      *            <code>true</code> if card should be shown with reversed sides (that is the frontside will be shown as
      *            flipside and vice versa) <code>false</code> otherwise.
      */
+    @Override
     public void nextCardFetched(Card card, boolean flipped) {
         m_currentCard = card;
         m_showFlipped = flipped;
@@ -194,11 +190,7 @@ public class QuizPanel extends JPanel implements Events, LearnCardObserver, Cate
         showQuestion();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.CategoryObserver
-     */
+    @Override
     public void onCardEvent(int type, Card card, Category category, int deck) {
         if (card == m_currentCard) {
             if (type == EDITED_EVENT)
@@ -209,11 +201,7 @@ public class QuizPanel extends JPanel implements Events, LearnCardObserver, Cate
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.CategoryObserver
-     */
+    @Override
     public void onCategoryEvent(int type, Category category) {
         assert false; // no category events should occur while learning
     }
@@ -316,12 +304,10 @@ public class QuizPanel extends JPanel implements Events, LearnCardObserver, Cate
 
     private JPanel buildCategoryPanel() {
         // prepare category field and checkbox
-        m_categoryCheckBox.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                boolean showCategory = m_categoryCheckBox.isSelected();
-                Main.USER_PREFS.putBoolean(PREFS_SHOW_CARD_CATEGORY, showCategory);
-                updateCategoryField();
-            }
+        m_categoryCheckBox.addActionListener(e -> {
+            boolean showCategory = m_categoryCheckBox.isSelected();
+            Main.USER_PREFS.putBoolean(PREFS_SHOW_CARD_CATEGORY, showCategory);
+            updateCategoryField();
         });
         m_categoryField.setEditable(false);
         boolean showCat = Main.USER_PREFS.getBoolean(PREFS_SHOW_CARD_CATEGORY, true);

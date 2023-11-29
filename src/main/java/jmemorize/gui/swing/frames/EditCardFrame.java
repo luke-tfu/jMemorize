@@ -20,8 +20,6 @@ package jmemorize.gui.swing.frames;
 
 import java.awt.BorderLayout;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,6 +73,7 @@ public class EditCardFrame extends EscapableFrame implements CategoryObserver, S
             setMnemonic(1);
         }
 
+        @Override
         public void actionPerformed(java.awt.event.ActionEvent e) {
             if (confirmCardSides())
                 showNext();
@@ -89,6 +88,7 @@ public class EditCardFrame extends EscapableFrame implements CategoryObserver, S
             setMnemonic(1);
         }
 
+        @Override
         public void actionPerformed(java.awt.event.ActionEvent e) {
             if (confirmCardSides())
                 showPrevious();
@@ -180,6 +180,7 @@ public class EditCardFrame extends EscapableFrame implements CategoryObserver, S
     /**
      * @return True if window was closed. False if this was prevented by user option.
      */
+    @Override
     public boolean close() {
         if (confirmCardSides()) {
             hideFrame();
@@ -189,11 +190,7 @@ public class EditCardFrame extends EscapableFrame implements CategoryObserver, S
         return false;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.CategoryObserver
-     */
+    @Override
     public void onCategoryEvent(int type, Category category) {
         if (type == REMOVED_EVENT) {
             // if current card was in a deleted category branch
@@ -215,11 +212,7 @@ public class EditCardFrame extends EscapableFrame implements CategoryObserver, S
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.CategoryObserver
-     */
+    @Override
     public void onCardEvent(int type, Card card, Category category, int deck) {
         if (type == DECK_EVENT && m_currentCard == card) {
             updateCardHeader();
@@ -245,76 +238,44 @@ public class EditCardFrame extends EscapableFrame implements CategoryObserver, S
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public void addSelectionObserver(SelectionObserver observer) {
         m_selectionObservers.add(observer);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public void removeSelectionObserver(SelectionObserver observer) {
         m_selectionObservers.remove(observer);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public Category getCategory() {
         return m_currentCard.getCategory();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public JComponent getDefaultFocusOwner() {
         return null; // HACK
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public JFrame getFrame() {
         return this;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public List<Card> getRelatedCards() {
         return m_cards;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public List<Card> getSelectedCards() {
         ArrayList<Card> list = new ArrayList<Card>(1);
         list.add(m_currentCard);
         return list;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public List<Category> getSelectedCategories() {
         return null;
     }
@@ -362,20 +323,18 @@ public class EditCardFrame extends EscapableFrame implements CategoryObserver, S
 
     private void addChangeObservers() {
         m_cardPanel.addObserver(new CardPanel.CardPanelObserver() {
+            @Override
             public void onTextChanged() {
                 updateApplyButton();
             }
 
+            @Override
             public void onImageChanged() {
                 updateApplyButton();
             }
         });
 
-        m_cardPanel.getCategoryComboBox().addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                updateApplyButton();
-            }
-        });
+        m_cardPanel.getCategoryComboBox().addActionListener(e -> updateApplyButton());
     }
 
     private void updateApplyButton() {
@@ -561,25 +520,15 @@ public class EditCardFrame extends EscapableFrame implements CategoryObserver, S
 
     private JPanel buildBottomButtonBar() {
         JButton okayButton = new JButton(Localization.get(LC.OKAY));
-        okayButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                saveCard();
-                close();
-            }
+        okayButton.addActionListener(evt -> {
+            saveCard();
+            close();
         });
 
         JButton cancelButton = new JButton(Localization.get(LC.CANCEL));
-        cancelButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                hideFrame();
-            }
-        });
+        cancelButton.addActionListener(evt -> hideFrame());
 
-        m_applyButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                saveCard();
-            }
-        });
+        m_applyButton.addActionListener(evt -> saveCard());
 
         JPanel buttonPanel = ButtonBarFactory.buildOKCancelApplyBar(okayButton, cancelButton, m_applyButton);
         buttonPanel.setBorder(new EmptyBorder(3, 3, 3, 3));

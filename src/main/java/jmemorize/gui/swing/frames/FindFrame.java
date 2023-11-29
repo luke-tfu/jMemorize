@@ -105,6 +105,7 @@ public class FindFrame extends EscapableFrame implements CategoryObserver, Progr
             setName(Localization.get("FindTool.FIND")); //$NON-NLS-1$
         }
 
+        @Override
         public void actionPerformed(java.awt.event.ActionEvent e) {
             search();
         }
@@ -115,6 +116,7 @@ public class FindFrame extends EscapableFrame implements CategoryObserver, Progr
             setName(Localization.get(LC.CANCEL));
         }
 
+        @Override
         public void actionPerformed(java.awt.event.ActionEvent e) {
             close();
         }
@@ -175,6 +177,7 @@ public class FindFrame extends EscapableFrame implements CategoryObserver, Progr
         m_cardTable.getView().setCards(results, m_searchCategory);
     }
 
+    @Override
     public boolean close() {
         setVisible(false);
         return true;
@@ -183,6 +186,7 @@ public class FindFrame extends EscapableFrame implements CategoryObserver, Progr
     /*
      * @see jmemorize.core.CategoryObserver#onCardEvent
      */
+    @Override
     public void onCardEvent(int type, Card card, Category category, int deck) {
         // CHECK move into cardtable!?
         List<Card> cards = m_cardTable.getView().getCards();
@@ -199,6 +203,7 @@ public class FindFrame extends EscapableFrame implements CategoryObserver, Progr
     /*
      * @see jmemorize.core.CategoryObserver#onCategoryEvent
      */
+    @Override
     public void onCategoryEvent(int type, Category category) {
         // category combo box handles this event by itself
     }
@@ -207,11 +212,7 @@ public class FindFrame extends EscapableFrame implements CategoryObserver, Progr
         return m_cardTable;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.Main.ProgramEndObserver
-     */
+    @Override
     public void onProgramEnd() {
         Settings.storeFrameState(this, FRAME_ID);
     }
@@ -261,14 +262,17 @@ public class FindFrame extends EscapableFrame implements CategoryObserver, Progr
         m_searchTextBox.setMaximumRowCount(10);
 
         m_searchTextBox.addPopupMenuListener(new PopupMenuListener() {
+            @Override
             public void popupMenuCanceled(PopupMenuEvent arg0) {
                 // ignore
             }
 
+            @Override
             public void popupMenuWillBecomeInvisible(PopupMenuEvent arg0) {
                 // ignore
             }
 
+            @Override
             public void popupMenuWillBecomeVisible(PopupMenuEvent arg0) {
                 m_searchTextBox.setModel(new DefaultComboBoxModel(m_recentSearchTexts.getItems().toArray()));
             }
@@ -276,25 +280,30 @@ public class FindFrame extends EscapableFrame implements CategoryObserver, Progr
 
         Component comp = m_searchTextBox.getEditor().getEditorComponent();
         comp.addKeyListener(new KeyListener() {
+            @Override
             public void keyPressed(KeyEvent e) {
             }
 
+            @Override
             public void keyReleased(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     search();
                 }
             }
 
+            @Override
             public void keyTyped(KeyEvent e) {
             }
         });
 
         Component editorComp = m_searchTextBox.getEditor().getEditorComponent();
         editorComp.addFocusListener(new FocusListener() {
+            @Override
             public void focusGained(FocusEvent e) {
                 m_searchTextBox.getEditor().selectAll();
             }
 
+            @Override
             public void focusLost(FocusEvent e) {
                 // ignore
             }
@@ -352,6 +361,7 @@ public class FindFrame extends EscapableFrame implements CategoryObserver, Progr
         KeyStroke keyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
         m_cardTable.getInputMap().put(keyStroke, "Cancel"); //$NON-NLS-1$
         m_cardTable.getActionMap().put("Cancel", new AbstractAction() { //$NON-NLS-1$
+            @Override
             public void actionPerformed(ActionEvent e) {
                 close();
             }
@@ -361,12 +371,14 @@ public class FindFrame extends EscapableFrame implements CategoryObserver, Progr
         keyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0);
         m_cardTable.getInputMap().put(keyStroke, "Edit"); //$NON-NLS-1$
         m_cardTable.getActionMap().put("Edit", new AbstractAction() { //$NON-NLS-1$
+            @Override
             public void actionPerformed(ActionEvent e) {
                 editCards();
             }
         });
 
         m_cardTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 if (evt.getClickCount() == 2) {
                     editCards();

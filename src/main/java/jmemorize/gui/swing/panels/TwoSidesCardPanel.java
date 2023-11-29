@@ -76,14 +76,17 @@ public class TwoSidesCardPanel extends CardPanel implements CardFontObserver {
      */
     public void setTextSides(FormattedText frontside, FormattedText backside) {
         DocumentListener docListener = new DocumentListener() {
+            @Override
             public void changedUpdate(DocumentEvent e) {
                 notifyTextObservers();
             }
 
+            @Override
             public void insertUpdate(DocumentEvent e) {
                 notifyTextObservers();
             }
 
+            @Override
             public void removeUpdate(DocumentEvent e) {
                 notifyTextObservers();
             }
@@ -168,11 +171,7 @@ public class TwoSidesCardPanel extends CardPanel implements CardFontObserver {
         return validFront && validBack;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.Settings.CardFontObserver
-     */
+    @Override
     public void fontChanged(FontType type, CardFont font) {
         if (type == FontType.CARD_FRONT && m_frontSide != null)
             m_frontSide.setCardFont(font);

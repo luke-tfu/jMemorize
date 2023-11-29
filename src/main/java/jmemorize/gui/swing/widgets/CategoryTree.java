@@ -38,8 +38,6 @@ import javax.swing.JTree;
 import javax.swing.SwingUtilities;
 import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
-import javax.swing.event.TreeSelectionEvent;
-import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellEditor;
 import javax.swing.tree.DefaultTreeCellRenderer;
@@ -79,6 +77,7 @@ public class CategoryTree extends JTree implements CategoryObserver, SelectionPr
         /**
          * @see javax.swing.tree.DefaultTreeCellRenderer#getTreeCellRendererComponent
          */
+        @Override
         public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded,
                 boolean leaf, int row, boolean hasFocus) {
             JLabel label = (JLabel) super.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
@@ -107,6 +106,7 @@ public class CategoryTree extends JTree implements CategoryObserver, SelectionPr
          * 
          * @see javax.swing.tree.DefaultTreeModel#valueForPathChanged
          */
+        @Override
         public void valueForPathChanged(TreePath path, Object newValue) {
             DefaultMutableTreeNode aNode = (DefaultMutableTreeNode) path.getLastPathComponent();
             Category category = (Category) aNode.getUserObject();
@@ -142,6 +142,7 @@ public class CategoryTree extends JTree implements CategoryObserver, SelectionPr
         /**
          * @see javax.swing.tree.DefaultTreeCellEditor#isCellEditable
          */
+        @Override
         public boolean isCellEditable(EventObject event) {
             // event is null if edit is started by click-pause-click
             if (event != null) {
@@ -161,6 +162,7 @@ public class CategoryTree extends JTree implements CategoryObserver, SelectionPr
         /**
          * @see javax.swing.tree.DefaultTreeCellEditor#getTreeCellEditorComponent
          */
+        @Override
         public Component getTreeCellEditorComponent(JTree tree, Object value, boolean isSelected, boolean expanded,
                 boolean leaf, int row) {
             DefaultMutableTreeNode node = (DefaultMutableTreeNode) value;
@@ -179,30 +181,37 @@ public class CategoryTree extends JTree implements CategoryObserver, SelectionPr
             m_wrapped = original;
         }
 
+        @Override
         public void addPropertyChangeListener(PropertyChangeListener listener) {
             m_wrapped.addPropertyChangeListener(listener);
         }
 
+        @Override
         public Object getValue(String key) {
             return m_wrapped.getValue(key);
         }
 
+        @Override
         public boolean isEnabled() {
             return m_wrapped.isEnabled();
         }
 
+        @Override
         public void putValue(String key, Object value) {
             m_wrapped.putValue(key, value);
         }
 
+        @Override
         public void removePropertyChangeListener(PropertyChangeListener listener) {
             m_wrapped.removePropertyChangeListener(listener);
         }
 
+        @Override
         public void setEnabled(boolean b) {
             m_wrapped.setEnabled(b);
         }
 
+        @Override
         public void actionPerformed(ActionEvent e) {
             m_wrapped.actionPerformed(e);
             setSelectedCategory(m_beforeMenuCategory);
@@ -296,6 +305,7 @@ public class CategoryTree extends JTree implements CategoryObserver, SelectionPr
     /*
      * @see jmemorize.core.CategoryObserver#onCategoryEvent
      */
+    @Override
     public void onCategoryEvent(int type, Category category) {
         MutableTreeNode parent = null;
 
@@ -326,33 +336,22 @@ public class CategoryTree extends JTree implements CategoryObserver, SelectionPr
     /*
      * @see jmemorize.core.CategoryObserver#onCardEvent
      */
+    @Override
     public void onCardEvent(int type, Card card, Category category, int deck) {
         // ignore
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public void addSelectionObserver(SelectionObserver observer) {
         m_selectionObservers.add(observer);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public void removeSelectionObserver(SelectionObserver observer) {
         m_selectionObservers.remove(observer);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public Category getCategory() {
         TreePath path = getSelectionPath();
 
@@ -364,47 +363,27 @@ public class CategoryTree extends JTree implements CategoryObserver, SelectionPr
         return null;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public JComponent getDefaultFocusOwner() {
         return this;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public JFrame getFrame() {
         return Main.getInstance().getFrame();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public List<Card> getRelatedCards() {
         return null;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public List<Card> getSelectedCards() {
         return null;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
+    @Override
     public List<Category> getSelectedCategories() {
         List<Category> categories = new ArrayList<Category>();
         categories.add(getCategory());
@@ -418,13 +397,10 @@ public class CategoryTree extends JTree implements CategoryObserver, SelectionPr
     }
 
     private void hookCategoryContextMenu() {
-        addTreeSelectionListener(new TreeSelectionListener() {
-            public void valueChanged(TreeSelectionEvent e) {
-                updateSelectionObservers();
-            }
-        });
+        addTreeSelectionListener(e -> updateSelectionObservers());
 
         addMouseListener(new MouseAdapter() {
+            @Override
             public void mousePressed(MouseEvent e) {
                 if (SwingUtilities.isLeftMouseButton(e)) {
                     int row = getRowForLocation(e.getX(), e.getY());
@@ -443,6 +419,7 @@ public class CategoryTree extends JTree implements CategoryObserver, SelectionPr
                 }
             }
 
+            @Override
             public void mouseClicked(MouseEvent e) {
                 if (SwingUtilities.isRightMouseButton(e)) {
                     int row = getRowForLocation(e.getX(), e.getY());
@@ -473,6 +450,7 @@ public class CategoryTree extends JTree implements CategoryObserver, SelectionPr
         menu.add(new ActionWrapper(new PasteAction(this)));
 
         menu.addPopupMenuListener(new PopupMenuListener() {
+            @Override
             public void popupMenuCanceled(PopupMenuEvent e) {
                 // if (!m_reopeningCategoryMenu)
                 {
@@ -482,10 +460,12 @@ public class CategoryTree extends JTree implements CategoryObserver, SelectionPr
                 m_reopeningCategoryMenu = false;
             }
 
+            @Override
             public void popupMenuWillBecomeInvisible(PopupMenuEvent e) {
                 // ignore
             }
 
+            @Override
             public void popupMenuWillBecomeVisible(PopupMenuEvent e) {
                 // ignore
             }

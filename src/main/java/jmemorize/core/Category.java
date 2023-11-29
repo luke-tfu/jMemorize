@@ -480,11 +480,7 @@ public class Category implements Events {
         return list;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
+    @Override
     public String toString() {
         return "Category(" + m_name + ")"; //$NON-NLS-1$ //$NON-NLS-2$
     }

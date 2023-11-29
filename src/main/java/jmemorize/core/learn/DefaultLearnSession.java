@@ -81,6 +81,7 @@ public class DefaultLearnSession implements CategoryObserver, LearnSession {
         /*
          * @see java.util.Comparator
          */
+        @Override
         public int compare(CardInfo card0, CardInfo card1) {
             if (card0.getLevel() < card1.getLevel()) {
                 return -1;
@@ -245,11 +246,7 @@ public class DefaultLearnSession implements CategoryObserver, LearnSession {
         // from the current class may be chosen next.) This is what we want here.
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LearnSession
-     */
+    @Override
     public void startLearning() {
         if (m_learningStarted)
             throw new IllegalStateException("startLearning should only happen once!");
@@ -266,11 +263,7 @@ public class DefaultLearnSession implements CategoryObserver, LearnSession {
         gotoNextCard();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LearnSession
-     */
+    @Override
     public void endLearning() {
         m_end = new Date();
 
@@ -278,73 +271,47 @@ public class DefaultLearnSession implements CategoryObserver, LearnSession {
         m_provider.sessionEnded(this);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LearnSession
-     */
+    @Override
     public LearnSettings getSettings() {
         return m_settings;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LearnSession
-     */
+    @Override
     public Date getStart() {
         return m_start;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LearnSession
-     */
+    @Override
     public Date getEnd() {
         return m_end;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LearnSession
-     */
+    @Override
     public Card getCurrentCard() {
         return m_currentCardInfo.getCard();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LearnSession
-     */
+    @Override
     public Set<Card> getCardsLeft() {
         return Collections.unmodifiableSet(toCardSet(m_cardsActive));
     }
 
+    @Override
     public int getNCardsPartiallyLearned() {
         return m_cardsActivePartiallyLearned.size();
     }
 
+    @Override
     public int getNCardsLearned() {
         return m_cardsLearned.size();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LearnSession
-     */
+    @Override
     public Category getCategory() {
         return m_category;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LearnSession
-     */
+    @Override
     public void cardChecked(boolean passed, boolean shownFlipped) {
         Card currentCard = m_currentCardInfo.getCard();
 
@@ -422,11 +389,7 @@ public class DefaultLearnSession implements CategoryObserver, LearnSession {
         // program flow continues there.
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LearnSession
-     */
+    @Override
     public void cardSkipped() {
         Card currentCard = m_currentCardInfo.getCard();
 
@@ -465,11 +428,7 @@ public class DefaultLearnSession implements CategoryObserver, LearnSession {
         // program flow continues in onCardEvent
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LearnSession
-     */
+    @Override
     public Set<Card> getPassedCards() {
         // "passed" = Learned and not Failed
         Set<Card> tempSet = new HashSet<Card>(m_cardsLearned);
@@ -477,51 +436,31 @@ public class DefaultLearnSession implements CategoryObserver, LearnSession {
         return Collections.unmodifiableSet(tempSet);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LearnSession
-     */
+    @Override
     public Set<Card> getFailedCards() {
         Set<Card> tempSet = new HashSet<Card>(m_cardsEverFailed);
         tempSet.removeAll(m_cardsLearned);
         return Collections.unmodifiableSet(tempSet);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LearnSession
-     */
+    @Override
     public Set<Card> getSkippedCards() {
         return Collections.unmodifiableSet(m_cardsSkipped);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LearnSession
-     */
+    @Override
     public Set<Card> getRelearnedCards() {
         Set<Card> tempSet = new HashSet<Card>(m_cardsEverFailed);
         tempSet.retainAll(m_cardsLearned);
         return Collections.unmodifiableSet(tempSet);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LearnSession
-     */
+    @Override
     public void onTimer() {
         m_quit = true;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.CategoryObserver
-     */
+    @Override
     public void onCardEvent(int type, Card card, Category category, int deck) {
         CardInfo cardInfo = getCardInfo(card);
 
@@ -566,50 +505,30 @@ public class DefaultLearnSession implements CategoryObserver, LearnSession {
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.CategoryObserver
-     */
+    @Override
     public void onCategoryEvent(int type, Category category) {
         // no category events should occure while learning.
         // ignore
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LearnSession
-     */
+    @Override
     public List<Card> getCheckedCards() {
         // TODO the meaning of this collides with the naming of checkCard(..)
         // because it also includes skipped cards
         return Collections.unmodifiableList(m_cardsChecked);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LearnSession
-     */
+    @Override
     public boolean isRelevant() {
         return m_cardsEverFailed.size() > 0 || m_cardsLearned.size() > 0;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LearnSession
-     */
+    @Override
     public void addObserver(LearnCardObserver observer) {
         m_cardObservers.add(observer);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.LearnSession
-     */
+    @Override
     public void removeObserver(LearnCardObserver observer) {
         m_cardObservers.remove(observer);
     }
@@ -623,6 +542,7 @@ public class DefaultLearnSession implements CategoryObserver, LearnSession {
         return m_currentCardInfo.getLevel();
     }
 
+    @Override
     public boolean isQuit() {
         boolean noCardsLeft = m_cardsActive.size() == 0;
         boolean limitReached = m_settings.isCardLimitEnabled() && m_cardsLearned.size() >= m_settings.getCardLimit();

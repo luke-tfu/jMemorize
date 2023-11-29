@@ -84,6 +84,7 @@ public class Lesson implements CategoryObserver {
     /*
      * @see jmemorize.core.CategoryObserver
      */
+    @Override
     public void onCategoryEvent(int type, Category category) {
         setCanSave(true);
     }
@@ -91,6 +92,7 @@ public class Lesson implements CategoryObserver {
     /*
      * @see jmemorize.core.CategoryObserver
      */
+    @Override
     public void onCardEvent(int type, Card card, Category category, int deck) {
         if (type != EXPIRED_EVENT) {
             setCanSave(true);
@@ -105,11 +107,7 @@ public class Lesson implements CategoryObserver {
         return new Lesson(m_rootCategory.cloneWithoutProgress(), true);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
+    @Override
     public boolean equals(Object obj) {
         if (obj instanceof Lesson) {
             Lesson other = (Lesson) obj;
@@ -119,20 +117,12 @@ public class Lesson implements CategoryObserver {
         return false;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#hashCode()
-     */
+    @Override
     public int hashCode() {
         return getRootCategory().hashCode();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
+    @Override
     public String toString() {
         return "Lesson(" + getFile() + ")";
     }

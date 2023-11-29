@@ -190,29 +190,14 @@ public class MainFrame extends JFrame
         updateSelectionObservers();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
     public List<Card> getRelatedCards() {
         return m_focusedCategories == null ? getCurrentSelectionProvider().getRelatedCards() : null;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
     public List<Card> getSelectedCards() {
         return m_focusedCategories == null ? getCurrentSelectionProvider().getSelectedCards() : null;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
     public List<Category> getSelectedCategories() {
         return m_focusedCategories; // can be null
     }
@@ -224,20 +209,10 @@ public class MainFrame extends JFrame
         return m_category;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
     public void addSelectionObserver(SelectionObserver observer) {
         m_selectionObservers.add(observer);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
     public void removeSelectionObserver(SelectionObserver observer) {
         m_selectionObservers.remove(observer);
     }
@@ -281,21 +256,11 @@ public class MainFrame extends JFrame
         updateSelectionObservers();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
     public JComponent getDefaultFocusOwner() {
         return m_categoryTree.isFocusOwner() ? (JComponent) m_categoryTree
                 : (JComponent) m_deckTablePanel.getCardTable();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.SelectionProvider
-     */
     public JFrame getFrame() {
         return this;
     }
@@ -374,22 +339,12 @@ public class MainFrame extends JFrame
         return m_verticalSplitPane;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.CategoryObserver
-     */
     public void onCategoryEvent(int type, Category category) {
         if (type == REMOVED_EVENT) {
             setCategory(m_main.getLesson().getRootCategory()); // HACK
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.CategoryObserver
-     */
     public void onCardEvent(int type, Card card, Category category, int deck) {
         // ignore
     }
@@ -510,11 +465,6 @@ public class MainFrame extends JFrame
         return true;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.Main.ProgramEndObserver
-     */
     public void onProgramEnd() {
         int hSize = m_showTreeButton.isSelected() ? m_horizontalSplitPane.getDividerLocation() : m_categoryTreeWidth;
         Settings.storeCategoryTreeWidth(hSize);
@@ -527,20 +477,10 @@ public class MainFrame extends JFrame
         Settings.storeFrameState(this, FRAME_ID);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.Main.LearnSessionStartObserver
-     */
     public void sessionStarted(LearnSession session) {
         gotoLearnMode();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.core.Main.LearnSessionStartObserver
-     */
     public void sessionEnded(LearnSession session) {
         showSessionChart(session);
         gotoBrowseMode();

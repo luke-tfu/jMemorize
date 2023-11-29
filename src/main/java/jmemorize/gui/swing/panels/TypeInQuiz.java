@@ -11,21 +11,13 @@ public class TypeInQuiz implements Quiz {
     private CardSidePanel m_cardSide;
     private FormattedText m_text;
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.Quiz
-     */
+    @Override
     public void showQuestion(CardSide answerCardSide) {
         m_text = answerCardSide.getText(); // TODO add images support
         m_cardSide.setText(FormattedText.EMPTY);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.Quiz
-     */
+    @Override
     public float showAnswer() {
         String actual = m_cardSide.getText().getUnformatted();
         String expected = m_text.getUnformatted();
@@ -38,38 +30,22 @@ public class TypeInQuiz implements Quiz {
         return -1f;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.Quiz
-     */
+    @Override
     public JPanel getVisual() {
         m_cardSide = new CardSidePanel();
         return m_cardSide;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.Quiz
-     */
+    @Override
     public String getHelpText() {
         return "Type in the answer";
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.Quiz
-     */
+    @Override
     public void setQuestionFont(CardFont font) {
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see jmemorize.gui.swing.Quiz
-     */
+    @Override
     public void setAnswerFont(CardFont font) {
     }
 }
