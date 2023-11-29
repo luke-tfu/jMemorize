@@ -69,7 +69,7 @@ public class EditCardFrame extends EscapableFrame implements CategoryObserver, S
         public NextCardAction() {
             setName(Localization.get(LC.NEXT_CARD));
             setDescription(Localization.get(LC.NEXT_CARD_DESC));
-            setIcon("/resource/icons/card_next.gif"); //$NON-NLS-1$
+            setIcon("/resource/icons/card_next.gif");
             setMnemonic(1);
         }
 
@@ -84,7 +84,7 @@ public class EditCardFrame extends EscapableFrame implements CategoryObserver, S
         public PreviousCardAction() {
             setName(Localization.get(LC.PREV_CARD));
             setDescription(Localization.get(LC.PREV_CARD_DESC));
-            setIcon("/resource/icons/card_prev.gif"); //$NON-NLS-1$
+            setIcon("/resource/icons/card_prev.gif");
             setMnemonic(1);
         }
 
@@ -96,7 +96,7 @@ public class EditCardFrame extends EscapableFrame implements CategoryObserver, S
     }
 
     private static final int MAX_TITLE_LENGTH = 80;
-    private static final String FRAME_ID = "editcard"; //$NON-NLS-1$
+    private static final String FRAME_ID = "editcard";
 
     private List<SelectionObserver> m_selectionObservers = new ArrayList<SelectionObserver>();
 
@@ -295,8 +295,8 @@ public class EditCardFrame extends EscapableFrame implements CategoryObserver, S
      */
     private boolean confirmCardSides() {
         if (isChanged()) {
-            int n = JOptionPane.showConfirmDialog(this, Localization.get("EditCard.MODIFIED_WARN"), //$NON-NLS-1$
-                    Localization.get("EditCard.MODIFIED_WARN_TITLE"), //$NON-NLS-1$
+            int n = JOptionPane.showConfirmDialog(this, Localization.get("EditCard.MODIFIED_WARN"),
+                    Localization.get("EditCard.MODIFIED_WARN_TITLE"),
                     JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
 
             if (n == JOptionPane.CANCEL_OPTION) {
@@ -396,7 +396,7 @@ public class EditCardFrame extends EscapableFrame implements CategoryObserver, S
         String title = m_currentCard.getFrontSide().getText().getUnformatted();
         title = title.replace('\n', ' ');
         if (title.length() > MAX_TITLE_LENGTH) {
-            title = title.substring(0, MAX_TITLE_LENGTH) + "..."; //$NON-NLS-1$
+            title = title.substring(0, MAX_TITLE_LENGTH) + "...";
         }
         setTitle(title);
 
@@ -490,7 +490,7 @@ public class EditCardFrame extends EscapableFrame implements CategoryObserver, S
         getContentPane().add(buildHeaderPanel(), BorderLayout.CENTER);
         getContentPane().add(buildBottomButtonBar(), BorderLayout.SOUTH);
 
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/resource/icons/card_edit.gif"))); //$NON-NLS-1$
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/resource/icons/card_edit.gif")));
         pack();
     }
 

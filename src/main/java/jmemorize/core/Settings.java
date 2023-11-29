@@ -60,49 +60,49 @@ public class Settings {
     private static List<CardFontObserver> m_cardFontObservers = new LinkedList<CardFontObserver>();
 
     // locale keys
-    private final static String LOCALE_LANG = "locale-lang"; //$NON-NLS-1$
-    private final static String LOCALE_COUNTRY = "locale-country"; //$NON-NLS-1$
+    private final static String LOCALE_LANG = "locale-lang";
+    private final static String LOCALE_COUNTRY = "locale-country";
 
     // font keys
-    private final static String FONT_FRONT_KEY = "front"; //$NON-NLS-1$
-    private final static String FONT_FLIP_KEY = "flip"; //$NON-NLS-1$
-    private final static String FONT_LEARN_FRONT_KEY = "learn-front"; //$NON-NLS-1$
-    private final static String FONT_LEARN_FLIP_KEY = "learn-flip"; //$NON-NLS-1$
-    private final static String FONT_TABLE_FRONT_KEY = "table-front"; //$NON-NLS-1$
-    private final static String FONT_TABLE_FLIP_KEY = "table-flip"; //$NON-NLS-1$
+    private final static String FONT_FRONT_KEY = "front";
+    private final static String FONT_FLIP_KEY = "flip";
+    private final static String FONT_LEARN_FRONT_KEY = "learn-front";
+    private final static String FONT_LEARN_FLIP_KEY = "learn-flip";
+    private final static String FONT_TABLE_FRONT_KEY = "table-front";
+    private final static String FONT_TABLE_FLIP_KEY = "table-flip";
 
     // strategy keys
-    private final static String LIMIT_CARDS_ENABLED = "limit.cards.enabled"; //$NON-NLS-1$
-    private final static String LIMIT_TIME_ENABLED = "limit.time.enabled"; //$NON-NLS-1$
-    private final static String LIMIT_CARDS = "limit.cards"; //$NON-NLS-1$
-    private final static String LIMIT_TIME = "limit.time"; //$NON-NLS-1$
-    private final static String RETEST_FAILED_CARDS = "retest-failed-cards"; //$NON-NLS-1$
+    private final static String LIMIT_CARDS_ENABLED = "limit.cards.enabled";
+    private final static String LIMIT_TIME_ENABLED = "limit.time.enabled";
+    private final static String LIMIT_CARDS = "limit.cards";
+    private final static String LIMIT_TIME = "limit.time";
+    private final static String RETEST_FAILED_CARDS = "retest-failed-cards";
 
-    private final static String SCHEDULE_PRESET = "schedule.preset"; //$NON-NLS-1$
-    private final static String SCHEDULE = "schedule.values"; //$NON-NLS-1$
+    private final static String SCHEDULE_PRESET = "schedule.preset";
+    private final static String SCHEDULE = "schedule.values";
 
-    private final static String SCHEDULE_FIXED_EXPIRATION_ENABLED = "schedule.fixed-expiration.enabled"; //$NON-NLS-1$
-    private final static String SCHEDULE_FIXED_EXPIRATION_HOUR = "schedule.fixed-expiration.hour"; //$NON-NLS-1$
-    private final static String SCHEDULE_FIXED_EXPIRATION_MINUTE = "schedule.fixed-expiration.minute"; //$NON-NLS-1$
+    private final static String SCHEDULE_FIXED_EXPIRATION_ENABLED = "schedule.fixed-expiration.enabled";
+    private final static String SCHEDULE_FIXED_EXPIRATION_HOUR = "schedule.fixed-expiration.hour";
+    private final static String SCHEDULE_FIXED_EXPIRATION_MINUTE = "schedule.fixed-expiration.minute";
 
-    private final static String SIDES = "sides"; //$NON-NLS-1$
-    private final static String SIDES_FRONT_AMOUNT = "sides-front-amount"; //$NON-NLS-1$
-    private final static String SIDES_FLIP_AMOUNT = "sides-flip-amount"; //$NON-NLS-1$
-    private final static String GROUP_BY_CATEGORY = "card-order.group-by-category"; //$NON-NLS-1$
-    private final static String CATEGORY_ORDER = "card-order.group-by-category.order"; //$NON-NLS-1$
-    private final static String SHUFFLE_CARDS = "card-order.shuffle"; //$NON-NLS-1$
+    private final static String SIDES = "sides";
+    private final static String SIDES_FRONT_AMOUNT = "sides-front-amount";
+    private final static String SIDES_FLIP_AMOUNT = "sides-flip-amount";
+    private final static String GROUP_BY_CATEGORY = "card-order.group-by-category";
+    private final static String CATEGORY_ORDER = "card-order.group-by-category.order";
+    private final static String SHUFFLE_CARDS = "card-order.shuffle";
 
     // gui
-    private final static String FRAME_MAXIMIZED = "frame.maximized"; //$NON-NLS-1$
-    private final static String FRAME_POSITION = "frame.position"; //$NON-NLS-1$
-    private final static String FRAME_SIZE = "frame.size"; //$NON-NLS-1$
+    private final static String FRAME_MAXIMIZED = "frame.maximized";
+    private final static String FRAME_POSITION = "frame.position";
+    private final static String FRAME_SIZE = "frame.size";
 
     // etc keys
-    private final static String LAST_DIRECTORY = "last-directory"; //$NON-NLS-1$
-    private final static String SAVE_COMPRESSED = "gzip"; //$NON-NLS-1$
-    private final static String CATEGORY_TREE_WIDTH = "category-tree.width"; //$NON-NLS-1$
-    private final static String CATEGORY_TREE_VISIBLE = "category-tree.visible"; //$NON-NLS-1$
-    private final static String MAIN_DIVIDER_LOCATION = "main-divider.location"; //$NON-NLS-1$
+    private final static String LAST_DIRECTORY = "last-directory";
+    private final static String SAVE_COMPRESSED = "gzip";
+    private final static String CATEGORY_TREE_WIDTH = "category-tree.width";
+    private final static String CATEGORY_TREE_VISIBLE = "category-tree.visible";
+    private final static String MAIN_DIVIDER_LOCATION = "main-divider.location";
 
     public static void storeLocale(Locale locale) {
         PREFS.put(LOCALE_LANG, locale.getLanguage());

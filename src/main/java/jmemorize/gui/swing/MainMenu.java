@@ -73,7 +73,7 @@ public class MainMenu extends JMenuBar implements RecentItemsObserver {
     }
 
     private void buildMenu(SelectionProvider provider) {
-        m_fileMenu = new JMenu(Localization.get("MainFrame.MENU_FILE")); //$NON-NLS-1$
+        m_fileMenu = new JMenu(Localization.get("MainFrame.MENU_FILE"));
         add(m_fileMenu);
 
         buildFileMenu();
@@ -83,7 +83,7 @@ public class MainMenu extends JMenuBar implements RecentItemsObserver {
     }
 
     private JMenu buildLearnMenu(SelectionProvider provider) {
-        JMenu learnMenu = new JMenu(Localization.get("MainFrame.MENU_LESSON")); //$NON-NLS-1$
+        JMenu learnMenu = new JMenu(Localization.get("MainFrame.MENU_LESSON"));
         learnMenu.add(new JMenuItem(new AddCardAction(provider)));
         learnMenu.add(new JMenuItem(new AddCategoryAction(provider)));
         learnMenu.addSeparator();
@@ -93,7 +93,7 @@ public class MainMenu extends JMenuBar implements RecentItemsObserver {
     }
 
     private JMenu buildEditMenu(SelectionProvider provider) {
-        JMenu editMenu = new JMenu(Localization.get("MainFrame.MENU_EDIT")); //$NON-NLS-1$
+        JMenu editMenu = new JMenu(Localization.get("MainFrame.MENU_EDIT"));
         editMenu.add(new JMenuItem(new EditCardAction(provider)));
         editMenu.addSeparator();
         editMenu.add(new JMenuItem(new CutAction(provider)));
@@ -112,24 +112,24 @@ public class MainMenu extends JMenuBar implements RecentItemsObserver {
     }
 
     private JMenu buildHelpMenu() {
-        JMenu menu = new JMenu(Localization.get("MainFrame.MENU_HELP")); //$NON-NLS-1$
+        JMenu menu = new JMenu(Localization.get("MainFrame.MENU_HELP"));
         menu.add(new JMenuItem(new AboutAction()));
         menu.addSeparator();
 
-        menu.add(new JMenuItem(new OpenURLAction(Localization.get("URL.HOMEPAGE"), //$NON-NLS-1$
-                "http://jmemorize.org" //$NON-NLS-1$
+        menu.add(new JMenuItem(new OpenURLAction(Localization.get("URL.HOMEPAGE"),
+                "http://jmemorize.org"
         )));
 
-        menu.add(new JMenuItem(new OpenURLAction(Localization.get("URL.MANUAL"), //$NON-NLS-1$
-                "http://wiki.jmemorize.org/User_Manual" //$NON-NLS-1$
+        menu.add(new JMenuItem(new OpenURLAction(Localization.get("URL.MANUAL"),
+                "http://wiki.jmemorize.org/User_Manual"
         )));
 
-        menu.add(new JMenuItem(new OpenURLAction(Localization.get("URL.FEATURE_TRACKER"), //$NON-NLS-1$
-                "http://sourceforge.net/tracker/?group_id=121967&atid=691941" //$NON-NLS-1$
+        menu.add(new JMenuItem(new OpenURLAction(Localization.get("URL.FEATURE_TRACKER"),
+                "http://sourceforge.net/tracker/?group_id=121967&atid=691941"
         )));
 
-        menu.add(new JMenuItem(new OpenURLAction(Localization.get("URL.BUG_TRACKER"), //$NON-NLS-1$
-                "http://sourceforge.net/tracker/?group_id=121967&atid=691938" //$NON-NLS-1$
+        menu.add(new JMenuItem(new OpenURLAction(Localization.get("URL.BUG_TRACKER"),
+                "http://sourceforge.net/tracker/?group_id=121967&atid=691938"
         )));
 
         return menu;
@@ -143,13 +143,13 @@ public class MainMenu extends JMenuBar implements RecentItemsObserver {
         m_fileMenu.add(new SaveLessonAsAction());
 
         // sub menu for import menu items
-        JMenu importMenu = new JMenu(Localization.get("MainFrame.IMPORT")); //$NON-NLS-1$
-        importMenu.setIcon(new ImageIcon(getClass().getResource("/resource/icons/blank.gif"))); //$NON-NLS-1$
+        JMenu importMenu = new JMenu(Localization.get("MainFrame.IMPORT"));
+        importMenu.setIcon(new ImageIcon(getClass().getResource("/resource/icons/blank.gif")));
         importMenu.add(new ImportJMLAction());
 
         // Sub menu for export menu items
-        JMenu exportMenu = new JMenu(Localization.get("MainFrame.EXPORT")); //$NON-NLS-1$
-        exportMenu.setIcon(new ImageIcon(getClass().getResource("/resource/icons/blank.gif"))); //$NON-NLS-1$
+        JMenu exportMenu = new JMenu(Localization.get("MainFrame.EXPORT"));
+        exportMenu.setIcon(new ImageIcon(getClass().getResource("/resource/icons/blank.gif")));
 
         exportMenu.add(new ExportToTabSeparatedHTML());
         exportMenu.add(new ExportToPDFAction());

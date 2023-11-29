@@ -45,9 +45,9 @@ public class ExportToRTFAction extends AbstractExportAction {
     }
 
     private void setValues() {
-        setName(Localization.get("MainFrame.EXPORT_RTF")); //$NON-NLS-1$
-        setDescription(Localization.get("MainFrame.EXPORT_RTF_DESC")); //$NON-NLS-1$
-        setIcon("/resource/icons/rtf.png"); //$NON-NLS-1$
+        setName(Localization.get("MainFrame.EXPORT_RTF"));
+        setDescription(Localization.get("MainFrame.EXPORT_RTF_DESC"));
+        setIcon("/resource/icons/rtf.png");
         setMnemonic(1);
     }
 }

@@ -52,6 +52,6 @@ public class ExportToCleanLessonAction extends AbstractExportAction {
     private void setValues() {
         setName(Localization.get(LC.EXPORT_CLEAN));
         setDescription(Localization.get(LC.EXPORT_CLEAN_DESC));
-        setIcon("/resource/icons/file_saveas.gif"); //$NON-NLS-1$
+        setIcon("/resource/icons/file_saveas.gif");
     }
 }

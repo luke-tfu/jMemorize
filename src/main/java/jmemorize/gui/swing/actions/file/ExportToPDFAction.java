@@ -41,13 +41,13 @@ public class ExportToPDFAction extends AbstractExportAction {
 
     @Override
     protected ExtensionFileFilter getFileFilter() {
-        return new ExtensionFileFilter("pdf", "PDF - Portable Document Format"); //$NON-NLS-1$
+        return new ExtensionFileFilter("pdf", "PDF - Portable Document Format");
     }
 
     private void setValues() {
-        setName(Localization.get("MainFrame.EXPORT_PDF")); //$NON-NLS-1$
-        setDescription(Localization.get("MainFrame.EXPORT_PDF_DESC")); //$NON-NLS-1$
-        setIcon("/resource/icons/pdf.gif"); //$NON-NLS-1$
+        setName(Localization.get("MainFrame.EXPORT_PDF"));
+        setDescription(Localization.get("MainFrame.EXPORT_PDF_DESC"));
+        setIcon("/resource/icons/pdf.gif");
         setMnemonic(1);
     }
 }

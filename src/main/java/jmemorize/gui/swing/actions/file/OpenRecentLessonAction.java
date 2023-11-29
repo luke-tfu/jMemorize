@@ -40,9 +40,9 @@ public class OpenRecentLessonAction extends AbstractSessionDisabledAction {
         m_id = id;
         File file = new File(Main.getInstance().getRecentLessonFiles().get(id));
 
-        setName((id + 1) + ". " + file.getName()); //$NON-NLS-1$
-        setDescription(file.toString()); // $NON-NLS-1$
-        setIcon("/resource/icons/blank.gif"); //$NON-NLS-1$
+        setName((id + 1) + ". " + file.getName());
+        setDescription(file.toString());
+        setIcon("/resource/icons/blank.gif");
     }
 
     @Override

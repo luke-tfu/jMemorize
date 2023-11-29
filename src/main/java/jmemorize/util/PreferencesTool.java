@@ -46,7 +46,7 @@ public class PreferencesTool {
             return null;
         }
 
-        String[] strings = intArrayString.split(","); //$NON-NLS-1$
+        String[] strings = intArrayString.split(",");
         int[] ints = new int[strings.length];
         for (int i = 0; i < strings.length; i++) {
             ints[i] = Integer.parseInt(strings[i]);

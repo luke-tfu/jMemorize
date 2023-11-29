@@ -77,7 +77,7 @@ public class LearnPanel extends JPanel implements SelectionProvider, LearnSessio
     private CardCounterPanel m_cardCounterPanel = new CardCounterPanel();
 
     private JLabel m_flippedLabel = new JLabel(Localization.get(LC.LEARN_FLIPPED),
-            new ImageIcon(getClass().getResource("/resource/icons/card_flipped.gif")), //$NON-NLS-1$
+            new ImageIcon(getClass().getResource("/resource/icons/card_flipped.gif")),
             SwingConstants.CENTER);
 
     // member variables so we can make them invisible
@@ -127,7 +127,7 @@ public class LearnPanel extends JPanel implements SelectionProvider, LearnSessio
         m_timerPanel.stop();
 
         if (m_statusBar != null) {
-            m_statusBar.setLeftText(""); //$NON-NLS-1$
+            m_statusBar.setLeftText("");
         }
     }
 
@@ -232,9 +232,9 @@ public class LearnPanel extends JPanel implements SelectionProvider, LearnSessio
         JButton stopLearningButton = new JButton(new StopAction());
 
         // build it using FormLayout
-        FormLayout layout = new FormLayout("center:170px:grow", // columns //$NON-NLS-1$
-                "9dlu, p, 3dlu, p, 12dlu, p, 3dlu, p, 12dlu, p, 3dlu, " + //$NON-NLS-1$
-                        "p, 12dlu, fill:p:grow, 5dlu, p, 5px"); // rows //$NON-NLS-1$
+        FormLayout layout = new FormLayout("center:170px:grow", // columns
+                "9dlu, p, 3dlu, p, 12dlu, p, 3dlu, p, 12dlu, p, 3dlu, " +
+                        "p, 12dlu, fill:p:grow, 5dlu, p, 5px"); // rows
 
         CellConstraints cc = new CellConstraints();
 
@@ -268,7 +268,7 @@ public class LearnPanel extends JPanel implements SelectionProvider, LearnSessio
         int amtLearned = m_currentCard.getLearnedAmount(true) + m_currentCard.getLearnedAmount(false);
 
         m_currentCardProgressBar.setValue(amtLearned);
-        m_currentCardProgressBar.setString(amtLearned + " / " + //$NON-NLS-1$
+        m_currentCardProgressBar.setString(amtLearned + " / " +
                 m_currentCardProgressBar.getMaximum());
     }
 
@@ -277,7 +277,7 @@ public class LearnPanel extends JPanel implements SelectionProvider, LearnSessio
             Object[] args = { Localization.get(LC.STATUS_LEARNING_CATEGORY), m_session.getCategory().getName(),
                     Localization.get(LC.STATUS_CARDS_LEFT), (Integer) (m_session.getCardsLeft().size()) };
 
-            MessageFormat form = new MessageFormat("{0}: {1}  {2}: {3}"); //$NON-NLS-1$
+            MessageFormat form = new MessageFormat("{0}: {1}  {2}: {3}");
             m_statusBar.setLeftText(form.format(args));
         }
     }

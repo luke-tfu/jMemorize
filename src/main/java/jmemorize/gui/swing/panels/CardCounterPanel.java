@@ -309,11 +309,11 @@ public class CardCounterPanel extends JPanel {
             // if (m_showPartiallyPassed)
             // {
             // return m_cardsPartiallyPassed + " + " + m_cardsPassed + " / "
-            // + m_cardsTarget; //$NON-NLS-1$
+            // + m_cardsTarget;
             // }
             // else
             {
-                return m_cardsPassed + " / " + m_cardsTarget; //$NON-NLS-1$
+                return m_cardsPassed + " / " + m_cardsTarget;
             }
         }
         // else text field

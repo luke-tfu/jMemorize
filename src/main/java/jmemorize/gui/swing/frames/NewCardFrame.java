@@ -60,7 +60,7 @@ public class NewCardFrame extends EscapableFrame {
         public NewWindowAction() {
             setName(Localization.get(LC.NEW_CARD_NEW_WINDOW));
             setDescription(Localization.get(LC.NEW_CARD_NEW_WINDOW_DESC));
-            setIcon("/resource/icons/card_add.gif"); //$NON-NLS-1$
+            setIcon("/resource/icons/card_add.gif");
             setAccelerator(KeyEvent.VK_N, InputEvent.CTRL_MASK);
             setMnemonic(7);
         }
@@ -74,7 +74,7 @@ public class NewCardFrame extends EscapableFrame {
         public EditRecentCardAction() {
             setName(Localization.get(LC.NEW_CARD_EDIT_RECENTLY));
             setDescription(Localization.get(LC.NEW_CARD_EDIT_RECENTLY_DESC));
-            setIcon("/resource/icons/card_edit.gif"); //$NON-NLS-1$
+            setIcon("/resource/icons/card_edit.gif");
             setAccelerator(KeyEvent.VK_ENTER, 0);
             setMnemonic(1);
         }
@@ -139,7 +139,7 @@ public class NewCardFrame extends EscapableFrame {
         pack();
 
         setTitle(Localization.get(LC.NEW_CARD_TITLE));
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/resource/icons/card_add.gif"))); //$NON-NLS-1$
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/resource/icons/card_add.gif")));
     }
 
     private JToolBar buildToolBar() {
@@ -160,14 +160,14 @@ public class NewCardFrame extends EscapableFrame {
 
     private JPanel buildButtonBar() {
         // buttons
-        m_createMoreButton = new JButton(Localization.get("NewCard.ADD_AND_NEXT")); //$NON-NLS-1$
+        m_createMoreButton = new JButton(Localization.get("NewCard.ADD_AND_NEXT"));
         m_createMoreButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 createCard(true);
             }
         });
 
-        JButton createButton = new JButton(Localization.get("NewCard.ADD")); //$NON-NLS-1$
+        JButton createButton = new JButton(Localization.get("NewCard.ADD"));
         createButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 createCard(false);

@@ -49,9 +49,9 @@ public class ExitAction extends AbstractSessionDisabledAction {
     }
 
     private void setValues() {
-        setName(Localization.get("MainFrame.EXIT")); //$NON-NLS-1$
-        setDescription(Localization.get("MainFrame.EXIT_DESC")); //$NON-NLS-1$
-        setIcon("/resource/icons/blank.gif"); //$NON-NLS-1$
+        setName(Localization.get("MainFrame.EXIT"));
+        setDescription(Localization.get("MainFrame.EXIT_DESC"));
+        setIcon("/resource/icons/blank.gif");
         setMnemonic(2);
     }
 }

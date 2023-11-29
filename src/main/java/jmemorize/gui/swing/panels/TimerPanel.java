@@ -36,7 +36,7 @@ import jmemorize.gui.Localization;
  */
 public class TimerPanel extends JPanel implements ActionListener {
     // show two digits fully
-    private DecimalFormat m_formater = new DecimalFormat("##00"); //$NON-NLS-1$
+    private DecimalFormat m_formater = new DecimalFormat("##00");
 
     private int m_secondsPassed;
     private int m_secondsTarget;
@@ -89,6 +89,7 @@ public class TimerPanel extends JPanel implements ActionListener {
     /**
      * Is called every second and updates the timer representation.
      */
+    @Override
     public void actionPerformed(ActionEvent evt) {
         m_secondsPassed++;
 
@@ -113,10 +114,10 @@ public class TimerPanel extends JPanel implements ActionListener {
         if (m_secondsTarget > -1) {
             // if target time reached
             if (m_secondsTarget <= m_secondsPassed) {
-                return timeString(m_secondsTarget, m_secondsTarget) + timeExtString(m_secondsTarget) + " " //$NON-NLS-1$
-                        + Localization.get("Time.PASSED") + "!"; //$NON-NLS-1$ //$NON-NLS-2$
+                return timeString(m_secondsTarget, m_secondsTarget) + timeExtString(m_secondsTarget) + " "
+                        + Localization.get("Time.PASSED") + "!";
             } else {
-                return timeString(m_secondsPassed, m_secondsTarget) + " / " + //$NON-NLS-1$
+                return timeString(m_secondsPassed, m_secondsTarget) + " / " +
                         timeString(m_secondsTarget, m_secondsTarget) + timeExtString(m_secondsTarget);
             }
         }
@@ -129,13 +130,13 @@ public class TimerPanel extends JPanel implements ActionListener {
     protected String timeString(int seconds, int secondsTarget) {
         if (secondsTarget > 60 * 60) // show hours if over 60 minutes
         {
-            return (seconds / (60 * 60)) + ":" + m_formater.format((seconds / 60) % 60) //$NON-NLS-1$
-                    + ":" + m_formater.format(seconds % 60); //$NON-NLS-1$
+            return (seconds / (60 * 60)) + ":" + m_formater.format((seconds / 60) % 60)
+                    + ":" + m_formater.format(seconds % 60);
         }
 
         if (secondsTarget > 60) // show minutes if over 60 seconds
         {
-            return (seconds / 60) + ":" + m_formater.format(seconds % 60); //$NON-NLS-1$
+            return (seconds / 60) + ":" + m_formater.format(seconds % 60);
         }
 
         return Integer.toString(seconds);
@@ -143,13 +144,13 @@ public class TimerPanel extends JPanel implements ActionListener {
 
     protected String timeExtString(int seconds) {
         if (seconds > 60 * 60) {
-            return " " + Localization.get("Time.HOURS"); //$NON-NLS-1$ //$NON-NLS-2$
+            return " " + Localization.get("Time.HOURS");
         }
 
         if (seconds > 60) {
-            return " " + Localization.get("Time.MINUTES"); //$NON-NLS-1$ //$NON-NLS-2$
+            return " " + Localization.get("Time.MINUTES");
         }
 
-        return " " + Localization.get("Time.SECONDS"); //$NON-NLS-1$ //$NON-NLS-2$
+        return " " + Localization.get("Time.SECONDS");
     }
 }

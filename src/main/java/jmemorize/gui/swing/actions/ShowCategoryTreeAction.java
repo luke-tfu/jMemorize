@@ -42,9 +42,9 @@ public class ShowCategoryTreeAction extends AbstractSessionDisabledAction {
     }
 
     private void setValues() {
-        setName(Localization.get("MainFrame.CATEGORY_TREE")); //$NON-NLS-1$
-        setDescription(Localization.get("MainFrame.CATEGORY_TREE_DESC")); //$NON-NLS-1$
-        setIcon("/resource/icons/tree.gif"); //$NON-NLS-1$
+        setName(Localization.get("MainFrame.CATEGORY_TREE"));
+        setDescription(Localization.get("MainFrame.CATEGORY_TREE_DESC"));
+        setIcon("/resource/icons/tree.gif");
         setAccelerator(KeyEvent.VK_T, 0);
     }
 }

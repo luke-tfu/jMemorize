@@ -389,7 +389,7 @@ public class LearnSettings {
 
         if (presetIndex < 0 || presetIndex > 4) {
             Logger log = Main.getLogger();
-            log.warning("Preset schedule with this index not found."); //$NON-NLS-1$
+            log.warning("Preset schedule with this index not found.");
 
             presetIndex = 1;
         }

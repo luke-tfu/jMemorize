@@ -49,7 +49,7 @@ public class PasteAction extends AbstractAction2 implements SelectionObserver {
     @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
         GeneralTransferHandler.getPasteAction().actionPerformed(
-                new ActionEvent(m_selectionProvider.getDefaultFocusOwner(), ActionEvent.ACTION_PERFORMED, "paste")); //$NON-NLS-1$
+                new ActionEvent(m_selectionProvider.getDefaultFocusOwner(), ActionEvent.ACTION_PERFORMED, "paste"));
     }
 
     @Override
@@ -72,7 +72,7 @@ public class PasteAction extends AbstractAction2 implements SelectionObserver {
 
     private void setValues() {
         setName(Localization.get(LC.PASTE));
-        setIcon("/resource/icons/edit_paste.gif"); //$NON-NLS-1$
+        setIcon("/resource/icons/edit_paste.gif");
         setAccelerator(KeyEvent.VK_V, SHORTCUT_KEY);
         setMnemonic(1);
     }

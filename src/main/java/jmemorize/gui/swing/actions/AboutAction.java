@@ -38,8 +38,8 @@ public class AboutAction extends AbstractAction2 {
     }
 
     private void setValues() {
-        setName(Localization.get("MainFrame.ABOUT")); //$NON-NLS-1$
-        setDescription(Localization.get("MainFrame.ABOUT_DESC")); //$NON-NLS-1$
+        setName(Localization.get("MainFrame.ABOUT"));
+        setDescription(Localization.get("MainFrame.ABOUT_DESC"));
         setMnemonic(1);
     }
 }

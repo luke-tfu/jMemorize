@@ -46,9 +46,9 @@ public class ExportToTabSeparatedHTML extends AbstractExportAction {
     }
 
     private void setValues() {
-        setName(Localization.get("MainFrame.EXPORT_TXT")); //$NON-NLS-1$
-        setDescription(Localization.get("MainFrame.EXPORT_TXT_DESC")); //$NON-NLS-1$
-        setIcon("/resource/icons/rtf.png"); //$NON-NLS-1$
+        setName(Localization.get("MainFrame.EXPORT_TXT"));
+        setDescription(Localization.get("MainFrame.EXPORT_TXT_DESC"));
+        setIcon("/resource/icons/rtf.png");
         setMnemonic(1);
     }
 }

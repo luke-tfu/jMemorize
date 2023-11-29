@@ -42,9 +42,9 @@ public class SaveLessonAsAction extends AbstractSessionDisabledAction {
     }
 
     private void setValues() {
-        setName(Localization.get("MainFrame.SAVE_AS")); //$NON-NLS-1$
-        setDescription(Localization.get("MainFrame.SAVE_AS_DESC")); //$NON-NLS-1$
-        setIcon("/resource/icons/file_saveas.gif"); //$NON-NLS-1$
+        setName(Localization.get("MainFrame.SAVE_AS"));
+        setDescription(Localization.get("MainFrame.SAVE_AS_DESC"));
+        setIcon("/resource/icons/file_saveas.gif");
         setAccelerator(KeyEvent.VK_S, SHORTCUT_KEY + InputEvent.SHIFT_MASK);
         setMnemonic(2);
     }

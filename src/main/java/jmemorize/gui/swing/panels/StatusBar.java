@@ -87,14 +87,14 @@ public class StatusBar extends JPanel {
                 Localization.get(LC.STATUS_LEARNED), (Integer) (learned), Localization.get(LC.STATUS_EXPIRED),
                 (Integer) (expired), Localization.get(LC.STATUS_UNLEARNED), (Integer) (unlearned) };
 
-        MessageFormat form = new MessageFormat("{0}: {1} ({2}: {3}  {4}: {5}  {6}: {7})"); //$NON-NLS-1$
+        MessageFormat form = new MessageFormat("{0}: {1} ({2}: {3}  {4}: {5}  {6}: {7})");
 
         m_rightLabel.setText(form.format(args));
     }
 
     private JPanel buildStatusBar() {
-        FormLayout layout = new FormLayout("3dlu, p, 9dlu:grow, p, 3dlu", // columns //$NON-NLS-1$
-                "p"); // rows //$NON-NLS-1$
+        FormLayout layout = new FormLayout("3dlu, p, 9dlu:grow, p, 3dlu", // columns
+                "p"); // rows
 
         CellConstraints cc = new CellConstraints();
 

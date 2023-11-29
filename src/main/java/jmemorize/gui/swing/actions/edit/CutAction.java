@@ -48,7 +48,7 @@ public class CutAction extends AbstractSessionDisabledAction implements Selectio
     @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
         GeneralTransferHandler.getCutAction().actionPerformed(
-                new ActionEvent(m_selectionProvider.getDefaultFocusOwner(), ActionEvent.ACTION_PERFORMED, "cut")); //$NON-NLS-1$
+                new ActionEvent(m_selectionProvider.getDefaultFocusOwner(), ActionEvent.ACTION_PERFORMED, "cut"));
     }
 
     @Override
@@ -68,7 +68,7 @@ public class CutAction extends AbstractSessionDisabledAction implements Selectio
 
     private void setValues() {
         setName(Localization.get(LC.CUT));
-        setIcon("/resource/icons/edit_cut.gif"); //$NON-NLS-1$
+        setIcon("/resource/icons/edit_cut.gif");
         setAccelerator(KeyEvent.VK_X, SHORTCUT_KEY);
         setMnemonic(2);
     }

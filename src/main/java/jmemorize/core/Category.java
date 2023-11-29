@@ -396,7 +396,7 @@ public class Category implements Events {
      * Fires a REMOVED_EVENT.
      */
     public void remove() {
-        assert m_parent != null : "Root category can't be deleted"; //$NON-NLS-1$
+        assert m_parent != null : "Root category can't be deleted";
 
         m_parent.m_childCategories.remove(this);
 
@@ -455,7 +455,7 @@ public class Category implements Events {
      *         the path is separated with a slash. The path includes the name of this category as last part.
      */
     public String getPath() {
-        return m_parent != null ? m_parent.getPath() + "/" + getName() : getName(); //$NON-NLS-1$
+        return m_parent != null ? m_parent.getPath() + "/" + getName() : getName();
     }
 
     /**
@@ -482,7 +482,7 @@ public class Category implements Events {
 
     @Override
     public String toString() {
-        return "Category(" + m_name + ")"; //$NON-NLS-1$ //$NON-NLS-2$
+        return "Category(" + m_name + ")";
     }
 
     /*

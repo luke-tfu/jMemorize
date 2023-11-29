@@ -75,7 +75,7 @@ public class QuizPanel extends JPanel implements Events, LearnCardObserver, Cate
     private class ShowAction extends AbstractLearnAction {
         public ShowAction() {
             setName(Localization.get(LC.LEARN_SHOW));
-            setFocusedWindowShortcut("showButton", 'a'); //$NON-NLS-1$
+            setFocusedWindowShortcut("showButton", 'a');
         }
 
         @Override
@@ -88,7 +88,7 @@ public class QuizPanel extends JPanel implements Events, LearnCardObserver, Cate
     private class SkipAction extends AbstractLearnAction {
         public SkipAction() {
             setName(Localization.get(LC.LEARN_SKIP));
-            setFocusedWindowShortcut("skipButton", 's'); //$NON-NLS-1$
+            setFocusedWindowShortcut("skipButton", 's');
         }
 
         @Override
@@ -101,7 +101,7 @@ public class QuizPanel extends JPanel implements Events, LearnCardObserver, Cate
     private class YesAction extends AbstractLearnAction {
         public YesAction() {
             setName(Localization.get(LC.LEARN_YES));
-            setFocusedWindowShortcut("yesButton", 'q'); //$NON-NLS-1$
+            setFocusedWindowShortcut("yesButton", 'q');
         }
 
         @Override
@@ -114,7 +114,7 @@ public class QuizPanel extends JPanel implements Events, LearnCardObserver, Cate
     private class NoAction extends AbstractLearnAction {
         public NoAction() {
             setName(Localization.get(LC.LEARN_NO));
-            setFocusedWindowShortcut("noButton", 'w'); //$NON-NLS-1$
+            setFocusedWindowShortcut("noButton", 'w');
         }
 
         @Override
@@ -124,8 +124,8 @@ public class QuizPanel extends JPanel implements Events, LearnCardObserver, Cate
         }
     }
 
-    private static final String ANSWER_CARD = "answerCard"; //$NON-NLS-1$
-    private static final String QUESTION_CARD = "questionCard"; //$NON-NLS-1$
+    private static final String ANSWER_CARD = "answerCard";
+    private static final String QUESTION_CARD = "questionCard";
 
     // swing elements
     private JButton m_showButton = new JButton(new ShowAction());
@@ -148,7 +148,7 @@ public class QuizPanel extends JPanel implements Events, LearnCardObserver, Cate
     private boolean m_isShowQuestion;
     private boolean m_isShowAnswer;
 
-    private static String PREFS_SHOW_CARD_CATEGORY = "show.card-category"; //$NON-NLS-1$
+    private static String PREFS_SHOW_CARD_CATEGORY = "show.card-category";
 
     public QuizPanel() {
         initComponents();
@@ -263,7 +263,7 @@ public class QuizPanel extends JPanel implements Events, LearnCardObserver, Cate
     private void updateCategoryField() {
         m_categoryField.setEnabled(m_categoryCheckBox.isSelected());
         m_categoryField.setText(m_categoryCheckBox.isSelected()
-                ? m_currentCard.getCategory().getPath() + " (" + m_currentCard.getLevel() + ")" : ""); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ? m_currentCard.getCategory().getPath() + " (" + m_currentCard.getLevel() + ")" : "");
     }
 
     private void showQuestion() {
@@ -314,8 +314,8 @@ public class QuizPanel extends JPanel implements Events, LearnCardObserver, Cate
         m_categoryCheckBox.setSelected(showCat);
 
         // build it using the forms layout
-        FormLayout layout = new FormLayout("38dlu, 3dlu, p:grow, 3dlu, right:p", // columns //$NON-NLS-1$
-                "20px"); // rows //$NON-NLS-1$
+        FormLayout layout = new FormLayout("38dlu, 3dlu, p:grow, 3dlu, right:p", // columns
+                "20px"); // rows
 
         CellConstraints cc = new CellConstraints();
 
@@ -365,7 +365,7 @@ public class QuizPanel extends JPanel implements Events, LearnCardObserver, Cate
     }
 
     private FormLayout getBottomFormLayout() {
-        return new FormLayout("right:p:grow, 3dlu, 80dlu, 3dlu, 80dlu", //$NON-NLS-1$
-                "p"); //$NON-NLS-1$
+        return new FormLayout("right:p:grow, 3dlu, 80dlu, 3dlu, 80dlu",
+                "p");
     }
 }

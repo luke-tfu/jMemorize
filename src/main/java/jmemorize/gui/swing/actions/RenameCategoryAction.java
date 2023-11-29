@@ -86,6 +86,6 @@ public class RenameCategoryAction extends AbstractAction2 implements SelectionOb
 
     private void setValues() {
         setName(Localization.get(LC.RENAME));
-        setIcon("/resource/icons/blank.gif"); //$NON-NLS-1$
+        setIcon("/resource/icons/blank.gif");
     }
 }

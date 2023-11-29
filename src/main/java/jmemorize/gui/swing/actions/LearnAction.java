@@ -100,7 +100,7 @@ public class LearnAction extends AbstractSessionDisabledAction implements Select
     private void setValues() {
         setName(Localization.get(LC.LEARN));
         setDescription(Localization.get(LC.LEARN_DESC));
-        setIcon("/resource/icons/learn.gif"); //$NON-NLS-1$
+        setIcon("/resource/icons/learn.gif");
         setAccelerator(KeyEvent.VK_L, SHORTCUT_KEY);
         setMnemonic(1);
     }

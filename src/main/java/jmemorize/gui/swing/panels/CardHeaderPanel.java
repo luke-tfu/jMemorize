@@ -48,8 +48,8 @@ public class CardHeaderPanel extends JPanel {
     private boolean m_expanded = false;
     private Card m_card;
 
-    private Icon m_expandedIcon = UIManager.getIcon("Tree.expandedIcon"); //$NON-NLS-1$
-    private Icon m_collapsedIcon = UIManager.getIcon("Tree.collapsedIcon"); //$NON-NLS-1$
+    private Icon m_expandedIcon = UIManager.getIcon("Tree.expandedIcon");
+    private Icon m_collapsedIcon = UIManager.getIcon("Tree.collapsedIcon");
 
     public CardHeaderPanel() {
         initComponents();
@@ -89,13 +89,13 @@ public class CardHeaderPanel extends JPanel {
         // fill history data
         String ratio = "-";
         if (card.getTestsTotal() > 0) {
-            ratio = String.format("%d%%    (%d/%d)", //$NON-NLS-1$
+            ratio = String.format("%d%%    (%d/%d)",
                     card.getPassRatio(), card.getTestsPassed(), card.getTestsTotal());
         }
 
         StringBuffer sb = new StringBuffer();
-        sb.append("<html>"); //$NON-NLS-1$
-        sb.append("<table cellpadding=\"1\">"); //$NON-NLS-1$
+        sb.append("<html>");
+        sb.append("<table cellpadding=\"1\">");
 
         appendTR(sb, Localization.get(LC.DECK), Integer.toString(card.getLevel()));
         appendTR(sb, Localization.get(LC.EXPIRES), dateString(card.getDateExpired()));
@@ -104,48 +104,48 @@ public class CardHeaderPanel extends JPanel {
         appendTR(sb, Localization.get(LC.MODIFIED), dateString(card.getDateModified()));
         appendTR(sb, Localization.get(LC.RATIO), ratio);
 
-        sb.append("</table>"); //$NON-NLS-1$
-        sb.append("</html>"); //$NON-NLS-1$
+        sb.append("</table>");
+        sb.append("</html>");
 
         return sb.toString();
     }
 
     private void appendTR(StringBuffer sb, String key, String value) {
-        sb.append("<tr><td><b>"). //$NON-NLS-1$
-                append(key).append(":</b>&nbsp;&nbsp;&nbsp;</td><td>"). //$NON-NLS-1$
-                append(value).append("</td></tr>"); //$NON-NLS-1$
+        sb.append("<tr><td><b>").
+                append(key).append(":</b>&nbsp;&nbsp;&nbsp;</td><td>").
+                append(value).append("</td></tr>");
     }
 
     private String shortCardSummary(Card card) {
-        String status = ""; //$NON-NLS-1$
+        String status = "";
         if (card.getDateExpired() == null) {
             status = Localization.get(LC.UNLEARNED);
         } else {
             String span = TimeSpan.format(new Date(), card.getDateExpired());
             if (card.isLearned()) {
-                status = String.format("%s (%s %s)", //$NON-NLS-1$
+                status = String.format("%s (%s %s)",
                         Localization.get(LC.LEARNED), Localization.get(LC.EXPIRES), span);
             } else if (card.isExpired()) {
-                status = String.format("%s (%s)", //$NON-NLS-1$
+                status = String.format("%s (%s)",
                         Localization.get(LC.EXPIRED), span);
             }
         }
 
         StringBuffer sb = new StringBuffer();
-        sb.append("<html>"); //$NON-NLS-1$
-        sb.append("<b>"); //$NON-NLS-1$
+        sb.append("<html>");
+        sb.append("<b>");
         sb.append(Localization.get(LC.DECK));
-        sb.append(":</b> "); //$NON-NLS-1$
+        sb.append(":</b> ");
         sb.append(card.getLevel());
-        sb.append("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"); //$NON-NLS-1$
-        sb.append("<b>Status:</b> "); //$NON-NLS-1$
+        sb.append("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+        sb.append("<b>Status:</b> ");
         sb.append(status);
-        sb.append("</html>"); //$NON-NLS-1$
+        sb.append("</html>");
 
         return sb.toString();
     }
 
     private String dateString(Date date) {
-        return date != null ? Localization.LONG_DATE_FORMATER.format(date) : "-"; //$NON-NLS-1$
+        return date != null ? Localization.LONG_DATE_FORMATER.format(date) : "-";
     }
 }

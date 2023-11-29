@@ -531,14 +531,14 @@ public class CardPanel extends JPanel {
 
     private JPanel wrapCardSide(String title, JComponent cardSide) {
         FormLayout layout = new FormLayout(
-                // "38dlu, 3dlu, d:grow", // columns //$NON-NLS-1$
-                "d:grow", // columns //$NON-NLS-1$
-                "fill:20dlu:grow"); // rows //$NON-NLS-1$
+                // "38dlu, 3dlu, d:grow", // columns
+                "d:grow", // columns
+                "fill:20dlu:grow"); // rows
 
         CellConstraints cc = new CellConstraints();
         DefaultFormBuilder builder = new DefaultFormBuilder(layout);
 
-        // builder.addLabel(title, cc.xy(1, 1, "left, top")); //$NON-NLS-1$
+        // builder.addLabel(title, cc.xy(1, 1, "left, top"));
         // builder.add(cardSide, cc.xy(3, 1 ));
         builder.add(cardSide, cc.xy(1, 1));
 
@@ -650,9 +650,9 @@ public class CardPanel extends JPanel {
         DefaultFormBuilder builder;
 
         FormLayout layout = new FormLayout(
-                // "38dlu, 3dlu, d:grow", // columns //$NON-NLS-1$
-                "d:grow", // columns //$NON-NLS-1$
-                "p, 3dlu"); // rows //$NON-NLS-1$
+                // "38dlu, 3dlu, d:grow", // columns
+                "d:grow", // columns
+                "p, 3dlu"); // rows
 
         builder = new DefaultFormBuilder(layout);
         // builder.addLabel(Localization.get(LC.CATEGORY), cc.xy ( 1, 1));
@@ -667,9 +667,9 @@ public class CardPanel extends JPanel {
 
         DefaultFormBuilder builder;
         FormLayout layout = new FormLayout(
-                // "38dlu, 3dlu, d:grow", // columns //$NON-NLS-1$
-                "d:grow", // columns //$NON-NLS-1$
-                "p, 3dlu"); // rows //$NON-NLS-1$
+                // "38dlu, 3dlu, d:grow", // columns
+                "d:grow", // columns
+                "p, 3dlu"); // rows
 
         builder = new DefaultFormBuilder(layout);
         // builder.add(comp, cc.xy (3, 1));

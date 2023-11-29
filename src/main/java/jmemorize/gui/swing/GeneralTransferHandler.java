@@ -52,6 +52,7 @@ public class GeneralTransferHandler extends TransferHandler {
             m_cards = cards;
         }
 
+        @Override
         public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException {
             if (!isDataFlavorSupported(flavor))
                 throw new UnsupportedFlavorException(flavor);
@@ -70,10 +71,12 @@ public class GeneralTransferHandler extends TransferHandler {
             return buffer.toString();
         }
 
+        @Override
         public DataFlavor[] getTransferDataFlavors() {
             return new DataFlavor[] { CARDS_FLAVOR, DataFlavor.stringFlavor };
         }
 
+        @Override
         public boolean isDataFlavorSupported(DataFlavor flavor) {
             return CARDS_FLAVOR.equals(flavor) || DataFlavor.stringFlavor.equals(flavor);
         }
@@ -86,6 +89,7 @@ public class GeneralTransferHandler extends TransferHandler {
             m_category = category;
         }
 
+        @Override
         public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException {
             if (!isDataFlavorSupported(flavor))
                 throw new UnsupportedFlavorException(flavor);
@@ -96,10 +100,12 @@ public class GeneralTransferHandler extends TransferHandler {
             return m_category.getName();
         }
 
+        @Override
         public DataFlavor[] getTransferDataFlavors() {
             return new DataFlavor[] { CATEGORY_FLAVOR, DataFlavor.stringFlavor };
         }
 
+        @Override
         public boolean isDataFlavorSupported(DataFlavor flavor) {
             return CATEGORY_FLAVOR.equals(flavor) || DataFlavor.stringFlavor.equals(flavor);
         }
@@ -148,6 +154,7 @@ public class GeneralTransferHandler extends TransferHandler {
             m_formattedText = new FormattedTextSection(doc, start, end);
         }
 
+        @Override
         public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException {
             if (!isDataFlavorSupported(flavor))
                 throw new UnsupportedFlavorException(flavor);
@@ -158,20 +165,22 @@ public class GeneralTransferHandler extends TransferHandler {
             return m_formattedText.getText().getUnformatted();
         }
 
+        @Override
         public DataFlavor[] getTransferDataFlavors() {
             return new DataFlavor[] { FORMATTED_TEXT_FLAVOR, DataFlavor.stringFlavor };
         }
 
+        @Override
         public boolean isDataFlavorSupported(DataFlavor flavor) {
             return FORMATTED_TEXT_FLAVOR.equals(flavor) || DataFlavor.stringFlavor.equals(flavor);
         }
     }
 
-    public final static DataFlavor CARDS_FLAVOR = new DataFlavor(Card.class, "Card"); //$NON-NLS-1$
+    public final static DataFlavor CARDS_FLAVOR = new DataFlavor(Card.class, "Card");
 
-    public final static DataFlavor CATEGORY_FLAVOR = new DataFlavor(Category.class, "Category"); //$NON-NLS-1$
+    public final static DataFlavor CATEGORY_FLAVOR = new DataFlavor(Category.class, "Category");
 
-    public final static DataFlavor FORMATTED_TEXT_FLAVOR = new DataFlavor(FormattedTextSection.class, "FormattedText"); //$NON-NLS-1$
+    public final static DataFlavor FORMATTED_TEXT_FLAVOR = new DataFlavor(FormattedTextSection.class, "FormattedText");
 
     private CardSidePanel m_cardSidePanel;
 
@@ -185,6 +194,7 @@ public class GeneralTransferHandler extends TransferHandler {
     /*
      * @see javax.swing.TransferHandler
      */
+    @Override
     public int getSourceActions(JComponent c) {
         return COPY_OR_MOVE;
     }
@@ -192,6 +202,7 @@ public class GeneralTransferHandler extends TransferHandler {
     /*
      * @see javax.swing.TransferHandler
      */
+    @Override
     public boolean canImport(JComponent comp, DataFlavor[] transferFlavors) {
         if (comp instanceof CategoryTree) {
             for (int i = 0; i < transferFlavors.length; i++) {
@@ -215,6 +226,7 @@ public class GeneralTransferHandler extends TransferHandler {
     /*
      * @see javax.swing.TransferHandler
      */
+    @Override
     @SuppressWarnings("unchecked")
     public boolean importData(JComponent comp, Transferable t) {
         try {
@@ -291,6 +303,7 @@ public class GeneralTransferHandler extends TransferHandler {
     /*
      * @see javax.swing.TransferHandler#createTransferable(javax.swing.JComponent)
      */
+    @Override
     protected Transferable createTransferable(JComponent c) {
         if (c instanceof CardTable) {
             CardTable table = (CardTable) c;
@@ -320,6 +333,7 @@ public class GeneralTransferHandler extends TransferHandler {
     /*
      * @see javax.swing.TransferHandler#exportDone
      */
+    @Override
     @SuppressWarnings("unchecked")
     protected void exportDone(JComponent source, Transferable data, int action) {
         if (action != MOVE)

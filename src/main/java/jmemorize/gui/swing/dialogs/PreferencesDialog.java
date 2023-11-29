@@ -23,7 +23,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,9 +46,6 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import com.jgoodies.forms.builder.DefaultFormBuilder;
@@ -83,7 +79,7 @@ public class PreferencesDialog extends JDialog {
     private JList<String> m_fontList = new JList<String>();
     private JList<String> m_alignList = new JList<String>(); // TODO translate
 
-    private JLabel m_previewLabel = new JLabel("jMemorize", JLabel.CENTER); //$NON-NLS-1$
+    private JLabel m_previewLabel = new JLabel("jMemorize", JLabel.CENTER);
 
     private List<CardFont> m_fonts = new ArrayList<CardFont>();
     private boolean m_changingFont = false;
@@ -135,8 +131,9 @@ public class PreferencesDialog extends JDialog {
 
         // on ESC key close dialog
         getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0),
-                "Cancel"); //$NON-NLS-1$
-        getRootPane().getActionMap().put("Cancel", new AbstractAction() { //$NON-NLS-1$
+                "Cancel");
+        getRootPane().getActionMap().put("Cancel", new AbstractAction() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
             }
@@ -175,43 +172,37 @@ public class PreferencesDialog extends JDialog {
      */
     private void attachListeners() {
         // font side changed
-        m_fontSideBox.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                m_changingFont = true;
-                updateListFromFont();
-                m_changingFont = false;
-                updateFontPreview();
-            }
+        m_fontSideBox.addActionListener(e -> {
+            m_changingFont = true;
+            updateListFromFont();
+            m_changingFont = false;
+            updateFontPreview();
         });
 
         // font in list selected
-        ListSelectionListener fontUpdater = new ListSelectionListener() {
-            public void valueChanged(ListSelectionEvent e) {
-                if (!m_changingFont)
-                    updateFontFromList();
+        ListSelectionListener fontUpdater = e -> {
+            if (!m_changingFont)
+                updateFontFromList();
 
-                updateFontPreview();
-            }
+            updateFontPreview();
         };
 
         m_fontList.addListSelectionListener(fontUpdater);
         m_sizeList.addListSelectionListener(fontUpdater);
         m_alignList.addListSelectionListener(fontUpdater);
 
-        m_verticalAlignBox.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent e) {
-                if (!m_changingFont)
-                    updateFontFromList();
+        m_verticalAlignBox.addChangeListener(e -> {
+            if (!m_changingFont)
+                updateFontFromList();
 
-                updateFontPreview();
-            }
+            updateFontPreview();
         });
     }
 
     private JPanel buildMainPanel() {
         // build main panel
-        FormLayout layout = new FormLayout("p:grow", // columns //$NON-NLS-1$
-                "fill:p:grow"); // rows //$NON-NLS-1$
+        FormLayout layout = new FormLayout("p:grow", // columns
+                "fill:p:grow"); // rows
 
         CellConstraints cc = new CellConstraints();
 
@@ -225,8 +216,8 @@ public class PreferencesDialog extends JDialog {
 
     private JPanel buildSettingsPanel() {
         // build panel
-        FormLayout layout = new FormLayout("p:grow", // columns //$NON-NLS-1$
-                "p, 3dlu, p"); // rows //$NON-NLS-1$
+        FormLayout layout = new FormLayout("p:grow", // columns
+                "p, 3dlu, p"); // rows
 
         CellConstraints cc = new CellConstraints();
 
@@ -241,8 +232,8 @@ public class PreferencesDialog extends JDialog {
 
     private JPanel buildGeneralPanel() {
         // build panel
-        FormLayout layout = new FormLayout("p, 9dlu, p:grow", // columns //$NON-NLS-1$
-                "p, 3dlu, p, 9dlu, p"); // rows //$NON-NLS-1$
+        FormLayout layout = new FormLayout("p, 9dlu, p:grow", // columns
+                "p, 3dlu, p, 9dlu, p"); // rows
 
         CellConstraints cc = new CellConstraints();
 
@@ -278,8 +269,8 @@ public class PreferencesDialog extends JDialog {
         previewPanel.setBorder(new TitledBorder(Localization.get(LC.PREFERENCES_PREVIEW)));
 
         // build panel
-        FormLayout layout = new FormLayout("p:grow, 9dlu, 50dlu, 9dlu, 50dlu", // columns //$NON-NLS-1$
-                "p, 9dlu, p, 12dlu, p, 3dlu, p, 3dlu, p, 22dlu, p, 9dlu, p"); // rows //$NON-NLS-1$
+        FormLayout layout = new FormLayout("p:grow, 9dlu, 50dlu, 9dlu, 50dlu", // columns
+                "p, 9dlu, p, 12dlu, p, 3dlu, p, 3dlu, p, 22dlu, p, 9dlu, p"); // rows
 
         CellConstraints cc = new CellConstraints();
 
@@ -361,25 +352,15 @@ public class PreferencesDialog extends JDialog {
 
     private JPanel buildButtonBar() {
         JButton okayButton = new JButton(Localization.get(LC.OKAY));
-        okayButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                apply();
-                dispose();
-            }
+        okayButton.addActionListener(evt -> {
+            apply();
+            dispose();
         });
 
         JButton cancelButton = new JButton(Localization.get(LC.CANCEL));
-        cancelButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                dispose();
-            }
-        });
+        cancelButton.addActionListener(evt -> dispose());
 
-        m_applyButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                apply();
-            }
-        });
+        m_applyButton.addActionListener(evt -> apply());
 
         JPanel buttonPanel = ButtonBarFactory.buildOKCancelApplyBar(okayButton, cancelButton, m_applyButton);
         buttonPanel.setBorder(new EmptyBorder(3, 3, 3, 3));
@@ -418,7 +399,7 @@ public class PreferencesDialog extends JDialog {
         for (Locale locale : locales) {
             StringBuffer sb = new StringBuffer(locale.getDisplayLanguage());
             if (locale.getCountry().length() > 0) {
-                sb.append(" (" + locale.getDisplayCountry() + ")"); //$NON-NLS-1$ //$NON-NLS-2$
+                sb.append(" (" + locale.getDisplayCountry() + ")");
             }
 
             localeStrings.add(sb.toString());

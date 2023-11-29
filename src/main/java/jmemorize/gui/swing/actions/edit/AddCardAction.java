@@ -46,9 +46,9 @@ public class AddCardAction extends AbstractAction2 {
     }
 
     private void setValues() {
-        setName(Localization.get("MainFrame.ADD_CARD")); //$NON-NLS-1$
-        setDescription(Localization.get("MainFrame.ADD_CARD_DESC")); //$NON-NLS-1$
-        setIcon("/resource/icons/card_add.gif"); //$NON-NLS-1$
+        setName(Localization.get("MainFrame.ADD_CARD"));
+        setDescription(Localization.get("MainFrame.ADD_CARD_DESC"));
+        setIcon("/resource/icons/card_add.gif");
         setMnemonic(7);
         setAccelerator(KeyEvent.VK_N, SHORTCUT_KEY);
     }

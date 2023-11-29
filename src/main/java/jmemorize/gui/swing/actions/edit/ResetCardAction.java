@@ -73,7 +73,7 @@ public class ResetCardAction extends AbstractAction2 implements SelectionObserve
     private void setValues() {
         setName(Localization.get(LC.RESET));
         setDescription(Localization.get(LC.RESET_DESC));
-        setIcon("/resource/icons/card_reset.gif"); //$NON-NLS-1$
+        setIcon("/resource/icons/card_reset.gif");
         setMnemonic(1);
         setAccelerator(KeyEvent.VK_R, SHORTCUT_KEY);
     }

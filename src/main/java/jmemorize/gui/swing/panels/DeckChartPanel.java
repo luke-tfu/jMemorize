@@ -158,8 +158,8 @@ public class DeckChartPanel extends JPanel implements CategoryObserver {
 
     // TODO make minimum deck bars dependent on screen resolution
 
-    private final static String DECK0_NAME = Localization.get("DeckChart.START_DECK"); //$NON-NLS-1$
-    private final static String SUMMARY_BAR_NAME = Localization.get("DeckChart.SUMMARY"); //$NON-NLS-1$
+    private final static String DECK0_NAME = Localization.get("DeckChart.START_DECK");
+    private final static String SUMMARY_BAR_NAME = Localization.get("DeckChart.SUMMARY");
 
     private final static String LEARNED_CARDS_ROW = Localization.get("DeckChart.LEARNED_CARDS");
     private final static String EXPIRED_CARDS_ROW = Localization.get("DeckChart.EXPIRED_CARDS");
@@ -209,7 +209,7 @@ public class DeckChartPanel extends JPanel implements CategoryObserver {
 
         JFreeChart chart = ChartFactory.createStackedBarChart3D(null, // chart title
                 null, // domain axis label
-                Localization.get("DeckChart.CARDS"), // range axis label //$NON-NLS-1$
+                Localization.get("DeckChart.CARDS"), // range axis label
                 m_dataset, // data
                 PlotOrientation.VERTICAL, // the plot orientation
                 true, // include legend
@@ -335,7 +335,7 @@ public class DeckChartPanel extends JPanel implements CategoryObserver {
     }
 
     private String getDeckLabel(int level) {
-        return (level == 0) ? DECK0_NAME : Localization.get(LC.DECK) + " " + level; //$NON-NLS-1$
+        return (level == 0) ? DECK0_NAME : Localization.get(LC.DECK) + " " + level;
     }
 
     private int getNumDecks() {

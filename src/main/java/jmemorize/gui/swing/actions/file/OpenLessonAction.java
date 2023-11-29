@@ -43,9 +43,9 @@ public class OpenLessonAction extends AbstractSessionDisabledAction {
     }
 
     private void setValues() {
-        setName(Localization.get("MainFrame.OPEN")); //$NON-NLS-1$
-        setDescription(Localization.get("MainFrame.OPEN_DESC")); //$NON-NLS-1$
-        setIcon("/resource/icons/file_open.gif"); //$NON-NLS-1$
+        setName(Localization.get("MainFrame.OPEN"));
+        setDescription(Localization.get("MainFrame.OPEN_DESC"));
+        setIcon("/resource/icons/file_open.gif");
         setAccelerator(KeyEvent.VK_O, SHORTCUT_KEY);
         setMnemonic(1);
     }

@@ -48,9 +48,9 @@ public class NewLessonAction extends AbstractSessionDisabledAction {
     }
 
     private void setValues() {
-        setName(Localization.get("MainFrame.NEW")); //$NON-NLS-1$
-        setDescription(Localization.get("MainFrame.NEW_DESC")); //$NON-NLS-1$
-        setIcon("/resource/icons/file_new.gif"); //$NON-NLS-1$
+        setName(Localization.get("MainFrame.NEW"));
+        setDescription(Localization.get("MainFrame.NEW_DESC"));
+        setIcon("/resource/icons/file_new.gif");
         setAccelerator(KeyEvent.VK_N, SHORTCUT_KEY + InputEvent.SHIFT_MASK);
         setMnemonic(1);
     }

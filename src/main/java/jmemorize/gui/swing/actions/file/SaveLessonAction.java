@@ -77,9 +77,9 @@ public class SaveLessonAction extends AbstractSessionDisabledAction implements L
     }
 
     private void setValues() {
-        setName(Localization.get("MainFrame.SAVE")); //$NON-NLS-1$
-        setDescription(Localization.get("MainFrame.SAVE_DESC")); //$NON-NLS-1$
-        setIcon("/resource/icons/file_save.gif"); //$NON-NLS-1$
+        setName(Localization.get("MainFrame.SAVE"));
+        setDescription(Localization.get("MainFrame.SAVE_DESC"));
+        setIcon("/resource/icons/file_save.gif");
         setAccelerator(KeyEvent.VK_S, SHORTCUT_KEY);
         setMnemonic(1);
     }

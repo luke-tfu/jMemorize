@@ -77,12 +77,12 @@ import com.jgoodies.forms.layout.FormLayout;
 public class FindFrame extends EscapableFrame implements CategoryObserver, ProgramEndObserver {
     private final static String FRAME_ID = "findframe";
 
-    private CardTable m_cardTable = new CardTable(this, Main.USER_PREFS.node("find.table"), //$NON-NLS-1$
+    private CardTable m_cardTable = new CardTable(this, Main.USER_PREFS.node("find.table"),
             new int[] { CardTable.COLUMN_FRONTSIDE, CardTable.COLUMN_BACKSIDE, CardTable.COLUMN_CATEGORY });
 
     // swing widgets
     private JComboBox m_searchTextBox = new JComboBox();
-    private RecentItems m_recentSearchTexts = new RecentItems(10, Main.USER_PREFS.node("recent.search.texts")); //$NON-NLS-1$
+    private RecentItems m_recentSearchTexts = new RecentItems(10, Main.USER_PREFS.node("recent.search.texts"));
 
     private JCheckBox m_matchCaseBox = new JCheckBox(Localization.get(LC.MATCH_CASE));
     private JRadioButton m_radioBothSides = new JRadioButton(Localization.get(LC.BOTH_SIDES), true);
@@ -102,7 +102,7 @@ public class FindFrame extends EscapableFrame implements CategoryObserver, Progr
 
     private class FindAction extends AbstractAction2 {
         public FindAction() {
-            setName(Localization.get("FindTool.FIND")); //$NON-NLS-1$
+            setName(Localization.get("FindTool.FIND"));
         }
 
         @Override
@@ -152,7 +152,7 @@ public class FindFrame extends EscapableFrame implements CategoryObserver, Progr
     public void search() {
         String searchText = (String) m_searchTextBox.getSelectedItem();
 
-        if (searchText == null || searchText.equals("")) //$NON-NLS-1$
+        if (searchText == null || searchText.equals(""))
             return;
 
         m_searchText = searchText;
@@ -225,33 +225,33 @@ public class FindFrame extends EscapableFrame implements CategoryObserver, Progr
         setupSearchTextBox();
 
         JScrollPane scrollPane = new JScrollPane(m_cardTable);
-        Color color = UIManager.getColor("Table.background"); //$NON-NLS-1$
+        Color color = UIManager.getColor("Table.background");
         scrollPane.getViewport().setBackground(color);
         scrollPane.setPreferredSize(new Dimension(500, 200));
 
-        FormLayout layout = new FormLayout("right:pref, 3dlu, pref:grow, 3dlu, pref:grow, 3dlu, pref:grow", // columns //$NON-NLS-1$
+        FormLayout layout = new FormLayout("right:pref, 3dlu, pref:grow, 3dlu, pref:grow, 3dlu, pref:grow", // columns
                                                                                                             // //
-                "p, 3dlu, p, 3dlu, p, 3dlu, p, 9dlu, p, 9dlu, fill:d:grow"); // rows // //$NON-NLS-1$
+                "p, 3dlu, p, 3dlu, p, 3dlu, p, 9dlu, p, 9dlu, fill:d:grow"); // rows //
 
         CellConstraints cc = new CellConstraints();
 
         DefaultFormBuilder builder = new DefaultFormBuilder(layout);
         builder.setDefaultDialogBorder();
 
-        builder.addLabel(Localization.get("FindTool.SEARCH_TEXT"), cc.xy(1, 1)); //$NON-NLS-1$
+        builder.addLabel(Localization.get("FindTool.SEARCH_TEXT"), cc.xy(1, 1));
         builder.add(m_searchTextBox, cc.xyw(3, 1, 5));
 
-        builder.addLabel(Localization.get("General.CATEGORY"), cc.xy(1, 3)); //$NON-NLS-1$
+        builder.addLabel(Localization.get("General.CATEGORY"), cc.xy(1, 3));
         builder.add(m_categoryBox, cc.xyw(3, 3, 5));
 
-        builder.addLabel(Localization.get("FindTool.SETTINGS"), cc.xy(1, 5)); //$NON-NLS-1$
+        builder.addLabel(Localization.get("FindTool.SETTINGS"), cc.xy(1, 5));
         builder.add(m_radioBothSides, cc.xy(3, 5));
         builder.add(m_radioFrontSide, cc.xy(5, 5));
         builder.add(m_radioBackSide, cc.xy(7, 5));
 
         builder.add(m_matchCaseBox, cc.xyw(3, 7, 5));
 
-        builder.addSeparator(Localization.get("FindTool.RESULTS"), cc.xyw(1, 9, 7)); //$NON-NLS-1$
+        builder.addSeparator(Localization.get("FindTool.RESULTS"), cc.xyw(1, 9, 7));
         builder.add(scrollPane, cc.xyw(1, 11, 7));
 
         return builder.getPanel();
@@ -330,7 +330,7 @@ public class FindFrame extends EscapableFrame implements CategoryObserver, Progr
     }
 
     private void initComponents() {
-        setTitle(Localization.get("FindTool.FIND")); //$NON-NLS-1$
+        setTitle(Localization.get("FindTool.FIND"));
 
         // build main panel
         ButtonGroup group = new ButtonGroup();
@@ -352,15 +352,15 @@ public class FindFrame extends EscapableFrame implements CategoryObserver, Progr
 
         setupCardTable();
 
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/resource/icons/find.gif"))); //$NON-NLS-1$
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/resource/icons/find.gif")));
         pack();
     }
 
     private void setupCardTable() {
         // close window on ESC key
         KeyStroke keyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
-        m_cardTable.getInputMap().put(keyStroke, "Cancel"); //$NON-NLS-1$
-        m_cardTable.getActionMap().put("Cancel", new AbstractAction() { //$NON-NLS-1$
+        m_cardTable.getInputMap().put(keyStroke, "Cancel");
+        m_cardTable.getActionMap().put("Cancel", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 close();
@@ -369,8 +369,8 @@ public class FindFrame extends EscapableFrame implements CategoryObserver, Progr
 
         // overwrite moving to next row when pressing ENTER
         keyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0);
-        m_cardTable.getInputMap().put(keyStroke, "Edit"); //$NON-NLS-1$
-        m_cardTable.getActionMap().put("Edit", new AbstractAction() { //$NON-NLS-1$
+        m_cardTable.getInputMap().put(keyStroke, "Edit");
+        m_cardTable.getActionMap().put("Edit", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 editCards();

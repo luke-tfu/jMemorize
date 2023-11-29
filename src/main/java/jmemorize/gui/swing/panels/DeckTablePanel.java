@@ -54,9 +54,9 @@ import jmemorize.gui.swing.widgets.CardTable;
 public class DeckTablePanel extends JPanel implements CategoryObserver {
     private class NextDeckAction extends AbstractAction2 {
         public NextDeckAction() {
-            setName(Localization.get("DeckTable.NEXT_DECK")); //$NON-NLS-1$
-            setDescription(Localization.get("DeckTable.NEXT_DECK_DESC")); //$NON-NLS-1$
-            setIcon("/resource/icons/card_next.gif"); //$NON-NLS-1$
+            setName(Localization.get("DeckTable.NEXT_DECK"));
+            setDescription(Localization.get("DeckTable.NEXT_DECK_DESC"));
+            setIcon("/resource/icons/card_next.gif");
         }
 
         @Override
@@ -72,9 +72,9 @@ public class DeckTablePanel extends JPanel implements CategoryObserver {
 
     private class PreviousDeckAction extends AbstractAction2 {
         public PreviousDeckAction() {
-            setName(Localization.get("DeckTable.PREV_DECK")); //$NON-NLS-1$
-            setDescription(Localization.get("DeckTable.PREV_DECK_DESC")); //$NON-NLS-1$
-            setIcon("/resource/icons/card_prev.gif"); //$NON-NLS-1$
+            setName(Localization.get("DeckTable.PREV_DECK"));
+            setDescription(Localization.get("DeckTable.PREV_DECK_DESC"));
+            setIcon("/resource/icons/card_prev.gif");
         }
 
         @Override
@@ -105,7 +105,7 @@ public class DeckTablePanel extends JPanel implements CategoryObserver {
     public DeckTablePanel(MainFrame mainFrame) {
         m_frame = mainFrame;
 
-        m_cardTable = new CardTable(m_frame, Main.USER_PREFS.node("main.table"), //$NON-NLS-1$
+        m_cardTable = new CardTable(m_frame, Main.USER_PREFS.node("main.table"),
                 new int[] { CardTable.COLUMN_FRONTSIDE, CardTable.COLUMN_DECK, CardTable.COLUMN_CATEGORY,
                         CardTable.COLUMN_TESTED, CardTable.COLUMN_EXPIRES });
 
@@ -176,7 +176,7 @@ public class DeckTablePanel extends JPanel implements CategoryObserver {
         mainPanel.add(buttonBar, BorderLayout.NORTH);
 
         JScrollPane scrollPane = new JScrollPane(m_cardTable);
-        Color color = UIManager.getColor("Table.background"); //$NON-NLS-1$
+        Color color = UIManager.getColor("Table.background");
         scrollPane.getViewport().setBackground(color);
 
         m_cardTable.hookCardContextMenu(scrollPane);
@@ -194,7 +194,7 @@ public class DeckTablePanel extends JPanel implements CategoryObserver {
 
         // overwrite moving to next row when pressing ENTER
         InputMap map = m_cardTable.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-        map.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), ""); //$NON-NLS-1$
+        map.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "");
     }
 
     private void tableMouseClicked(MouseEvent evt) {

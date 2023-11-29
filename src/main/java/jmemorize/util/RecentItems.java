@@ -32,7 +32,7 @@ public class RecentItems {
         void onRecentItemChange(RecentItems src);
     }
 
-    public final static String RECENT_ITEM_STRING = "recent.item."; //$NON-NLS-1$
+    public final static String RECENT_ITEM_STRING = "recent.item.";
 
     private int m_maxItems;
     private Preferences m_prefNode;
@@ -94,9 +94,9 @@ public class RecentItems {
     private void loadFromPreferences() {
         // load recent files from properties
         for (int i = 0; i < m_maxItems; i++) {
-            String val = m_prefNode.get(RECENT_ITEM_STRING + i, ""); //$NON-NLS-1$
+            String val = m_prefNode.get(RECENT_ITEM_STRING + i, "");
 
-            if (!val.equals("")) //$NON-NLS-1$
+            if (!val.equals(""))
             {
                 m_items.add(val);
             } else {

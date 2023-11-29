@@ -92,13 +92,13 @@ public class AboutDialog extends JDialog {
     }
 
     private JPanel buildInfoPanel() {
-        String text = "<html><p><b>Version: " + //$NON-NLS-1$
-        /* Main.PROPERTIES.getProperty("project.version") */JGWHacks.projectVersion + // $NON-NLS-1$
-                "</b></p>" + //$NON-NLS-1$
-                // "<p>Build: " + Main.PROPERTIES.getProperty("buildId") + //$NON-NLS-2$
-                // "</p>" + //$NON-NLS-1$
-                "<p><br>Homepage: http://jmemorize.org</p>" + //$NON-NLS-1$
-                "<p>2004-2008 Riad Djemili and contributors</p></html>"; //$NON-NLS-1$
+        String text = "<html><p><b>Version: " +
+        /* Main.PROPERTIES.getProperty("project.version") */JGWHacks.projectVersion +
+                "</b></p>" +
+                // "<p>Build: " + Main.PROPERTIES.getProperty("buildId") +
+                // "</p>" +
+                "<p><br>Homepage: http://jmemorize.org</p>" +
+                "<p>2004-2008 Riad Djemili and contributors</p></html>";
 
         JLabel titleLabel = new JLabel();
         ImageIcon icon = new ImageIcon(getClass().getResource("/resource/about.png"));

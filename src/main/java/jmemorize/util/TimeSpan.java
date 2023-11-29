@@ -65,31 +65,31 @@ public class TimeSpan {
         // if one or more days left
         long d = Math.abs(span.getDays());
         if (d >= 1) {
-            result.append(d == 1 ? Localization.get("Time.ONE_DAY") : //$NON-NLS-1$
-                    d + " " + Localization.get("Time.DAYS")); //$NON-NLS-1$ //$NON-NLS-2$
+            result.append(d == 1 ? Localization.get("Time.ONE_DAY") :
+                    d + " " + Localization.get("Time.DAYS"));
         }
         // if today
         else {
             int h = Math.abs(span.getHours());
             if (h >= 1) {
-                result.append(h == 1 ? Localization.get("Time.ONE_HOUR") : //$NON-NLS-1$
-                        h + " " + Localization.get("Time.HOURS")); //$NON-NLS-1$ //$NON-NLS-2$
+                result.append(h == 1 ? Localization.get("Time.ONE_HOUR") :
+                        h + " " + Localization.get("Time.HOURS"));
             }
             // if less then one hour left
             else {
                 int m = Math.abs(span.getMinutes());
-                result.append(m == 1 ? Localization.get("Time.ONE_MINUTE") : //$NON-NLS-1$
-                        m + " " + Localization.get("Time.MINUTES")); //$NON-NLS-1$ //$NON-NLS-2$
+                result.append(m == 1 ? Localization.get("Time.ONE_MINUTE") :
+                        m + " " + Localization.get("Time.MINUTES"));
             }
         }
 
         if (span.getTicks() >= 0) // future
         {
-            MessageFormat form = new MessageFormat(Localization.get("Time.IN")); //$NON-NLS-1$
+            MessageFormat form = new MessageFormat(Localization.get("Time.IN"));
             return form.format(new Object[] { result.toString() });
         } else // past
         {
-            MessageFormat form = new MessageFormat(Localization.get("Time.AGO")); //$NON-NLS-1$
+            MessageFormat form = new MessageFormat(Localization.get("Time.AGO"));
             return form.format(new Object[] { result.toString() });
         }
     }

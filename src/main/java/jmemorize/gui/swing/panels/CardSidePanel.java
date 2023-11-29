@@ -471,7 +471,7 @@ public class CardSidePanel extends JPanel {
         if (imgCount == 0) {
             setImageMode(Mode.TEXT);
         } else {
-            String text = String.format("   %s %d/%d ", //$NON-NLS-1$
+            String text = String.format("   %s %d/%d ",
                     Localization.get(LC.IMAGE), m_currentImage + 1, imgCount);
 
             m_imageLabel.setText(text);
@@ -506,11 +506,11 @@ public class CardSidePanel extends JPanel {
         });
 
         // we want to use the default scrollpane border
-        Color color = UIManager.getColor("InternalFrame.borderShadow"); //$NON-NLS-1$
+        Color color = UIManager.getColor("InternalFrame.borderShadow");
 
         if (color == null) {
             color = new Color(167, 166, 170);
-            // Main.getLogger().warning("UI key for card side border not found!"); //$NON-NLS-1$
+            // Main.getLogger().warning("UI key for card side border not found!");
         }
 
         Border border = new LineBorder(color);
@@ -529,7 +529,7 @@ public class CardSidePanel extends JPanel {
         m_imageLabel.setHorizontalAlignment(StyleConstants.ALIGN_LEFT);
         m_imageBar.add(m_imageLabel);
 
-        m_prevImageButton = new JButton(loadIcon("arrow_left.png")); //$NON-NLS-1$
+        m_prevImageButton = new JButton(loadIcon("arrow_left.png"));
         m_prevImageButton.addActionListener(e -> {
             if (m_currentImage > 0)
                 m_currentImage--;
@@ -541,7 +541,7 @@ public class CardSidePanel extends JPanel {
         });
         m_imageBar.add(m_prevImageButton);
 
-        m_nextImageButton = new JButton(loadIcon("arrow_right.png")); //$NON-NLS-1$
+        m_nextImageButton = new JButton(loadIcon("arrow_right.png"));
         m_nextImageButton.addActionListener(e -> {
             if (m_currentImage < m_images.size() - 1)
                 m_currentImage++;
@@ -555,21 +555,21 @@ public class CardSidePanel extends JPanel {
 
         m_imageBar.addSeparator();
 
-        m_imageTexModeButton = new JButton(loadIcon("picture_and_text.png")); //$NON-NLS-1$
+        m_imageTexModeButton = new JButton(loadIcon("picture_and_text.png"));
         m_imageTexModeButton.addActionListener(new SetImageModeAction(Mode.TEXT_AND_IMAGE));
         m_imageBar.add(m_imageTexModeButton);
 
-        m_textModeButton = new JButton(loadIcon("text.png")); //$NON-NLS-1$
+        m_textModeButton = new JButton(loadIcon("text.png"));
         m_imageBar.add(m_textModeButton);
         m_textModeButton.addActionListener(new SetImageModeAction(Mode.TEXT));
 
-        m_imageModeButton = new JButton(loadIcon("picture.png")); //$NON-NLS-1$
+        m_imageModeButton = new JButton(loadIcon("picture.png"));
         m_imageBar.add(m_imageModeButton);
         m_imageModeButton.addActionListener(new SetImageModeAction(Mode.IMAGE));
     }
 
     private ImageIcon loadIcon(String imgName) {
-        String path = "/resource/icons/" + imgName; //$NON-NLS-1$
+        String path = "/resource/icons/" + imgName;
         return new ImageIcon(getClass().getResource(path));
     }
 }

@@ -218,7 +218,7 @@ public class CategoryTree extends JTree implements CategoryObserver, SelectionPr
         }
     }
 
-    private final ImageIcon FOLDER_ICON = new ImageIcon(getClass().getResource("/resource/icons/folder.gif")); //$NON-NLS-1$
+    private final ImageIcon FOLDER_ICON = new ImageIcon(getClass().getResource("/resource/icons/folder.gif"));
 
     private Category m_rootCategory;
 

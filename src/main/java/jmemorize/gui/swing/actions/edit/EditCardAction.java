@@ -65,9 +65,9 @@ public class EditCardAction extends AbstractAction2 implements SelectionObserver
     }
 
     private void setValues() {
-        setName(Localization.get("MainFrame.EDIT_CARD")); //$NON-NLS-1$
-        setDescription(Localization.get("MainFrame.EDIT_CARD_DESC")); //$NON-NLS-1$
-        setIcon("/resource/icons/card_edit.gif"); //$NON-NLS-1$
+        setName(Localization.get("MainFrame.EDIT_CARD"));
+        setDescription(Localization.get("MainFrame.EDIT_CARD_DESC"));
+        setIcon("/resource/icons/card_edit.gif");
         setMnemonic(1);
         setAccelerator(KeyEvent.VK_ENTER, 0);
     }

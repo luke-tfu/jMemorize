@@ -299,13 +299,13 @@ public class LearnSettingPanels {
         group.add(m_selectedCardsButton);
 
         // build panel
-        FormLayout layout = new FormLayout("300dlu", // columns //$NON-NLS-1$
-                "p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p"); // rows //$NON-NLS-1$
+        FormLayout layout = new FormLayout("300dlu", // columns
+                "p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p"); // rows
 
         CellConstraints cc = new CellConstraints();
 
         DefaultFormBuilder builder = new DefaultFormBuilder(layout);
-        builder.addSeparator(Localization.get("LearnSettings.CARDS_TO_LEARN"), cc.xy(1, 1)); //$NON-NLS-1$
+        builder.addSeparator(Localization.get("LearnSettings.CARDS_TO_LEARN"), cc.xy(1, 1));
         builder.add(m_categoryComboBox, cc.xy(1, 3));
         builder.add(m_allCardsButton, cc.xy(1, 5));
         builder.add(m_unlearnedCardsButton, cc.xy(1, 7));
@@ -338,8 +338,8 @@ public class LearnSettingPanels {
         categoriesGroup.add(m_categoryOrderRandomButton);
 
         // build panel
-        FormLayout layout = new FormLayout("18dlu, p:grow", // columns //$NON-NLS-1$
-                "p, 3dlu, p, 3dlu, p, 16dlu, p, 3dlu, p, 3dlu, p"); // grouping rows //$NON-NLS-1$
+        FormLayout layout = new FormLayout("18dlu, p:grow", // columns
+                "p, 3dlu, p, 3dlu, p, 16dlu, p, 3dlu, p, 3dlu, p"); // grouping rows
 
         CellConstraints cc = new CellConstraints();
 
@@ -376,14 +376,14 @@ public class LearnSettingPanels {
         updateCheckAmountFields();
 
         // build panel
-        FormLayout layout = new FormLayout("18dlu, d, 9dlu, left:d:grow", // columns //$NON-NLS-1$
-                "p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p"); // side mode rows //$NON-NLS-1$
+        FormLayout layout = new FormLayout("18dlu, d, 9dlu, left:d:grow", // columns
+                "p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p"); // side mode rows
 
         CellConstraints cc = new CellConstraints();
 
         DefaultFormBuilder builder = new DefaultFormBuilder(layout);
 
-        builder.addSeparator(Localization.get("LearnSettings.SIDE_MODE"), cc.xyw(1, 1, 4)); //$NON-NLS-1$
+        builder.addSeparator(Localization.get("LearnSettings.SIDE_MODE"), cc.xyw(1, 1, 4));
         builder.add(m_sidesNormalButton, cc.xyw(1, 3, 4));
         builder.add(m_sidesFlippedButton, cc.xyw(1, 5, 4));
         builder.add(m_sidesRandomButton, cc.xyw(1, 7, 4));
@@ -412,8 +412,8 @@ public class LearnSettingPanels {
         updateLimiterCheckboxes();
 
         // build panel
-        FormLayout layout = new FormLayout("18dlu, d, 9dlu, left:d:grow", // columns //$NON-NLS-1$
-                "p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p"); // stop condition rows //$NON-NLS-1$
+        FormLayout layout = new FormLayout("18dlu, d, 9dlu, left:d:grow", // columns
+                "p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p"); // stop condition rows
 
         CellConstraints cc = new CellConstraints();
 
@@ -442,10 +442,10 @@ public class LearnSettingPanels {
         });
 
         // build panel
-        FormLayout layout = new FormLayout("p, 20dlu:grow, p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, " + // columns //$NON-NLS-1$
-                "p,  3dlu,  p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p", //$NON-NLS-1$
-                "p, 15dlu,  p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, " + // rows //$NON-NLS-1$
-                        "p,  3dlu,  p, 3dlu, p, 3dlu, p, 3dlu"); //$NON-NLS-1$
+        FormLayout layout = new FormLayout("p, 20dlu:grow, p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, " + // columns
+                "p,  3dlu,  p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p",
+                "p, 15dlu,  p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, " + // rows
+                        "p,  3dlu,  p, 3dlu, p, 3dlu, p, 3dlu");
 
         CellConstraints cc = new CellConstraints();
 
@@ -483,8 +483,8 @@ public class LearnSettingPanels {
         });
 
         // build panel
-        FormLayout layout = new FormLayout("18dlu, 70dlu, left:d:grow", // columns //$NON-NLS-1$
-                "p, 3dlu, p"); // rows //$NON-NLS-1$
+        FormLayout layout = new FormLayout("18dlu, 70dlu, left:d:grow", // columns
+                "p, 3dlu, p"); // rows
 
         CellConstraints cc = new CellConstraints();
 

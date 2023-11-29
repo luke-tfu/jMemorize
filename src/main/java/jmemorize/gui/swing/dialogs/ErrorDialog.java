@@ -100,13 +100,13 @@ public class ErrorDialog extends JDialog {
     }
 
     private static String getDebugText(Exception e) {
-        String java = System.getProperty("java.version"); //$NON-NLS-1$
-        String os = System.getProperty("os.name"); //$NON-NLS-1$
+        String java = System.getProperty("java.version");
+        String os = System.getProperty("os.name");
 
-        String version = JGWHacks.projectVersion /* Main.PROPERTIES.getProperty("project.version") */; // $NON-NLS-1$
-        // String revision = Main.PROPERTIES.getProperty("project.revision"); //$NON-NLS-1$
+        String version = JGWHacks.projectVersion /* Main.PROPERTIES.getProperty("project.version") */;
+        // String revision = Main.PROPERTIES.getProperty("project.revision");
         String revision = ""; // HACK
-        String buildId = ""; // Main.PROPERTIES.getProperty("buildId");//$NON-NLS-1$
+        String buildId = ""; // Main.PROPERTIES.getProperty("buildId");
 
         String txt = String.format("Ver %s %s (%s) - Java %s , OS %s%n", version, revision, buildId, java, os);
 
@@ -128,8 +128,8 @@ public class ErrorDialog extends JDialog {
 
     private JPanel buildMainPanel() {
         // build button bar
-        FormLayout layout = new FormLayout("3dlu, p:grow, 3dlu", // columns //$NON-NLS-1$
-                "p, 3dlu, fill:p:grow, 3dlu"); // rows //$NON-NLS-1$
+        FormLayout layout = new FormLayout("3dlu, p:grow, 3dlu", // columns
+                "p, 3dlu, fill:p:grow, 3dlu"); // rows
 
         CellConstraints cc = new CellConstraints();
 
@@ -137,7 +137,7 @@ public class ErrorDialog extends JDialog {
         builder.setBorder(new EmptyBorder(4, 5, 2, 5));
 
         JLabel textLabel = builder.addLabel("<html>" + m_message + "</html>", cc.xy(2, 1));
-        textLabel.setIcon(new ImageIcon(getClass().getResource("/resource/icons/warn.gif"))); //$NON-NLS-1$
+        textLabel.setIcon(new ImageIcon(getClass().getResource("/resource/icons/warn.gif")));
         textLabel.setBorder(new EmptyBorder(20, 10, 20, 10));
         textLabel.setPreferredSize(new Dimension(500, 90));
         textLabel.setFont(textLabel.getFont().deriveFont(16.0f));

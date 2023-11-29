@@ -64,13 +64,13 @@ public class Main /* extends Observable */ implements LearnSessionProvider, Less
     }
 
     public static final Properties PROPERTIES = new Properties();
-    public static final Preferences USER_PREFS = Preferences.userRoot().node("de/riad/jmemorize"); //$NON-NLS-1$
+    public static final Preferences USER_PREFS = Preferences.userRoot().node("de/riad/jmemorize");
 
-    private static final String PROPERTIES_PATH = "/resource/jMemorize.properties"; //$NON-NLS-1$
+    private static final String PROPERTIES_PATH = "/resource/jMemorize.properties";
 
-    public static final File STATS_FILE = new File(System.getProperty("user.home") + "/.jmemorize-stats.xml"); //$NON-NLS-1$ //$NON-NLS-2$
+    public static final File STATS_FILE = new File(System.getProperty("user.home") + "/.jmemorize-stats.xml");
 
-    private RecentItems m_recentFiles = new RecentItems(5, USER_PREFS.node("recent.files")); //$NON-NLS-1$
+    private RecentItems m_recentFiles = new RecentItems(5, USER_PREFS.node("recent.files"));
 
     private static final SingletonLock<Main> m_instance = new SingletonLock<>(() -> {
         return new Main();
@@ -152,7 +152,7 @@ public class Main /* extends Observable */ implements LearnSessionProvider, Less
     @Override
     public void saveLesson(Lesson lesson, File file) throws IOException {
         try {
-            File tempFile = new File(file.getAbsolutePath() + "~"); //$NON-NLS-1$
+            File tempFile = new File(file.getAbsolutePath() + "~");
             XmlBuilder.saveAsXMLFile(tempFile, lesson);
 
             file.delete();
@@ -333,7 +333,7 @@ public class Main /* extends Observable */ implements LearnSessionProvider, Less
      *         This can be used for new and expiremental features.
      */
     public static boolean isDevel() {
-        // String property = PROPERTIES.getProperty("project.release"); //$NON-NLS-1$
+        // String property = PROPERTIES.getProperty("project.release");
         // return !Boolean.valueOf(property).booleanValue();
         return false;
     }

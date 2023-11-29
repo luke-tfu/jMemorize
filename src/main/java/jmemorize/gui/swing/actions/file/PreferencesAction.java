@@ -43,9 +43,9 @@ public class PreferencesAction extends AbstractSessionDisabledAction {
     }
 
     private void setValues() {
-        setName(Localization.get("MainFrame.PREFERENCES") + ".."); //$NON-NLS-1$ //$NON-NLS-2$
-        setDescription(Localization.get("MainFrame.PREFERENCES_DESC")); //$NON-NLS-1$
-        setIcon("/resource/icons/settings.gif"); //$NON-NLS-1$
+        setName(Localization.get("MainFrame.PREFERENCES") + "..");
+        setDescription(Localization.get("MainFrame.PREFERENCES_DESC"));
+        setIcon("/resource/icons/settings.gif");
         setAccelerator(KeyEvent.VK_P, SHORTCUT_KEY);
         setMnemonic(1);
     }

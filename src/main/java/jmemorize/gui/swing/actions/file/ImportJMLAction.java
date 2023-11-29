@@ -51,6 +51,6 @@ public class ImportJMLAction extends AbstractImportAction {
     private void setValues() {
         setName(Localization.get(LC.FILE_FILTER_DESC));
         setMnemonic(1);
-        setIcon("/resource/icons/file_saveas.gif"); //$NON-NLS-1$
+        setIcon("/resource/icons/file_saveas.gif");
     }
 }

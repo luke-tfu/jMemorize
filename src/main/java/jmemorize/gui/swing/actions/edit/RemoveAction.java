@@ -55,10 +55,10 @@ public class RemoveAction extends AbstractAction2 implements SelectionObserver {
 
         if (selectedCards != null && selectedCards.size() > 0) {
             Object[] args = { (Integer) (selectedCards.size()) };
-            MessageFormat form = new MessageFormat(Localization.get("MainFrame.DELETE_CARDS_WARN")); //$NON-NLS-1$
+            MessageFormat form = new MessageFormat(Localization.get("MainFrame.DELETE_CARDS_WARN"));
 
             int n = JOptionPane.showConfirmDialog(m_selectionProvider.getFrame(), form.format(args),
-                    Localization.get("MainFrame.DELETE_CARDS_WARN_TITLE"), //$NON-NLS-1$
+                    Localization.get("MainFrame.DELETE_CARDS_WARN_TITLE"),
                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
             if (n != JOptionPane.OK_OPTION) {
@@ -75,10 +75,10 @@ public class RemoveAction extends AbstractAction2 implements SelectionObserver {
 
                 if (cardCount > 0) {
                     Object[] args = { category.getName(), (Integer) (cardCount) };
-                    MessageFormat form = new MessageFormat(Localization.get("MainFrame.DELETE_CATEGORY_WARN")); //$NON-NLS-1$
+                    MessageFormat form = new MessageFormat(Localization.get("MainFrame.DELETE_CATEGORY_WARN"));
 
                     int n = JOptionPane.showConfirmDialog(m_selectionProvider.getFrame(), form.format(args),
-                            Localization.get("MainFrame.REMOVE_CATEGORY_TITLE"), //$NON-NLS-1$
+                            Localization.get("MainFrame.REMOVE_CATEGORY_TITLE"),
                             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
                     if (n != JOptionPane.OK_OPTION) {
@@ -100,8 +100,8 @@ public class RemoveAction extends AbstractAction2 implements SelectionObserver {
     }
 
     private void setValues() {
-        setName(Localization.get("MainFrame.DELETE")); //$NON-NLS-1$
-        setIcon("/resource/icons/remove.gif"); //$NON-NLS-1$
+        setName(Localization.get("MainFrame.DELETE"));
+        setIcon("/resource/icons/remove.gif");
         setAccelerator(KeyEvent.VK_DELETE, 0);
         setMnemonic(1);
     }

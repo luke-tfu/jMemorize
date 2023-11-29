@@ -46,9 +46,9 @@ public class FindAction extends AbstractAction2 {
     }
 
     private void setValues() {
-        setName(Localization.get("MainFrame.FIND")); //$NON-NLS-1$
-        setIcon("/resource/icons/find.gif"); //$NON-NLS-1$
-        setDescription(Localization.get("MainFrame.FIND_DESC")); //$NON-NLS-1$
+        setName(Localization.get("MainFrame.FIND"));
+        setIcon("/resource/icons/find.gif");
+        setDescription(Localization.get("MainFrame.FIND_DESC"));
         setAccelerator(KeyEvent.VK_F, SHORTCUT_KEY);
     }
 }

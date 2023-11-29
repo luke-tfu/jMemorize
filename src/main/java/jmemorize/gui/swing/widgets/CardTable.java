@@ -161,7 +161,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
         public void setValue(Object value) {
             // if not learned
             if (value == null) {
-                setText(Localization.get("CardTable.NOT_LEARNED")); //$NON-NLS-1$
+                setText(Localization.get("CardTable.NOT_LEARNED"));
             } else {
                 setText(Localization.SHORT_DATE_FORMATER.format(value));
             }
@@ -352,10 +352,10 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
     public static final int COLUMN_MODIFIED = 9;
 
     // preferences keys
-    private static final String PREF_SORT = "sort-by"; //$NON-NLS-1$
-    private static final String PREF_SORT_DIR = "sort-dir"; //$NON-NLS-1$
-    private static final String PREF_WIDTHS = "widths"; //$NON-NLS-1$
-    private static final String PREF_COLUMNS = "columns"; //$NON-NLS-1$
+    private static final String PREF_SORT = "sort-by";
+    private static final String PREF_SORT_DIR = "sort-dir";
+    private static final String PREF_WIDTHS = "widths";
+    private static final String PREF_COLUMNS = "columns";
 
     private static final String[] COLUMN_NAMES = { Localization.get(LC.FRONTSIDE), Localization.get(LC.FLIPSIDE),
             Localization.get(LC.DECK), Localization.get(LC.CATEGORY), Localization.get(LC.CARDTABLE_PATH),
@@ -366,7 +366,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
 
     // widgets
     private JCheckBoxMenuItem[] m_checkBoxItems = new JCheckBoxMenuItem[COLUMN_NAMES.length];
-    private JPopupMenu m_headerMenu = new JPopupMenu(Localization.get("CardTable.COLUMNS")); //$NON-NLS-1$
+    private JPopupMenu m_headerMenu = new JPopupMenu(Localization.get("CardTable.COLUMNS"));
     private JPopupMenu m_cardMenu;
     private StatusBar m_statusBar;
 
@@ -484,7 +484,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
 
             case COLUMN_CREATED: // fall through
             case COLUMN_MODIFIED:
-                column.setCellRenderer(new DateRenderer("-")); //$NON-NLS-1$
+                column.setCellRenderer(new DateRenderer("-"));
                 break;
 
             case COLUMN_EXPIRES:
@@ -492,7 +492,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
                 break;
 
             case COLUMN_TESTED:
-                column.setCellRenderer(new DateRenderer(Localization.get("CardTable.NOT_LEARNED"))); //$NON-NLS-1$
+                column.setCellRenderer(new DateRenderer(Localization.get("CardTable.NOT_LEARNED")));
                 break;
 
             case COLUMN_RATIO:
@@ -634,7 +634,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
         case COLUMN_TESTED: // fall-through
         case COLUMN_EXPIRES:
             date = modelIndex == COLUMN_TESTED ? card.getDateTested() : card.getDateExpired();
-            return ((date != null) ? TimeSpan.format(new Date(), date) : Localization.get("CardTable.NO_DATE_DESC")); //$NON-NLS-1$
+            return ((date != null) ? TimeSpan.format(new Date(), date) : Localization.get("CardTable.NO_DATE_DESC"));
 
         case COLUMN_RATIO:
             return card.getTestsPassed() + " / " + card.getTestsTotal();
@@ -825,7 +825,7 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
             return (Integer) card.getPassRatio();
 
         default:
-            return "-"; // this should never be reached //$NON-NLS-1$
+            return "-"; // this should never be reached
         }
     }
 
@@ -925,10 +925,10 @@ public class CardTable extends JTable implements Settings.CardFontObserver, Sele
     private void updateSelectedCardCountStatusBar() {
         if (m_statusBar != null) {
             if (getSelectedRowCount() >= 2) {
-                m_statusBar.setLeftText(Localization.get("CardTable.SELECTED_CARDS") + ": " + //$NON-NLS-1$ //$NON-NLS-2$
+                m_statusBar.setLeftText(Localization.get("CardTable.SELECTED_CARDS") + ": " +
                         getSelectedRowCount());
             } else {
-                m_statusBar.setLeftText(""); //$NON-NLS-1$
+                m_statusBar.setLeftText("");
             }
         }
     }

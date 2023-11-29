@@ -493,7 +493,7 @@ public class LearnHistory {
 
             // transform document for file output
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
-            transformer.setOutputProperty(OutputKeys.INDENT, "yes"); //$NON-NLS-1$
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.transform(new DOMSource(document), new StreamResult(out));
         } finally {
             if (out != null) {

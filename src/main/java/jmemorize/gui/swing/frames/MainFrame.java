@@ -447,8 +447,8 @@ public class MainFrame extends JFrame
         // then see if lesson should to be saved
         Lesson lesson = m_main.getLesson();
         if (lesson.canSave()) {
-            int n = JOptionPane.showConfirmDialog(MainFrame.this, Localization.get("MainFrame.SAVE_MODIFIED"), //$NON-NLS-1$
-                    "Warning", //$NON-NLS-1$
+            int n = JOptionPane.showConfirmDialog(MainFrame.this, Localization.get("MainFrame.SAVE_MODIFIED"),
+                    "Warning",
                     JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
 
             if (n == JOptionPane.OK_OPTION) {
@@ -493,7 +493,7 @@ public class MainFrame extends JFrame
         if (!session.isRelevant())
             return;
 
-        JDialog dialog = new OkayButtonDialog(this, Localization.get("Learn.SESSION_RESULTS"), //$NON-NLS-1$
+        JDialog dialog = new OkayButtonDialog(this, Localization.get("Learn.SESSION_RESULTS"),
                 true, new SessionChartPanel(session));
 
         dialog.setLocationRelativeTo(this);
@@ -538,16 +538,16 @@ public class MainFrame extends JFrame
         String name = "jMemorize";
         String version = JGWHacks.projectVersion;
 
-        // String name = Main.PROPERTIES.getProperty("project.name"); //$NON-NLS-1$
+        // String name = Main.PROPERTIES.getProperty("project.name");
         // String version = Main.PROPERTIES.getProperty("project.version");
-        // //$NON-NLS-1$
-        String suffix = " - " + name + " " + version; //$NON-NLS-1$ //$NON-NLS-2$
+        //
+        String suffix = " - " + name + " " + version;
 
         File file = m_main.getLesson().getFile();
         if (file != null && !getTitle().equals(file.getName())) {
             setTitle(file.getName() + suffix);
         } else if (file == null) {
-            setTitle(Localization.get("MainFrame.UNNAMED_LESSON") + suffix); //$NON-NLS-1$
+            setTitle(Localization.get("MainFrame.UNNAMED_LESSON") + suffix);
         }
     }
 
@@ -624,7 +624,7 @@ public class MainFrame extends JFrame
             }
         });
 
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/resource/icons/main.png"))); //$NON-NLS-1$
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/resource/icons/main.png")));
         pack();
     }
 

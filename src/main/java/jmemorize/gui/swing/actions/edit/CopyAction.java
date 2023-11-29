@@ -48,7 +48,7 @@ public class CopyAction extends AbstractSessionDisabledAction implements Selecti
     @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
         ActionEvent actionEvent = new ActionEvent(m_selectionProvider.getDefaultFocusOwner(),
-                ActionEvent.ACTION_PERFORMED, "copy"); //$NON-NLS-1$
+                ActionEvent.ACTION_PERFORMED, "copy");
 
         GeneralTransferHandler.getCopyAction().actionPerformed(actionEvent);
     }
@@ -70,7 +70,7 @@ public class CopyAction extends AbstractSessionDisabledAction implements Selecti
 
     private void setValues() {
         setName(Localization.get(LC.COPY));
-        setIcon("/resource/icons/edit_copy.gif"); //$NON-NLS-1$
+        setIcon("/resource/icons/edit_copy.gif");
         setMnemonic(1);
         setAccelerator(KeyEvent.VK_C, SHORTCUT_KEY);
     }

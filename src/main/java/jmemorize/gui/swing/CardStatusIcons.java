@@ -12,10 +12,10 @@ import jmemorize.core.Main;
  * @author djemili
  */
 public class CardStatusIcons {
-    private final ImageIcon OK_ICON = new ImageIcon(getClass().getResource("/resource/icons/state_ok.gif")); //$NON-NLS-1$
-    private final ImageIcon TODAY_ICON = new ImageIcon(getClass().getResource("/resource/icons/state_soon.gif")); //$NON-NLS-1$
-    private final ImageIcon NO_ICON = new ImageIcon(getClass().getResource("/resource/icons/state_no.gif")); //$NON-NLS-1$
-    private final ImageIcon EXPIRED_ICON = new ImageIcon(getClass().getResource("/resource/icons/state_forgotten.gif")); //$NON-NLS-1$
+    private final ImageIcon OK_ICON = new ImageIcon(getClass().getResource("/resource/icons/state_ok.gif"));
+    private final ImageIcon TODAY_ICON = new ImageIcon(getClass().getResource("/resource/icons/state_soon.gif"));
+    private final ImageIcon NO_ICON = new ImageIcon(getClass().getResource("/resource/icons/state_no.gif"));
+    private final ImageIcon EXPIRED_ICON = new ImageIcon(getClass().getResource("/resource/icons/state_forgotten.gif"));
     private static CardStatusIcons m_instance;
 
     /**

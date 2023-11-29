@@ -72,37 +72,37 @@ import jmemorize.core.learn.LearnHistory.SessionSummary;
  * @author djemili
  */
 public class XmlBuilder {
-    private static final String SESSION = "session"; //$NON-NLS-1$
-    private static final String LESSON = "Lesson"; //$NON-NLS-1$
-    private static final String DECK = "Deck"; //$NON-NLS-1$
-    private static final String CARD = "Card"; //$NON-NLS-1$
-    private static final String SIDE = "Side"; //$NON-NLS-1$
-    private static final String IMG = "image"; //$NON-NLS-1$
-    private static final String IMG_ID = "id"; //$NON-NLS-1$
-    private static final String NAME = "name"; //$NON-NLS-1$
-    private static final String CATEGORY = "Category"; //$NON-NLS-1$
-    private static final String TESTS_HIT = "TestsHit"; //$NON-NLS-1$
-    private static final String TESTS_TOTAL = "TestsTotal"; //$NON-NLS-1$
-    private static final String AMOUNT_LEARNED_BACK = "AmountLearnedBack"; //$NON-NLS-1$
-    private static final String AMOUNT_LEARNED_FRONT = "AmountLearnedFront"; //$NON-NLS-1$
-    private static final String DATE_EXPIRED = "DateExpired"; //$NON-NLS-1$
-    private static final String DATE_TESTED = "DateTested"; //$NON-NLS-1$
-    private static final String DATE_TOUCHED = "DateTouched"; //$NON-NLS-1$
-    private static final String DATE_CREATED = "DateCreated"; //$NON-NLS-1$
-    private static final String DATE_MODIFIED = "DateModified"; //$NON-NLS-1$
-    private static final String BACKSIDE = "Backside"; //$NON-NLS-1$
-    private static final String FRONTSIDE = "Frontside"; //$NON-NLS-1$
+    private static final String SESSION = "session";
+    private static final String LESSON = "Lesson";
+    private static final String DECK = "Deck";
+    private static final String CARD = "Card";
+    private static final String SIDE = "Side";
+    private static final String IMG = "image";
+    private static final String IMG_ID = "id";
+    private static final String NAME = "name";
+    private static final String CATEGORY = "Category";
+    private static final String TESTS_HIT = "TestsHit";
+    private static final String TESTS_TOTAL = "TestsTotal";
+    private static final String AMOUNT_LEARNED_BACK = "AmountLearnedBack";
+    private static final String AMOUNT_LEARNED_FRONT = "AmountLearnedFront";
+    private static final String DATE_EXPIRED = "DateExpired";
+    private static final String DATE_TESTED = "DateTested";
+    private static final String DATE_TOUCHED = "DateTouched";
+    private static final String DATE_CREATED = "DateCreated";
+    private static final String DATE_MODIFIED = "DateModified";
+    private static final String BACKSIDE = "Backside";
+    private static final String FRONTSIDE = "Frontside";
 
-    private static final String STATS_ROOT = "statistics"; //$NON-NLS-1$
-    private static final String STATS_RELEARNED = "relearned"; //$NON-NLS-1$
-    private static final String STATS_SKIPPED = "skipped"; //$NON-NLS-1$
-    private static final String STATS_FAILED = "failed"; //$NON-NLS-1$
-    private static final String STATS_PASSED = "passed"; //$NON-NLS-1$
-    private static final String STATS_END = "end"; //$NON-NLS-1$
-    private static final String STATS_START = "start"; //$NON-NLS-1$
+    private static final String STATS_ROOT = "statistics";
+    private static final String STATS_RELEARNED = "relearned";
+    private static final String STATS_SKIPPED = "skipped";
+    private static final String STATS_FAILED = "failed";
+    private static final String STATS_PASSED = "passed";
+    private static final String STATS_END = "end";
+    private static final String STATS_START = "start";
 
-    private static final String LESSON_ZIP_ENTRY_NAME = "lesson.xml"; //$NON-NLS-1$
-    private static final String IMAGE_FOLDER = "images"; //$NON-NLS-1$
+    private static final String LESSON_ZIP_ENTRY_NAME = "lesson.xml";
+    private static final String IMAGE_FOLDER = "images";
 
     // we need a fixed formatter in file (not locale dependent)
     private final static DateFormat DATE_FORMAT = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM,
@@ -142,8 +142,8 @@ public class XmlBuilder {
 
             // transform document for file output
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
-            transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8"); //$NON-NLS-1$
-            transformer.setOutputProperty(OutputKeys.INDENT, "yes"); //$NON-NLS-1$
+            transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 
             transformer.transform(new DOMSource(document), new StreamResult(out));
         } finally {

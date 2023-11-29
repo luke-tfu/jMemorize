@@ -54,6 +54,6 @@ public class AddCategoryAction extends AbstractSessionDisabledAction {
     private void setValues() {
         setName(Localization.get(LC.ACTION_ADD_CATEGORY));
         setDescription(Localization.get(LC.ACTION_ADD_CATEGORY_DESC));
-        setIcon("/resource/icons/category_add.gif"); //$NON-NLS-1$
+        setIcon("/resource/icons/category_add.gif");
     }
 }

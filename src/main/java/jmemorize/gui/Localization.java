@@ -25,7 +25,6 @@ import java.text.DateFormat;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
@@ -139,7 +138,7 @@ public class Localization {
             // load available locales from file
             in = new BufferedReader(new InputStreamReader(Localization.class.getResourceAsStream(LANGS_FILE)));
             // in = new BufferedReader(new InputStreamReader(JGWHacks.getLangsFile()));
-            Pattern p = Pattern.compile("([a-z]{2})(?:_([A-Z]{2,3}))?"); //$NON-NLS-1$
+            Pattern p = Pattern.compile("([a-z]{2})(?:_([A-Z]{2,3}))?");
 
             String line;
             while ((line = in.readLine()) != null) {
@@ -154,22 +153,20 @@ public class Localization {
             }
 
             // sort locales by display language
-            Collections.sort(locales, new Comparator<Locale>() {
-                public int compare(Locale l1, Locale l2) {
-                    String ls1 = l1.getDisplayLanguage();
-                    String ls2 = l2.getDisplayLanguage();
+            Collections.sort(locales, (l1, l2) -> {
+                String ls1 = l1.getDisplayLanguage();
+                String ls2 = l2.getDisplayLanguage();
 
-                    return ls1.compareTo(ls2);
-                }
+                return ls1.compareTo(ls2);
             });
         } catch (IOException e) {
-            Main.logThrowable("failed loading available locales", e); //$NON-NLS-1$
+            Main.logThrowable("failed loading available locales", e);
         } finally {
             try {
                 if (in != null)
                     in.close();
             } catch (IOException e) {
-                Main.logThrowable("failed loading available locales", e); //$NON-NLS-1$
+                Main.logThrowable("failed loading available locales", e);
             }
         }
 

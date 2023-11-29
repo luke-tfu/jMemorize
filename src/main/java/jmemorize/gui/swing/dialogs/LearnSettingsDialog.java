@@ -97,8 +97,8 @@ public class LearnSettingsDialog extends JDialog {
 
         // on ESC key close dialog
         getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0),
-                "Cancel"); //$NON-NLS-1$
-        getRootPane().getActionMap().put("Cancel", new AbstractAction() { //$NON-NLS-1$
+                "Cancel");
+        getRootPane().getActionMap().put("Cancel", new AbstractAction() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
             }
@@ -129,8 +129,8 @@ public class LearnSettingsDialog extends JDialog {
         m_sideList.setSelectedIndex(0);
 
         // build main panel
-        FormLayout layout = new FormLayout("70dlu, 3dlu, p:grow", // columns //$NON-NLS-1$
-                "fill:p:grow"); // rows //$NON-NLS-1$
+        FormLayout layout = new FormLayout("70dlu, 3dlu, p:grow", // columns
+                "fill:p:grow"); // rows
 
         CellConstraints cc = new CellConstraints();
 
@@ -144,8 +144,8 @@ public class LearnSettingsDialog extends JDialog {
     }
 
     private JPanel buildGeneralSettingsPanel() {
-        FormLayout layout = new FormLayout("p:grow", // columns //$NON-NLS-1$
-                "p, 15dlu, p"); // rows //$NON-NLS-1$
+        FormLayout layout = new FormLayout("p:grow", // columns
+                "p, 15dlu, p"); // rows
 
         CellConstraints cc = new CellConstraints();
 
@@ -159,8 +159,8 @@ public class LearnSettingsDialog extends JDialog {
     }
 
     private JPanel buildAdvancedPanel() {
-        FormLayout layout = new FormLayout("p:grow", // columns //$NON-NLS-1$
-                "p, 9dlu, p"); // rows //$NON-NLS-1$
+        FormLayout layout = new FormLayout("p:grow", // columns
+                "p, 9dlu, p"); // rows
 
         CellConstraints cc = new CellConstraints();
 
@@ -174,8 +174,8 @@ public class LearnSettingsDialog extends JDialog {
     }
 
     private JPanel buildSchedulesPanel() {
-        FormLayout layout = new FormLayout("p:grow", // columns //$NON-NLS-1$
-                "p, 9dlu, p"); // rows //$NON-NLS-1$
+        FormLayout layout = new FormLayout("p:grow", // columns
+                "p, 9dlu, p"); // rows
 
         CellConstraints cc = new CellConstraints();
 
