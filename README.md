@@ -13,8 +13,10 @@ jMemorize requires Java 11 to run. Just (double-)click the icon to start the app
 Java is available from the [AdoptOpenJDK project](https://adoptopenjdk.net/).
    
 ## Original Creator
+
+The creator of the first fork was [Jonathan West](https://github.com/jgwest/jMemorize), whom I'd like to thank for his work.
   
-This original creator of this software was [Riad Djemili](https://github.com/riadd/jMemorize) (jmemorize@riad.de), who licensed it under the GPL license. A copy of the GPL license is provided with this sourcecode.
+The original creator of this software was [Riad Djemili](https://github.com/riadd/jMemorize) (jmemorize@riad.de), who licensed it under the GPL license. A copy of the GPL license is provided with this sourcecode.
 
 
 The following people are thanked by the original author for contributed ideas and patches:
